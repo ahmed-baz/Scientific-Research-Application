@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="CoursesPageDef"
+                Package="pages.fragments.courses">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Category" RangeSize="25" DataControl="CoursesAMDataControl" id="CategoryIterator"/>
+    <iterator Binds="CategoryDropDownList" RangeSize="-1" DataControl="CoursesAMDataControl"
+              id="CategoryDropDownListIterator"/>
+    <iterator Binds="PublicCourses" RangeSize="25" DataControl="CoursesAMDataControl" id="PublicCoursesIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="CategoryIterator" StaticList="false" id="CategoryId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject" ListIter="CategoryDropDownListIterator" ListOperMode="navigation">
+      <AttrNames>
+        <Item Value="CategoryName"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="CategoryId"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="CategoryName"/>
+      </ListDisplayAttrNames>
+    </list>
+    <methodAction id="checkCourseCode" RequiresUpdateModel="true" Action="invokeMethod" MethodName="checkCourseCode"
+                  IsViewObjectMethod="false" DataControl="CoursesAMDataControl"
+                  InstanceName="data.CoursesAMDataControl.dataProvider"
+                  ReturnName="data.CoursesAMDataControl.methodResults.checkCourseCode_CoursesAMDataControl_dataProvider_checkCourseCode_result">
+      <NamedData NDName="code" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="PublicCoursesIterator" id="PublicCourses">
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.CoursesVO" Name="PublicCourses0">
+        <AttrNames>
+          <Item Value="CourseName"/>
+          <Item Value="ProfessorName"/>
+          <Item Value="UserId"/>
+          <Item Value="CourseDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="PublicCoursesIterator" StaticList="false" Uses="LOV_UserId" id="UserId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

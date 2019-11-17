@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelBox text="Select Professor" id="pb1" showDisclosure="false">
+    <f:facet name="toolbar"/>
+    <af:panelGridLayout id="pgl1">
+      <af:gridRow marginTop="5px" height="10%" id="gr1">
+        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc1" halign="center" valign="middle">
+          <af:panelGroupLayout id="pgl3" layout="horizontal">
+            <af:inputText label="Professor Name" id="it1" contentStyle="font-size:20px;color:gray;"
+                          labelStyle="font-size:20px;color:black;" binding="#{viewScope.ProfessorBean.profName}"
+                          autoSubmit="true" valueChangeListener="#{viewScope.ProfessorBean.searchProfessor}"/>
+            <af:button text="Search" id="b1" inlineStyle="font-size:18px;padding:2px;"
+                       icon="/resources/images/search_magnifi-20.png" iconPosition="trailing"
+                       actionListener="#{viewScope.ProfessorBean.searchProf}"/>
+          </af:panelGroupLayout>
+        </af:gridCell>
+      </af:gridRow>
+      <af:gridRow marginTop="5px" height="90%" marginBottom="5px" id="gr2">
+        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc2" halign="stretch">
+          <af:listView value="#{bindings.Professors1.collectionModel}" var="item"
+                       emptyText="#{bindings.Professors1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                       fetchSize="#{bindings.Professors1.rangeSize}" id="lv1" selection="single"
+                       selectionListener="#{viewScope.ProfessorBean.selectProfessor}" partialTriggers="::b1 ::it1">
+            <af:listItem id="li1" partialTriggers="::b1 ::it1">
+              <af:panelGridLayout id="pgl2">
+                <af:gridRow marginTop="5px" height="auto" id="gr3">
+                  <af:gridCell marginStart="5px" rowSpan="2" width="10%" id="gc3" halign="center" valign="middle">
+                    <af:image source="/professorsimages?id=#{item.Users.bindings.Email.inputValue}" id="i1" inlineStyle="width:50px;height:50px;"/>
+                  </af:gridCell>
+                  <af:gridCell marginStart="5px" width="45%" id="gc4">
+                    <af:selectOneChoice value="#{item.bindings.UserId.inputValue}"
+                                        required="#{bindings.Professors1.hints.UserId.mandatory}"
+                                        shortDesc="#{bindings.Professors1.hints.UserId.tooltip}" readOnly="true"
+                                        id="soc1">
+                      <f:selectItems value="#{item.bindings.UserId.items}" id="si1"/>
+                      <f:validator binding="#{item.bindings.UserId.validator}"/>
+                    </af:selectOneChoice>
+                  </af:gridCell>
+                  <af:gridCell marginStart="5px" width="45%" marginEnd="5px" id="gc5">
+                    <af:outputText value="#{item.Users.bindings.Email.inputValue}" shortDesc="#{bindings.Email.hints.tooltip}"
+                                   id="ot1"/>
+                  </af:gridCell>
+                </af:gridRow>
+                <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr4">
+                  <af:gridCell marginStart="5px" width="45%" id="gc6">
+                    <af:selectOneChoice value="#{item.bindings.CityId.inputValue}"
+                                        required="#{bindings.Professors1.hints.CityId.mandatory}"
+                                        shortDesc="#{bindings.Professors1.hints.CityId.tooltip}" readOnly="true"
+                                        id="soc2">
+                      <f:selectItems value="#{item.bindings.CityId.items}" id="si2"/>
+                      <f:validator binding="#{item.bindings.CityId.validator}"/>
+                    </af:selectOneChoice>
+                  </af:gridCell>
+                  <af:gridCell marginStart="5px" width="45%" marginEnd="5px" id="gc7">
+                    <af:selectOneChoice value="#{item.bindings.CountryId.inputValue}"
+                                        required="#{bindings.Professors1.hints.CountryId.mandatory}"
+                                        shortDesc="#{bindings.Professors1.hints.CountryId.tooltip}" readOnly="true"
+                                        id="soc3">
+                      <f:selectItems value="#{item.bindings.CountryId.items}" id="si3"/>
+                      <f:validator binding="#{item.bindings.CountryId.validator}"/>
+                    </af:selectOneChoice>
+                  </af:gridCell>
+                </af:gridRow>
+              </af:panelGridLayout>
+            </af:listItem>
+          </af:listView>
+        </af:gridCell>
+      </af:gridRow>
+    </af:panelGridLayout>
+  </af:panelBox>
+</ui:composition>

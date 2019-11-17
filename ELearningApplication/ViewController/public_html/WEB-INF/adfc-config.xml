@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="Login">
+    <page>/Login.jsf</page>
+  </view>
+  <view id="Register">
+    <page>/Register.jsf</page>
+  </view>
+  <task-flow-call id="Home-BTF">
+    <task-flow-reference>
+      <document>/WEB-INF/Home-BTF.xml</document>
+      <id>Home-BTF</id>
+    </task-flow-reference>
+  </task-flow-call>
+  <method-call id="CreateInsert">
+    <method>#{bindings.CreateInsert.execute}</method>
+    <outcome>
+      <fixed-outcome>CreateInsert</fixed-outcome>
+    </outcome>
+  </method-call>
+  <view id="Code">
+    <page>/Code.jsf</page>
+  </view>
+  <view id="RestorePassword">
+    <page>/RestorePassword.jsf</page>
+  </view>
+  <view id="ResetPassword">
+    <page>/ResetPassword.jsf</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id>Login</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>Home-BTF</from-outcome>
+      <to-activity-id>Home-BTF</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__4">
+      <from-outcome>Register</from-outcome>
+      <to-activity-id>CreateInsert</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__10">
+      <from-outcome>Code</from-outcome>
+      <to-activity-id>Code</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__14">
+      <from-outcome>RestorePassword</from-outcome>
+      <to-activity-id>RestorePassword</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__5">
+    <from-activity-id>Register</from-activity-id>
+    <control-flow-case id="__6">
+      <from-outcome>Login</from-outcome>
+      <to-activity-id>Login</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__11">
+      <from-outcome>Code</from-outcome>
+      <to-activity-id>Code</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__7">
+    <from-activity-id>CreateInsert</from-activity-id>
+    <control-flow-case id="__8">
+      <from-outcome>CreateInsert</from-outcome>
+      <to-activity-id>Register</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__12">
+    <from-activity-id>Code</from-activity-id>
+    <control-flow-case id="__13">
+      <from-outcome>Login</from-outcome>
+      <to-activity-id>Login</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__15">
+    <from-activity-id>RestorePassword</from-activity-id>
+    <control-flow-case id="__16">
+      <from-outcome>Login</from-outcome>
+      <to-activity-id>Login</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__18">
+      <from-outcome>Register</from-outcome>
+      <to-activity-id>Register</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__19">
+      <from-outcome>ResetPasword</from-outcome>
+      <to-activity-id>ResetPassword</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__3">
+    <managed-bean-name>LoginBean</managed-bean-name>
+    <managed-bean-class>oracle.adf.research.beans.user.LoginBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__9">
+    <managed-bean-name>RegisterBean</managed-bean-name>
+    <managed-bean-class>oracle.adf.research.beans.user.RegisterBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__17">
+    <managed-bean-name>RestoreAccount</managed-bean-name>
+    <managed-bean-class>oracle.adf.research.beans.user.RestoreAccount</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

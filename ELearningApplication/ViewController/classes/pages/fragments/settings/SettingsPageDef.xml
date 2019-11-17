@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="SettingsPageDef"
+                Package="pages.fragments.settings">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Users1" RangeSize="25" DataControl="SecurityAMDataControl" id="Users1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Users1Iterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Users1Iterator" StaticList="false" Uses="LOV_Gender" id="Gender" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Users1Iterator" id="BirthDate">
+      <AttrNames>
+        <Item Value="BirthDate"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="SecurityAMDataControl"/>
+    <attributeValues IterBinding="Users1Iterator" id="Image">
+      <AttrNames>
+        <Item Value="Image"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="Password">
+      <AttrNames>
+        <Item Value="Password"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

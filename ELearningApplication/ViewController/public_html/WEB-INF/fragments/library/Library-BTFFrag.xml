@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Library-BTFFrag">
+    <default-activity>Library</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__3">
+      <managed-bean-name>SelectedBookBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.books.SelectedBookBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__4">
+      <managed-bean-name>DownloadBookBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.books.DownloadBookBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__5">
+      <managed-bean-name>AccessPrivateBooksBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.books.AccessPrivateBooksBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__10">
+      <managed-bean-name>UploadNewBookBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.books.UploadNewBookBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__11">
+      <managed-bean-name>BookCodeBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.books.BookCodeBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__12">
+      <managed-bean-name>BookImagesBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.books.BookImagesBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__13">
+      <managed-bean-name>DefaultBookBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.books.DefaultBookBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__14">
+      <managed-bean-name>BookStatusTypeBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.books.BookStatusTypeBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="Library">
+      <page>/pages/fragments/library/Library.jsff</page>
+    </view>
+    <view id="SelectedBook">
+      <page>/pages/fragments/library/SelectedBook.jsff</page>
+    </view>
+    <view id="PrivateBook">
+      <page>/pages/fragments/library/PrivateBook.jsff</page>
+    </view>
+    <view id="NewBook">
+      <page>/pages/fragments/library/NewBook.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>Library</from-outcome>
+        <to-activity-id>Library</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>NewBook</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>Library</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>AddNewBook</from-outcome>
+        <to-activity-id>CreateInsert</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

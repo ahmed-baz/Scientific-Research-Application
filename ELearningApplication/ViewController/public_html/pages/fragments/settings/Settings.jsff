@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelBox text="Settings" id="pb1" showDisclosure="false">
+    <f:facet name="toolbar">
+      <af:toolbar id="t1">
+        <af:button text="Professor Settings" id="b4" icon="/resources/images/Manager16.png" action="ProfessorSettings"
+                   rendered="#{LoginBean.user.roleName eq 'Prof' ? true : false}"/>
+        <af:button text="Save"
+                   id="b1" icon="/resources/images/save-16.png" action="#{SettingsBean.saveChanges}"/>
+        <af:button actionListener="#{bindings.Rollback.execute}" text="Undo" immediate="true" id="b2" icon="/resources/images/undo.png">
+          <af:resetActionListener/>
+        </af:button>
+        <af:button text="Back" id="b3" icon="/resources/images/srch_go.gif" iconPosition="trailing"
+                   actionListener="#{bindings.Rollback.execute}" action="Back"/>
+      </af:toolbar>
+    </f:facet>
+    <af:panelGroupLayout id="pgl1" layout="scroll">
+      <af:panelGroupLayout id="pgl111" layout="horizontal">
+        <af:panelFormLayout id="pfl1">
+          <af:inputText value="#{bindings.FirstName.inputValue}" label="#{bindings.FirstName.hints.label}"
+                        required="#{bindings.FirstName.hints.mandatory}"
+                        columns="#{bindings.FirstName.hints.displayWidth}"
+                        maximumLength="#{bindings.FirstName.hints.precision}"
+                        shortDesc="#{bindings.FirstName.hints.tooltip}" id="it1"
+                        labelStyle="color:black;font-size:25px;"
+                        contentStyle="font-size:23px;padding:2px;width:400px;color:teal;"
+                        binding="#{SettingsBean.firstName}">
+            <f:validator binding="#{bindings.FirstName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}"
+                        required="#{bindings.LastName.hints.mandatory}"
+                        columns="#{bindings.LastName.hints.displayWidth}"
+                        maximumLength="#{bindings.LastName.hints.precision}"
+                        shortDesc="#{bindings.LastName.hints.tooltip}" id="it2" labelStyle="color:black;font-size:25px;"
+                        contentStyle="font-size:23px;padding:2px;width:400px;color:teal;"
+                        binding="#{SettingsBean.lastName}">
+            <f:validator binding="#{bindings.LastName.validator}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.Gender.inputValue}" label="#{bindings.Gender.label}"
+                              required="#{bindings.Gender.hints.mandatory}" shortDesc="#{bindings.Gender.hints.tooltip}"
+                              id="soc1" labelStyle="color:black;font-size:25px;"
+                              contentStyle="font-size:23px;padding:2px;width:400px;color:teal;">
+            <f:selectItems value="#{bindings.Gender.items}" id="si1"/>
+            <f:validator binding="#{bindings.Gender.validator}"/>
+          </af:selectOneChoice>
+          <af:inputDate value="#{bindings.BirthDate.inputValue}" label="#{bindings.BirthDate.hints.label}"
+                        required="#{bindings.BirthDate.hints.mandatory}"
+                        columns="#{bindings.BirthDate.hints.displayWidth}"
+                        shortDesc="#{bindings.BirthDate.hints.tooltip}" id="id1"
+                        labelStyle="color:black;font-size:25px;"
+                        contentStyle="font-size:23px;padding:2px;width:400px;color:teal;">
+            <f:validator binding="#{bindings.BirthDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.BirthDate.format}"/>
+          </af:inputDate>
+          <af:inputText label="Old Password" id="it3" contentStyle="font-size:23px;padding:2px;width:400px;color:teal;"
+                        labelStyle="color:black;font-size:25px;" binding="#{SettingsBean.oldPassword}" autoSubmit="true"
+                        valueChangeListener="#{SettingsBean.checkPassword}"/>
+          <af:activeOutputText id="aot1" inlineStyle="color:red;" binding="#{SettingsBean.passwordError}"
+                               partialTriggers="it3"/>
+          <af:inputText label="New Password" id="it4" contentStyle="font-size:23px;padding:2px;width:400px;color:teal;"
+                        labelStyle="color:black;font-size:25px;" binding="#{SettingsBean.newPassword}"
+                        partialTriggers="it3" readOnly="true" autoSubmit="true"/>
+        </af:panelFormLayout>
+        <af:panelGroupLayout id="pgl12" layout="scroll" halign="center">
+          <af:image source="/professorsimages?id=#{LoginBean.userEmail.value}" id="i1"
+                    inlineStyle="width:200px;height:300px;margin-top:30px;"/>
+          <af:inputFile label="Image" id="if1" contentStyle="font-size:15px;padding:2px;width:400px;color:teal;"
+                        labelStyle="color:black;font-size:20px;" value="#{SettingsBean.myFile}"/>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </af:panelGroupLayout>
+  </af:panelBox>
+</ui:composition>

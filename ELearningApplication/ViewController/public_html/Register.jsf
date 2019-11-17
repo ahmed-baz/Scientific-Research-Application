@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Register.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1" usesUpload="true">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr3">
+                    <af:gridCell halign="stretch" valign="stretch" columnSpan="3" id="gc4">
+                        <!-- Header -->
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr2">
+                    <af:gridCell width="100px" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Left -->
+                    </af:gridCell>
+                    <af:gridCell width="100%" valign="stretch" id="gc5" halign="stretch">
+                        <!-- Content -->
+                        <af:panelGroupLayout id="pgl5" layout="scroll">
+                            <af:decorativeBox id="db1" theme="medium">
+                                <f:facet name="center">
+                                    <af:panelGridLayout id="pgl2">
+                                        <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr4">
+                                            <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc6"
+                                                         halign="center" valign="middle">
+                                                <af:panelGroupLayout id="pgl3">
+                                                    <af:panelGroupLayout id="pgl4" layout="vertical">
+                                                        <af:panelFormLayout id="pfl1" inlineStyle="margin-top:20px;">
+                                                            <af:inputText value="#{bindings.FirstName.inputValue}"
+                                                                          label="#{bindings.FirstName.hints.label}"
+                                                                          required="#{bindings.FirstName.hints.mandatory}"
+                                                                          columns="#{bindings.FirstName.hints.displayWidth}"
+                                                                          maximumLength="#{bindings.FirstName.hints.precision}"
+                                                                          shortDesc="#{bindings.FirstName.hints.tooltip}"
+                                                                          id="it1"
+                                                                          contentStyle="Color:teal;font-size:15px;width:500px;padding:6px;margin-bottom:3px;"
+                                                                          labelStyle="font-size:17px;Color:black;"
+                                                                          autoSubmit="false"
+                                                                          binding="#{RegisterBean.firstName}">
+                                                                <f:validator binding="#{bindings.FirstName.validator}"/>
+                                                            </af:inputText>
+                                                            <af:inputText value="#{bindings.LastName.inputValue}"
+                                                                          label="#{bindings.LastName.hints.label}"
+                                                                          required="#{bindings.LastName.hints.mandatory}"
+                                                                          columns="#{bindings.LastName.hints.displayWidth}"
+                                                                          maximumLength="#{bindings.LastName.hints.precision}"
+                                                                          shortDesc="#{bindings.LastName.hints.tooltip}"
+                                                                          id="it2"
+                                                                          contentStyle="Color:teal;font-size:15px;width:500px;padding:6px;margin-bottom:3px;"
+                                                                          labelStyle="font-size:17px;Color:black;"
+                                                                          autoSubmit="false"
+                                                                          binding="#{RegisterBean.lastName}">
+                                                                <f:validator binding="#{bindings.LastName.validator}"/>
+                                                            </af:inputText>
+                                                            <af:inputText value="#{bindings.Email.inputValue}"
+                                                                          label="#{bindings.Email.hints.label}"
+                                                                          required="#{bindings.Email.hints.mandatory}"
+                                                                          columns="#{bindings.Email.hints.displayWidth}"
+                                                                          maximumLength="#{bindings.Email.hints.precision}"
+                                                                          shortDesc="#{bindings.Email.hints.tooltip}"
+                                                                          id="it3"
+                                                                          contentStyle="Color:teal;font-size:15px;width:500px;padding:6px;margin-bottom:3px;"
+                                                                          labelStyle="font-size:17px;Color:black;"
+                                                                          binding="#{RegisterBean.email}">
+                                                                <f:validator binding="#{bindings.Email.validator}"/>
+                                                            </af:inputText>
+                                                            <af:inputText value="#{bindings.Password.inputValue}"
+                                                                          label="#{bindings.Password.hints.label}"
+                                                                          required="#{bindings.Password.hints.mandatory}"
+                                                                          columns="#{bindings.Password.hints.displayWidth}"
+                                                                          maximumLength="#{bindings.Password.hints.precision}"
+                                                                          shortDesc="#{bindings.Password.hints.tooltip}"
+                                                                          id="it4"
+                                                                          contentStyle="Color:teal;font-size:15px;width:500px;padding:6px;margin-bottom:3px;"
+                                                                          labelStyle="font-size:17px;Color:black;"
+                                                                          secret="true" autoSubmit="true"
+                                                                          binding="#{RegisterBean.password}">
+                                                                <f:validator binding="#{bindings.Password.validator}"/>
+                                                            </af:inputText>
+                                                            <af:selectOneChoice value="#{bindings.Gender.inputValue}"
+                                                                                label="#{bindings.Gender.label}"
+                                                                                required="#{bindings.Gender.hints.mandatory}"
+                                                                                shortDesc="#{bindings.Gender.hints.tooltip}"
+                                                                                id="soc1"
+                                                                                contentStyle="Color:teal;font-size:15px;width:500px;padding:6px;margin-bottom:3px;"
+                                                                                labelStyle="font-size:17px;Color:black;"
+                                                                                autoSubmit="false"
+                                                                                binding="#{RegisterBean.gender}">
+                                                                <f:selectItems value="#{bindings.Gender.items}"
+                                                                               id="si1"/>
+                                                                <f:validator binding="#{bindings.Gender.validator}"/>
+                                                            </af:selectOneChoice>
+                                                            <af:inputDate value="#{bindings.BirthDate.inputValue}"
+                                                                          label="#{bindings.BirthDate.hints.label}"
+                                                                          required="#{bindings.BirthDate.hints.mandatory}"
+                                                                          columns="#{bindings.BirthDate.hints.displayWidth}"
+                                                                          shortDesc="#{bindings.BirthDate.hints.tooltip}"
+                                                                          id="id1"
+                                                                          contentStyle="Color:teal;font-size:15px;width:500px;padding:6px;margin-bottom:3px;"
+                                                                          labelStyle="font-size:17px;Color:black;"
+                                                                          autoSubmit="false"
+                                                                          binding="#{RegisterBean.date}">
+                                                                <f:validator binding="#{bindings.BirthDate.validator}"/>
+                                                                <af:convertDateTime pattern="#{bindings.BirthDate.format}"/>
+                                                            </af:inputDate>
+                                                            <af:inputFile label="Image" id="if1"
+                                                                          contentStyle="Color:teal;font-size:15px;width:500px;padding:6px;margin-bottom:3px;"
+                                                                          labelStyle="font-size:17px;Color:black;" editable="always"
+                                                                          value="#{RegisterBean.myFile}"
+                                                                          valueChangeListener="#{RegisterBean.setImageFilrBlob}"/>
+                                                            <af:button text="Register" id="b1"
+                                                                       inlineStyle="width:500px;; font-size:15px; text-align:center; height:40px; margin-top:15px; color:Navy;"
+                                                                       action="#{RegisterBean.registerNewUser}"/>
+                                                        </af:panelFormLayout>
+                                                    </af:panelGroupLayout>
+                                                    <af:panelGroupLayout id="pgl7" layout="horizontal"
+                                                                         inlineStyle="margin-top:10px;">
+                                                        <af:outputText value="Alraedy have an account ? " id="ot1"
+                                                                       inlineStyle="font-size:15px;"/>
+                                                        <af:link actionListener="#{bindings.Rollback.execute}"
+                                                                 text="Login"
+                                                                 disabled="#{!bindings.Rollback.enabled}"
+                                                                 immediate="true" id="l2" action="Login"
+                                                                 inlineStyle="font-size:15px;">
+                                                            <af:resetActionListener/>
+                                                        </af:link>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                            </af:gridCell>
+                                        </af:gridRow>
+                                    </af:panelGridLayout>
+                                </f:facet>
+                                <f:facet name="top">
+                                    <af:panelGridLayout id="pgl6">
+                                        <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr5">
+                                            <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc7"
+                                                         halign="center" valign="middle">
+                                                <af:outputText value="Registeration" id="ot2"
+                                                               inlineStyle="color:black; font-size:25px; font-stretch:semi-condensed; font-style:oblique; font-weight:normal;"/>
+                                            </af:gridCell>
+                                        </af:gridRow>
+                                    </af:panelGridLayout>
+                                </f:facet>
+                            </af:decorativeBox>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                    <af:gridCell width="100px" halign="stretch" valign="stretch" id="gc3">
+                        <!-- Right -->
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="50px" id="gr1">
+                    <af:gridCell halign="stretch" valign="stretch" columnSpan="3" id="gc2">
+                        <!-- Footer -->
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+        <af:form id="f2">
+            <af:popup childCreation="deferred" autoCancel="enabled" id="p1" contentDelivery="lazyUncached"
+                      binding="#{RegisterBean.emailPopUp}">
+                <af:dialog id="d2" title="Email Verification" resize="on" contentWidth="500" contentHeight="150"
+                           type="none">
+                    <af:panelGridLayout id="pgl8">
+                        <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr6">
+                            <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc9" halign="center"
+                                         valign="middle">
+                                <af:panelGroupLayout id="pgl9" layout="horizontal">
+                                    <af:outputText value="Email sent successfully with verification code" id="ot3"
+                                                   inlineStyle="color:black;font-size:20px;"/>
+                                    <af:image source="/resources/images/JD-16-128.png" id="i1"/>
+                                </af:panelGroupLayout>
+                            </af:gridCell>
+                        </af:gridRow>
+                    </af:panelGridLayout>
+                    <f:facet name="buttonBar">
+                        <af:button text="Verify Account" id="b2" action="Code">
+                            <af:setPropertyListener from="#{bindings.Email.inputValue}" to="#{pageFlowScope.email}"
+                                                    type="action"/>
+                        </af:button>
+                    </f:facet>
+                </af:dialog>
+            </af:popup>
+        </af:form>
+        <af:popup childCreation="deferred" autoCancel="disabled" id="p2" contentDelivery="lazyUncached"
+                  binding="#{RegisterBean.emailFaild}">
+            <af:dialog id="d3" type="ok" resize="on" contentWidth="550" contentHeight="150"
+                       title="Error Sending Email">
+                <af:panelGridLayout id="pgl10">
+                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr7">
+                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc8" halign="center"
+                                     valign="middle">
+                            <af:panelGroupLayout id="pgl11" layout="horizontal" halign="center">
+                                <af:outputText value="Make shure that you enter valid email" id="ot4"
+                                               inlineStyle="color:red;font-size:20px;"/>
+                                <af:image source="/resources/images/stop_wrong_cross-128.png" id="i2"/>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+                <f:facet name="buttonBar"/>
+            </af:dialog>
+        </af:popup>
+    </af:document>
+</f:view>

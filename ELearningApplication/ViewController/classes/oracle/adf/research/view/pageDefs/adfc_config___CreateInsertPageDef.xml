@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1"
+                id="adfc_config___CreateInsertPageDef" Package="oracle.adf.research.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="Users1" RangeSize="25" DataControl="SecurityAMDataControl" id="Users1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="Users1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

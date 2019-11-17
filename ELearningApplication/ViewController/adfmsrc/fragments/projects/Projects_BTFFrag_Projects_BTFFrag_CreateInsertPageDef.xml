@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1"
+                id="Projects_BTFFrag_Projects_BTFFrag_CreateInsertPageDef" Package="fragments.projects"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="Projects3" RangeSize="25" DataControl="ProjectsAMDataControl" id="Projects3Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="Projects3Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

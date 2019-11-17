@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="NewCoursePageDef"
+                Package="pages.fragments.courses">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Courses" RangeSize="25" DataControl="CoursesAMDataControl" id="CoursesIterator"/>
+    <iterator Binds="Videos" RangeSize="5" DataControl="CoursesAMDataControl" id="VideosIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="CoursesIterator" id="CourseName">
+      <AttrNames>
+        <Item Value="CourseName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CoursesIterator" id="CourseDate">
+      <AttrNames>
+        <Item Value="CourseDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="CoursesIterator" StaticList="false" Uses="LOV_CategoryId" id="CategoryId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="CoursesIterator" StaticList="false" Uses="LOV_Type" id="Type" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="CoursesIterator" id="Code">
+      <AttrNames>
+        <Item Value="Code"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="VideosIterator" id="Videos">
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.VideosVO" Name="Videos0">
+        <AttrNames>
+          <Item Value="VideoId"/>
+          <Item Value="VideoName"/>
+          <Item Value="Discription"/>
+          <Item Value="CourseId"/>
+          <Item Value="VideoUpload"/>
+          <Item Value="VideoPath"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="VideosIterator" id="VideoPath">
+      <AttrNames>
+        <Item Value="VideoPath"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="VideosIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="CoursesAMDataControl"/>
+    <action IterBinding="VideosIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <methodAction id="courseCode" RequiresUpdateModel="true" Action="invokeMethod" MethodName="courseCode"
+                  IsViewObjectMethod="false" DataControl="CoursesAMDataControl"
+                  InstanceName="data.CoursesAMDataControl.dataProvider"
+                  ReturnName="data.CoursesAMDataControl.methodResults.courseCode_CoursesAMDataControl_dataProvider_courseCode_result"/>
+    <attributeValues IterBinding="VideosIterator" id="VideoUpload">
+      <AttrNames>
+        <Item Value="VideoUpload"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="VideosIterator" id="VideoPath1">
+      <AttrNames>
+        <Item Value="VideoPath"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

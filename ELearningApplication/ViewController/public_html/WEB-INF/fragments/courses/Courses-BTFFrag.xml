@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Courses-BTFFrag">
+    <default-activity>Courses</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__5">
+      <managed-bean-name>SelectedCourseBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.courses.SelectedCourseBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__6">
+      <managed-bean-name>AccessPrivateCourseBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.courses.AccessPrivateCourseBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__7">
+      <managed-bean-name>DefaultCourseBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.courses.DefaultCourseBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__13">
+      <managed-bean-name>UploadVideoBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.courses.UploadVideoBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__14">
+      <managed-bean-name>CourseCodeBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.courses.CourseCodeBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__12">
+      <managed-bean-name>DownloadVideosBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.courses.DownloadVideosBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__15">
+      <managed-bean-name>DownloadPrivateCourseBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.courses.DownloadPrivateCourseBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__16">
+      <managed-bean-name>CourseStatusTypeBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.courses.CourseStatusTypeBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__17">
+      <managed-bean-name>EditVideoBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.courses.EditVideoBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <view id="Courses">
+      <page>/pages/fragments/courses/Courses.jsff</page>
+    </view>
+    <view id="SelectedCourse">
+      <page>/pages/fragments/courses/SelectedCourse.jsff</page>
+    </view>
+    <view id="PrivateCourse">
+      <page>/pages/fragments/courses/PrivateCourse.jsff</page>
+    </view>
+    <view id="NewCourse">
+      <page>/pages/fragments/courses/NewCourse.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert1">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>Courses</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>NewCourse</from-outcome>
+        <to-activity-id>CreateInsert</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>Courses</from-outcome>
+        <to-activity-id>Courses</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CreateInsert1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id>CreateInsert1</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>NewCourse</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

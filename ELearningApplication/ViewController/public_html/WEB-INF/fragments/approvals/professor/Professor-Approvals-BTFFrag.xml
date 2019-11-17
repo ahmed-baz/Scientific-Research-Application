@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Professor-Approvals-BTFFrag">
+    <default-activity>SelectApproval</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>ApprovalsBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.professors.ApprovalsBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__7">
+      <managed-bean-name>DownloadCVFile</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.professors.DownloadCVFile</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__8">
+      <managed-bean-name>AcceptBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.professors.AcceptBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <task-flow-return id="Back">
+      <outcome>
+        <name>Back</name>
+      </outcome>
+    </task-flow-return>
+    <view id="SelectApproval">
+      <page>/pages/fragments/approvals/professor/SelectApproval.jsff</page>
+    </view>
+    <view id="UserData">
+      <page>/pages/fragments/approvals/professor/UserData.jsff</page>
+    </view>
+    <control-flow-rule id="__4">
+      <from-activity-id>SelectApproval</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>Back</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__2">
+        <from-outcome>UserData</from-outcome>
+        <to-activity-id>UserData</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>UserData</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>SelectApproval</from-outcome>
+        <to-activity-id>SelectApproval</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

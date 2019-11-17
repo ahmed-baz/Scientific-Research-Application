@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl2" layout="scroll">
+    <af:panelHeader text="Add New Book" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar">
+        <af:button actionListener="#{bindings.Commit.execute}" text="Save" id="b2" iconPosition="trailing"
+                   icon="/resources/images/save-16.png" action="Library"/>
+        <af:button text="back" id="b3" iconPosition="trailing" icon="/resources/images/srch_go.gif" action="Library"/>
+      </f:facet>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelFormLayout id="pfl1">
+        <af:inputText value="#{bindings.BookName.inputValue}" label="#{bindings.BookName.hints.label}"
+                      required="#{bindings.BookName.hints.mandatory}" columns="50"
+                      maximumLength="#{bindings.BookName.hints.precision}"
+                      shortDesc="#{bindings.BookName.hints.tooltip}" id="it2"
+                      contentStyle="color:teal;font-size:15px;padding:3px;width:300px;"
+                      labelStyle="font-size:15px;color:black;">
+          <f:validator binding="#{bindings.BookName.validator}"/>
+        </af:inputText>
+        <af:selectOneChoice value="#{bindings.CategoryId.inputValue}" label="#{bindings.CategoryId.label}"
+                            required="#{bindings.CategoryId.hints.mandatory}"
+                            shortDesc="#{bindings.CategoryId.hints.tooltip}" id="soc1"
+                            contentStyle="color:teal;font-size:15px;padding:3px;width:300px;"
+                            labelStyle="font-size:15px;color:black;">
+          <f:selectItems value="#{bindings.CategoryId.items}" id="si1"/>
+          <f:validator binding="#{bindings.CategoryId.validator}"/>
+        </af:selectOneChoice>
+        <af:inputText value="#{bindings.AutherName.inputValue}" label="#{bindings.AutherName.hints.label}"
+                      required="#{bindings.AutherName.hints.mandatory}" columns="50"
+                      maximumLength="#{bindings.AutherName.hints.precision}"
+                      shortDesc="#{bindings.AutherName.hints.tooltip}" id="it4"
+                      contentStyle="color:teal;font-size:15px;padding:3px;width:300px;"
+                      labelStyle="font-size:15px;color:black;">
+          <f:validator binding="#{bindings.AutherName.validator}"/>
+        </af:inputText>
+        <af:inputDate value="#{bindings.BookDate.inputValue}" label="#{bindings.BookDate.hints.label}"
+                      required="#{bindings.BookDate.hints.mandatory}" columns="#{bindings.BookDate.hints.displayWidth}"
+                      shortDesc="#{bindings.BookDate.hints.tooltip}" id="id1"
+                      contentStyle="color:teal;font-size:15px;padding:3px;width:300px;"
+                      labelStyle="font-size:15px;color:black;">
+          <f:validator binding="#{bindings.BookDate.validator}"/>
+          <af:convertDateTime pattern="#{bindings.BookDate.format}"/>
+        </af:inputDate>
+        <af:selectOneRadio value="#{bindings.Status.inputValue}" label="#{bindings.Status.label}"
+                           required="#{bindings.Status.hints.mandatory}" shortDesc="#{bindings.Status.hints.tooltip}"
+                           id="sor1" layout="horizontal" valueChangeListener="#{BookStatusTypeBean.getBookStatusType}"
+                           autoSubmit="true" contentStyle="color:teal;font-size:15px;padding:3px;width:300px;"
+                           labelStyle="font-size:15px;color:black;">
+          <f:selectItems value="#{bindings.Status.items}" id="si2"/>
+          <f:validator binding="#{bindings.Status.validator}"/>
+        </af:selectOneRadio>
+        <af:panelGroupLayout id="pgl1" layout="horizontal" partialTriggers="sor1"
+                             binding="#{BookStatusTypeBean.bookStatusType}">
+          <af:button text="Get New Code" id="b1" action="#{BookCodeBean.getNewCodeBTN}"
+                     binding="#{BookStatusTypeBean.getCodeButton}" disabled="true" partialTriggers="sor1"/>
+          <af:panelLabelAndMessage id="plam1" inlineStyle="color:blue;">
+            <af:outputFormatted value="#{bindings.Code.inputValue}" id="of1"
+                                binding="#{BookStatusTypeBean.bookCodeText}" partialTriggers="b1"/>
+          </af:panelLabelAndMessage>
+        </af:panelGroupLayout>
+        <af:inputFile label="Upload Book" id="if1" valueChangeListener="#{viewScope.UploadNewBookBean.uploadBook}"
+                      contentStyle="color:teal;font-size:15px;padding:3px;width:300px;"
+                      labelStyle="font-size:15px;color:black;" autoSubmit="true"/>
+        <af:inputFile label="Book Cover" id="if2" valueChangeListener="#{BookImagesBean.uploadBookCover}"
+                      contentStyle="color:teal;font-size:15px;padding:3px;width:300px;"
+                      labelStyle="font-size:15px;color:black;" autoSubmit="true"/>
+        <af:inputFile label="Book Screenshot 1" id="if3" valueChangeListener="#{BookImagesBean.uploadBookScreenshot1}"
+                      contentStyle="color:teal;font-size:15px;padding:3px;width:300px;"
+                      labelStyle="font-size:15px;color:black;" autoSubmit="true"/>
+        <af:inputFile label="Book Screenshot 2" id="if4" valueChangeListener="#{BookImagesBean.uploadBookScreenshot2}"
+                      contentStyle="color:teal;font-size:15px;padding:3px;width:300px;"
+                      labelStyle="font-size:15px;color:black;" autoSubmit="true"/>
+      </af:panelFormLayout>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached"
+            binding="#{viewScope.UploadNewBookBean.error1}">
+    <af:dialog id="d1" contentWidth="400" contentHeight="300" type="ok">
+      <af:panelGroupLayout id="pgl3" layout="horizontal" valign="middle" halign="center">
+        <af:outputText value="Error : Select PDF file " id="ot1" inlineStyle="font-size:20px;color:black;"/>
+        <af:image source="/resources/images/stop_wrong_cross-128.png" id="i1"/>
+      </af:panelGroupLayout>
+      <f:facet name="buttonBar"/>
+    </af:dialog>
+  </af:popup>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p2" contentDelivery="lazyUncached"
+            binding="#{viewScope.UploadNewBookBean.error2}">
+    <af:dialog id="d2" type="ok">
+      <af:panelGroupLayout id="pgl4" layout="horizontal" valign="middle" halign="center">
+        <af:outputText value="Error : Select PNG or JPEG file only" id="ot2" inlineStyle="color:black;font-size:20px;"/>
+        <af:image source="/resources/images/stop_wrong_cross-128.png" id="i2"/>
+      </af:panelGroupLayout>
+      <f:facet name="buttonBar"/>
+    </af:dialog>
+  </af:popup>
+</ui:composition>

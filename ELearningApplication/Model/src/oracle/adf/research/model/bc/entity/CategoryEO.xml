@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CategoryEO"
+  Version="12.1.3.2.1"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="CATEGORY"
+  AliasName="CategoryEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="CategoryId"
+    Precision="10"
+    Scale="0"
+    ColumnName="CATEGORY_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CATEGORY"
+    PrimaryKey="true"
+    IsNotNull="true"/>
+  <Attribute
+    Name="CategoryName"
+    Precision="100"
+    ColumnName="CATEGORY_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CATEGORY"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Projects1"
+    Association="oracle.adf.research.model.bc.assoc.CategoryProjectsAssoc"
+    AssociationEnd="oracle.adf.research.model.bc.assoc.CategoryProjectsAssoc.Projects1"
+    AssociationOtherEnd="oracle.adf.research.model.bc.assoc.CategoryProjectsAssoc.Category1"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Book"
+    Association="oracle.adf.research.model.bc.assoc.CategoryBooksAssoc"
+    AssociationEnd="oracle.adf.research.model.bc.assoc.CategoryBooksAssoc.Book"
+    AssociationOtherEnd="oracle.adf.research.model.bc.assoc.CategoryBooksAssoc.Category"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Courses"
+    Association="oracle.adf.research.model.bc.assoc.CategoryCourseAssoc"
+    AssociationEnd="oracle.adf.research.model.bc.assoc.CategoryCourseAssoc.Courses"
+    AssociationOtherEnd="oracle.adf.research.model.bc.assoc.CategoryCourseAssoc.Category"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="CategoryCategoryIdCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CATEGORY_CATEGORY_ID_CHECK"/>
+      <Attr Name="_checkCondition" Value='"CATEGORY_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.entity.CategoryEO.CategoryId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CategoryCategoryNameCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CATEGORY_CATEGORY_NAME_CHECK"/>
+      <Attr Name="_checkCondition" Value='"CATEGORY_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.entity.CategoryEO.CategoryName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC007905"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C007905"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.entity.CategoryEO.CategoryId"/>
+    </AttrArray>
+  </Key>
+</Entity>

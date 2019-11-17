@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGridLayout id="pgl1">
+    <af:gridRow marginTop="5px" height="5%" id="gr1">
+      <af:gridCell marginStart="5px" width="30%" id="gc1" halign="center" valign="middle">
+        <af:button text="Access Private Project" id="b2"
+                   icon="/resources/images/access_pass_password_unlock_private-20.png" iconPosition="trailing"
+                   inlineStyle="font-size:15px;padding-bottom:3px;">
+          <af:showPopupBehavior popupId="p1"/>
+        </af:button>
+      </af:gridCell>
+      <af:gridCell marginStart="5px" width="40%" id="gc2" halign="center" valign="middle">
+        <af:selectOneChoice value="#{bindings.CategoryId.inputValue}" label="Category"
+                            required="#{bindings.CategoryId.hints.mandatory}"
+                            shortDesc="#{bindings.CategoryId.hints.tooltip}" id="soc1"
+                            contentStyle="color:teal;font-size:20px;" labelStyle="color:black;font-size:20px;"
+                            autoSubmit="true">
+          <f:selectItems value="#{bindings.CategoryId.items}" id="si1"/>
+        </af:selectOneChoice>
+      </af:gridCell>
+      <af:gridCell marginStart="5px" width="30%" marginEnd="5px" id="gc3" halign="center" valign="middle">
+        <af:button text="Upload Project" id="b1" rendered="#{LoginBean.user.roleName eq 'Prof' ? true : false}"
+                   icon="/resources/images/upload_1-16.png"
+                   inlineStyle="font-size:15px;padding-bottom:3px;" action="UploadProject"/>
+      </af:gridCell>
+    </af:gridRow>
+    <af:gridRow marginTop="5px" height="95%" marginBottom="5px" id="gr2">
+      <af:gridCell marginStart="5px" columnSpan="3" marginEnd="5px" id="gc4" halign="stretch" valign="stretch">
+        <af:listView value="#{bindings.Projects1.collectionModel}" var="item"
+                     emptyText="#{bindings.Projects1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                     fetchSize="#{bindings.Projects1.rangeSize}" id="lv1" selection="single" partialTriggers="::soc1"
+                     selectionListener="#{viewScope.ProjectsBean.selectProject}">
+          <af:listItem id="li1" partialTriggers="::soc1">
+            <af:panelGridLayout id="pgl2">
+              <af:gridRow marginTop="5px" height="auto" id="gr3">
+                <af:gridCell marginStart="5px" rowSpan="2" width="10%" id="gc5" halign="center">
+                  <af:image source="/projectsimage?id=#{item.bindings.ProjectId.inputValue}" id="i1"
+                            inlineStyle="width:70px;height:50px;"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="90%" marginEnd="5px" id="gc6">
+                  <af:outputFormatted value="#{item.bindings.ProjectName.inputValue}" id="of1"
+                                      inlineStyle="font-size:15px;color:black;"/>
+                </af:gridCell>
+              </af:gridRow>
+              <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr4">
+                <af:gridCell marginStart="5px" width="90%" marginEnd="5px" id="gc7">
+                  <af:outputFormatted value="#{item.bindings.Description.inputValue}" id="of2"
+                                      inlineStyle="font-size:13px;"/>
+                </af:gridCell>
+              </af:gridRow>
+            </af:panelGridLayout>
+          </af:listItem>
+        </af:listView>
+      </af:gridCell>
+    </af:gridRow>
+  </af:panelGridLayout>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached"
+            binding="#{viewScope.ProjectsBean.accessPrivateProjectPopUp}">
+    <af:dialog id="d1" contentWidth="350" contentHeight="150" type="cancel">
+      <af:panelGroupLayout id="pgl3" layout="vertical">
+        <af:panelGroupLayout id="pgl4" layout="horizontal">
+          <af:inputText label="Project Code" id="it1" contentStyle="color:teal;font-size:15px;padding:3px;"
+                        labelStyle="color:black;font-size:15px;" binding="#{viewScope.ProjectsBean.projectCode}"/>
+          <af:button text="Access" id="b3" action="#{viewScope.ProjectsBean.accessPrivateProject}"/>
+        </af:panelGroupLayout>
+        <af:activeOutputText id="aot1" inlineStyle="color:red;" binding="#{viewScope.ProjectsBean.errorText}"
+                             partialTriggers="b3"/>
+      </af:panelGroupLayout>
+      <f:facet name="buttonBar"/>
+    </af:dialog>
+  </af:popup>
+</ui:composition>

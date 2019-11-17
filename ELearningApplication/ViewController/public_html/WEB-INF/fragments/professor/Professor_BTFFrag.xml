@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Professor_BTFFrag">
+    <default-activity>SelectProfessor</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>ProfessorBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.professors.ProfessorBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__6">
+      <managed-bean-name>FileDownloadBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.professors.FileDownloadBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <view id="SelectProfessor">
+      <page>/pages/fragments/professors/SelectProfessor.jsff</page>
+    </view>
+    <view id="Professor">
+      <page>/pages/fragments/professors/Professor.jsff</page>
+    </view>
+    <task-flow-return id="Back">
+      <outcome>
+        <name>Back</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__2">
+      <from-activity-id>SelectProfessor</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>Professor</from-outcome>
+        <to-activity-id>Professor</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>Back</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>Professor</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>SelectProfessor</from-outcome>
+        <to-activity-id>SelectProfessor</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

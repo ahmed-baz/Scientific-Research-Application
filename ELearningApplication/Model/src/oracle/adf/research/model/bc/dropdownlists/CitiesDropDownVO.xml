@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CitiesDropDownVO"
+  Version="12.1.3.2.1"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="pCountry"
+    Kind="viewcriteria"
+    Type="oracle.jbo.domain.Number"/>
+  <SQLQuery><![CDATA[SELECT Cities.CITY_ID,
+       Cities.CITY_NAME,
+       Cities.PARENT_CITY
+FROM CITIES Cities]]></SQLQuery>
+  <ViewAttribute
+    Name="CityId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="10"
+    Scale="0"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="CITY_ID"
+    Expression="CITY_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CityName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CITY_NAME"
+    Expression="CITY_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ParentCity"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Scale="0"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PARENT_CITY"
+    Expression="PARENT_CITY"
+    SQLType="NUMERIC"/>
+  <ViewCriteria
+    Name="CitiesDropDownVOCriteria"
+    ViewObjectName="oracle.adf.research.model.bc.dropdownlists.CitiesDropDownVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="CitiesDropDownVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ParentCity"
+        ViewAttribute="ParentCity"
+        Operator="="
+        Conjunction="AND"
+        Value=":pCountry"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="CityId"/>
+  </AttrArray>
+</ViewObject>

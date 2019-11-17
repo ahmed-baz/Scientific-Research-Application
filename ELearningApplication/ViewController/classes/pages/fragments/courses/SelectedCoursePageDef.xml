@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="SelectedCoursePageDef"
+                Package="pages.fragments.courses">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PublicCourses" RangeSize="25" DataControl="CoursesAMDataControl" id="PublicCoursesIterator"/>
+    <iterator Binds="PublicVideos" RangeSize="25" DataControl="CoursesAMDataControl" id="PublicVideosIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PublicCoursesIterator" id="CourseName">
+      <AttrNames>
+        <Item Value="CourseName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PublicCoursesIterator" id="CourseDate">
+      <AttrNames>
+        <Item Value="CourseDate"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="defaultCoursess" RequiresUpdateModel="true" Action="invokeMethod" MethodName="defaultCoursess"
+                  IsViewObjectMethod="false" DataControl="CoursesAMDataControl"
+                  InstanceName="data.CoursesAMDataControl.dataProvider"
+                  ReturnName="data.CoursesAMDataControl.methodResults.defaultCoursess_CoursesAMDataControl_dataProvider_defaultCoursess_result"/>
+    <tree IterBinding="PublicVideosIterator" id="PublicVideos">
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.VideosVO" Name="PublicVideos0">
+        <AttrNames>
+          <Item Value="VideoName"/>
+          <Item Value="Discription"/>
+          <Item Value="VideoPath"/>
+          <Item Value="VideoUpload"/>
+          <Item Value="CourseId"/>
+          <Item Value="VideoContent"/>
+          <Item Value="VideoId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="PublicCoursesIterator" id="VideoName">
+      <AttrNames>
+        <Item Value="CourseId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PublicVideosIterator" id="Discription">
+      <AttrNames>
+        <Item Value="Discription"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PublicCoursesIterator" StaticList="false" Uses="LOV_UserId" id="UserId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="CoursesAMDataControl"/>
+    <action IterBinding="PublicCoursesIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="PublicVideosIterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="PublicVideosIterator" id="VideoUpload">
+      <AttrNames>
+        <Item Value="VideoUpload"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PublicVideosIterator" id="VideoPath">
+      <AttrNames>
+        <Item Value="VideoPath"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PublicVideosIterator" id="VideoId">
+      <AttrNames>
+        <Item Value="VideoId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PublicVideosIterator" id="CourseId">
+      <AttrNames>
+        <Item Value="CourseId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="PublicVideosIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="PublicVideosIterator" id="VideoName1">
+      <AttrNames>
+        <Item Value="VideoName"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

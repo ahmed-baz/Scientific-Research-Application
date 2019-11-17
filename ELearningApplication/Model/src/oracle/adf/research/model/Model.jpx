@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Model"
+  Version="12.1.3.2.1"
+  SeparateXMLFiles="true"
+  PackageName="oracle.adf.research.model">
+  <DesignTime>
+    <Attr Name="_jprName" Value="../../../../../Model.jpr"/>
+    <Attr Name="_NamedConnection" Value="ResearchApp"/>
+    <Attr Name="_appModuleNames0" Value="oracle.adf.research.model.bc.module.ProfessorsAM"/>
+    <Attr Name="_appModuleNames1" Value="oracle.adf.research.model.bc.module.SecurityAM"/>
+    <Attr Name="_appModuleNames2" Value="oracle.adf.research.model.bc.module.ProjectsAM"/>
+    <Attr Name="_appModuleNames3" Value="oracle.adf.research.model.bc.module.LibraryAM"/>
+    <Attr Name="_appModuleNames4" Value="oracle.adf.research.model.bc.module.CoursesAM"/>
+  </DesignTime>
+  <Containee
+    Name="assoc"
+    PackageName="oracle.adf.research.model.bc.assoc"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AS" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="dropdownlists"
+    PackageName="oracle.adf.research.model.bc.dropdownlists"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="entity"
+    PackageName="oracle.adf.research.model.bc.entity"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="module"
+    PackageName="oracle.adf.research.model.bc.module"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AM" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="uiview"
+    PackageName="oracle.adf.research.model.bc.uiview"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="vulink"
+    PackageName="oracle.adf.research.model.bc.vulink"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VL" Value="true"/>
+    </DesignTime>
+  </Containee>
+</JboProject>

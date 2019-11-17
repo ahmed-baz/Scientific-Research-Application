@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="SelectProfessorPageDef"
+                Package="pages.fragments.professors">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MainProfessors" RangeSize="25" DataControl="ProfessorsAMDataControl" id="Professors1Iterator"/>
+    <iterator Binds="Users1" RangeSize="25" DataControl="ProfessorsAMDataControl" id="Users1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Professors1Iterator" id="Professors1">
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.ProfessorsVO" Name="Professors10">
+        <AttrNames>
+          <Item Value="UserId"/>
+          <Item Value="NationalId"/>
+          <Item Value="CityId"/>
+          <Item Value="CountryId"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="Users"/>
+          <Item Value="ContactData"/>
+          <Item Value="Qualifiactions"/>
+          <Item Value="Awards"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.UsersVO" Name="Professors11">
+        <AttrNames>
+          <Item Value="UserId"/>
+          <Item Value="Active"/>
+          <Item Value="BirthDate"/>
+          <Item Value="Code"/>
+          <Item Value="Email"/>
+          <Item Value="FirstName"/>
+          <Item Value="Gender"/>
+          <Item Value="Image"/>
+          <Item Value="LastName"/>
+          <Item Value="RoleId"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.ContactDataVO" Name="Professors11">
+        <AttrNames>
+          <Item Value="ContactId"/>
+          <Item Value="Fax"/>
+          <Item Value="Mobile"/>
+          <Item Value="PostOfficeCode"/>
+          <Item Value="ProfessrorId"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.QualifiactionsVO" Name="Professors11">
+        <AttrNames>
+          <Item Value="Notes"/>
+          <Item Value="QualDate"/>
+          <Item Value="QualId"/>
+          <Item Value="QualTypeCode"/>
+          <Item Value="ScienceCode"/>
+          <Item Value="UniversityId"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.AwardsVO" Name="Professors11">
+        <AttrNames>
+          <Item Value="AwardId"/>
+          <Item Value="AwardDate"/>
+          <Item Value="AwardText"/>
+          <Item Value="Notes"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="Users1Iterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="Image">
+      <AttrNames>
+        <Item Value="Image"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Professors1Iterator" StaticList="false" Uses="LOV_CityId" id="CityId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="Professors1Iterator" StaticList="false" Uses="LOV_CountryId" id="CountryId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <methodAction id="searchByName" RequiresUpdateModel="true" Action="invokeMethod" MethodName="searchByName"
+                  IsViewObjectMethod="false" DataControl="ProfessorsAMDataControl"
+                  InstanceName="data.ProfessorsAMDataControl.dataProvider"
+                  ReturnName="data.ProfessorsAMDataControl.methodResults.searchByName_ProfessorsAMDataControl_dataProvider_searchByName_result">
+      <NamedData NDName="name" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1"
+                id="Courses_BTFFrag_Courses_BTFFrag_CreateInsertPageDef" Package="fragments.courses"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="Courses" RangeSize="25" DataControl="CoursesAMDataControl" id="CoursesIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="CoursesIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

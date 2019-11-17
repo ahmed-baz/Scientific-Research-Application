@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Welcome-BTFFrag">
+    <default-activity>Main</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="Main">
+      <page>/pages/fragments/Main.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

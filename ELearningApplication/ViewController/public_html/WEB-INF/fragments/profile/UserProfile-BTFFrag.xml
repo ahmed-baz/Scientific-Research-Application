@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="UserProfile-BTFFrag">
+    <default-activity>Profile</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__9">
+      <managed-bean-name>ProfRegisterBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.professors.ProfRegisterBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__12">
+      <managed-bean-name>UploadCVBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.professors.UploadCVBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <view id="Profile">
+      <page>/pages/fragments/profile/Profile.jsff</page>
+    </view>
+    <view id="ProfessorRegisteration">
+      <page>/pages/fragments/profile/ProfessorRegisteration.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert1">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert2">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="ProfProjects">
+      <page>/pages/fragments/profile/ProfProjects.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>Profile</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>ProfessorRegisteration</from-outcome>
+        <to-activity-id>CreateInsert2</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>ProfProjects</from-outcome>
+        <to-activity-id>ProfProjects</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CreateInsert1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>ProfessorRegisteration</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>Profile</from-outcome>
+        <to-activity-id>Profile</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id>CreateInsert2</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CreateInsert</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id>CreateInsert1</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>ProfessorRegisteration</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>ProfProjects</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>Profile</from-outcome>
+        <to-activity-id>Profile</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

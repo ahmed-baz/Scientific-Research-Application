@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="ProfessorRegisterationPageDef"
+                Package="pages.fragments.profile">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProfessorsApprovals" RangeSize="25" DataControl="ProfessorsAMDataControl"
+              id="ProfessorsApprovalsIterator"/>
+    <iterator Binds="ContactData2" RangeSize="25" DataControl="ProfessorsAMDataControl" id="ContactData2Iterator"/>
+    <iterator Binds="Qualifiactions2" RangeSize="25" DataControl="ProfessorsAMDataControl"
+              id="Qualifiactions2Iterator"/>
+    <iterator Binds="Awards2" RangeSize="25" DataControl="ProfessorsAMDataControl" id="Awards1Iterator"/>
+    <iterator Binds="Qualifiactions1" RangeSize="10" DataControl="ProfessorsAMDataControl"
+              id="Qualifiactions1Iterator"/>
+    <iterator Binds="Awards2" RangeSize="10" DataControl="ProfessorsAMDataControl" id="Awards2Iterator"/>
+    <searchRegion Binds="Awards2Iterator" Criteria="" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Awards2Query"/>
+    <iterator Binds="Cv2" RangeSize="10" DataControl="ProfessorsAMDataControl" id="Cv2Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="ProfessorsApprovalsIterator" StaticList="false" Uses="LOV_UserId" id="UserId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="ProfessorsApprovalsIterator" id="NationalId">
+      <AttrNames>
+        <Item Value="NationalId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ProfessorsApprovalsIterator" StaticList="false" Uses="LOV_StatusId" id="StatusId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ProfessorsApprovalsIterator" StaticList="false" Uses="LOV_CountryId" id="CountryId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ProfessorsApprovalsIterator" StaticList="false" Uses="LOV_CityId" id="CityId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="ContactData2Iterator" id="Mobile">
+      <AttrNames>
+        <Item Value="Mobile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactData2Iterator" id="Fax">
+      <AttrNames>
+        <Item Value="Fax"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactData2Iterator" id="PostOfficeCode">
+      <AttrNames>
+        <Item Value="PostOfficeCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactData2Iterator" id="ProfessrorId">
+      <AttrNames>
+        <Item Value="ProfessrorId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="Qualifiactions2Iterator" id="Qualifiactions2">
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.QualifiactionsVO" Name="Qualifiactions20">
+        <AttrNames>
+          <Item Value="QualTypeCode"/>
+          <Item Value="ScienceName"/>
+          <Item Value="UniversityName"/>
+          <Item Value="QualDate"/>
+          <Item Value="Notes"/>
+          <Item Value="ProfessorId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="Qualifiactions2Iterator" id="CreateInsert"
+            InstanceName="ProfessorsAMDataControl.Qualifiactions2" DataControl="ProfessorsAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="Awards2Iterator" id="CreateInsert1" InstanceName="ProfessorsAMDataControl.Awards11"
+            DataControl="ProfessorsAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="Qualifiactions1Iterator" id="Delete" InstanceName="ProfessorsAMDataControl.Qualifiactions1"
+            DataControl="ProfessorsAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="Awards2Iterator" id="Delete1" InstanceName="ProfessorsAMDataControl.Awards2"
+            DataControl="ProfessorsAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="Awards2Iterator" id="Awards2">
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.AwardsVO" Name="Awards20">
+        <AttrNames>
+          <Item Value="AwardText"/>
+          <Item Value="AwardDate"/>
+          <Item Value="Notes"/>
+          <Item Value="ProfessorId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="Cv2Iterator" id="CvId">
+      <AttrNames>
+        <Item Value="CvId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cv2Iterator" id="CvFile">
+      <AttrNames>
+        <Item Value="CvFile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cv2Iterator" id="Notes">
+      <AttrNames>
+        <Item Value="Notes"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cv2Iterator" id="FilePath">
+      <AttrNames>
+        <Item Value="FilePath"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterApprovals" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterApprovals"
+                  IsViewObjectMethod="false" DataControl="ProfessorsAMDataControl"
+                  InstanceName="data.ProfessorsAMDataControl.dataProvider"
+                  ReturnName="data.ProfessorsAMDataControl.methodResults.filterApprovals_ProfessorsAMDataControl_dataProvider_filterApprovals_result"/>
+    <action id="Commit" DataControl="ProfessorsAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <attributeValues IterBinding="ProfessorsApprovalsIterator" id="CvId1">
+      <AttrNames>
+        <Item Value="CvId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

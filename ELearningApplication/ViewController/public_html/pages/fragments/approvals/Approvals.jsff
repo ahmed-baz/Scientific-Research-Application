@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelBox text="Approvals" id="pb1" showDisclosure="false">
+    <f:facet name="toolbar">
+      <af:toolbar id="t1"/>
+    </f:facet>
+    <af:panelDashboard id="pd1" columns="2" rowHeight="200px">
+      <af:panelBox text="Professors" id="pb2" showDisclosure="false">
+        <f:facet name="toolbar"/>
+        <af:panelGroupLayout id="pgl1" halign="center" valign="middle" layout="scroll">
+          <af:link id="l1" icon="/resources/images/Manager.png" action="Professor-Approvals-BTFFrag"/>
+        </af:panelGroupLayout>
+      </af:panelBox>
+      <af:panelBox text="Books" id="pb3" showDisclosure="false">
+        <f:facet name="toolbar"/>
+        <af:panelGroupLayout id="pgl2" halign="center" valign="middle" layout="scroll">
+          <af:link id="l2" icon="/resources/images/library.png"/>
+        </af:panelGroupLayout>
+      </af:panelBox>
+      <af:panelBox text="Courses" id="pb4" showDisclosure="false">
+        <f:facet name="toolbar"/>
+        <af:panelGroupLayout id="pgl3" halign="center" valign="middle" layout="scroll">
+          <af:link id="l3" icon="/resources/images/if_Courses_70613.png"/>
+        </af:panelGroupLayout>
+      </af:panelBox>
+      <af:panelBox text="Projects" id="pb5" showDisclosure="false">
+        <f:facet name="toolbar"/>
+        <af:panelGroupLayout id="pgl4" halign="center" valign="middle" layout="scroll">
+          <af:link id="l4" icon="/resources/images/project-plan.png"/>
+        </af:panelGroupLayout>
+      </af:panelBox>
+    </af:panelDashboard>
+  </af:panelBox>
+</ui:composition>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="SelectedBookPageDef"
+                Package="pages.fragments.library">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PublicBooks" RangeSize="25" DataControl="LibraryAMDataControl" id="PublicBooksIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PublicBooksIterator" id="BookName">
+      <AttrNames>
+        <Item Value="BookName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PublicBooksIterator" id="AutherName">
+      <AttrNames>
+        <Item Value="AutherName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PublicBooksIterator" id="BookDate">
+      <AttrNames>
+        <Item Value="BookDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PublicBooksIterator" id="BookId">
+      <AttrNames>
+        <Item Value="BookId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PublicBooksIterator" id="BookImage">
+      <AttrNames>
+        <Item Value="BookImage"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PublicBooksIterator" id="Screenshot1">
+      <AttrNames>
+        <Item Value="Screenshot1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PublicBooksIterator" id="Screenshot2">
+      <AttrNames>
+        <Item Value="Screenshot2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PublicBooksIterator" id="Book">
+      <AttrNames>
+        <Item Value="Book"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="defaultBooks" RequiresUpdateModel="true" Action="invokeMethod" MethodName="defaultBooks"
+                  IsViewObjectMethod="false" DataControl="LibraryAMDataControl"
+                  InstanceName="data.LibraryAMDataControl.dataProvider"
+                  ReturnName="data.LibraryAMDataControl.methodResults.defaultBooks_LibraryAMDataControl_dataProvider_defaultBooks_result"/>
+    <methodAction id="bookCode" RequiresUpdateModel="true" Action="invokeMethod" MethodName="bookCode"
+                  IsViewObjectMethod="false" DataControl="LibraryAMDataControl"
+                  InstanceName="data.LibraryAMDataControl.dataProvider"
+                  ReturnName="data.LibraryAMDataControl.methodResults.bookCode_LibraryAMDataControl_dataProvider_bookCode_result"/>
+    <methodAction id="checkBookCode" RequiresUpdateModel="true" Action="invokeMethod" MethodName="checkBookCode"
+                  IsViewObjectMethod="false" DataControl="LibraryAMDataControl"
+                  InstanceName="data.LibraryAMDataControl.dataProvider"
+                  ReturnName="data.LibraryAMDataControl.methodResults.checkBookCode_LibraryAMDataControl_dataProvider_checkBookCode_result">
+      <NamedData NDName="code" NDType="java.lang.String"/>
+    </methodAction>
+    <listOfValues IterBinding="PublicBooksIterator" StaticList="false" Uses="LOV_UserId" id="UserId"/>
+    <action id="Commit" DataControl="LibraryAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="LibraryAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action IterBinding="PublicBooksIterator" id="Delete" InstanceName="LibraryAMDataControl.PublicBooks"
+            DataControl="LibraryAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <list IterBinding="PublicBooksIterator" StaticList="false" Uses="LOV_CategoryId" id="CategoryId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="PublicBooksIterator" StaticList="false" Uses="LOV_UserId" id="UserId1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="PublicBooksIterator" StaticList="false" Uses="LOV_Status" id="Status" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="PublicBooksIterator" id="Code">
+      <AttrNames>
+        <Item Value="Code"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PublicBooksIterator" id="BookPath">
+      <AttrNames>
+        <Item Value="BookPath"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

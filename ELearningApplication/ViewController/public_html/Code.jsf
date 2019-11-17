@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Code.jsf" id="d1">
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr3">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc6">
+                        <!-- Header -->
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc5">
+                        <af:panelGridLayout id="pgl2">
+                            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr4">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc1" halign="center"
+                                             valign="middle">
+                                    <af:decorativeBox id="db1" theme="medium">
+                                        <f:facet name="center">
+                                            <af:panelGroupLayout id="pgl3">
+                                                <center>
+                                                    <label>
+                                                        <span style="color: lightblue;font-size:30px;font-weight:bold;">E</span>
+                                                        <span style="color: #e6e600;font-size:30px;font-weight:bold;">m</span>
+                                                        <span style="font-size:30px;font-weight:bold;">ail address</span>
+                                                    </label>
+                                                </center>
+                                                <af:inputText id="it1"
+                                                              contentStyle="font-size:25px;padding:3px;color:teal;width:500px;margin-left:15px;height:40px;"
+                                                              labelStyle="font-size:25px;" styleClass="AFStretchWidth"
+                                                              placeholder="Email" disabled="true"
+                                                              binding="#{RegisterBean.verifyEmail}"
+                                                              value="#{pageFlowScope.email}"/>
+                                                <center>
+                                                    <label>
+                                                        <span style="color: lightblue;font-size:30px;font-weight:bold;">C</span>
+                                                        <span style="color: #e6e600;font-size:30px;font-weight:bold;">o</span>
+                                                        <span style="font-size:30px;font-weight:bold;">de</span>
+                                                    </label>
+                                                </center>
+                                                <af:inputText id="it2"
+                                                              contentStyle="font-size:25px;padding:2px;color:teal;width:500px;margin-left:15px;height:40px;"
+                                                              labelStyle="font-size:25px;"
+                                                              styleClass="AFStretchWidth ;text_field user_text_field"
+                                                              secret="false" placeholder="Code"
+                                                              binding="#{RegisterBean.code}"/>
+                                                <af:button text="Verify Account" id="b1"
+                                                           inlineStyle="padding:3px; width:490px; font-size:25px; text-align:center; height:40px; margin-top:15px; color:Navy;margin-left:70px;"
+                                                           action="#{RegisterBean.verifyAccount}"/>
+                                            </af:panelGroupLayout>
+                                        </f:facet>
+                                    </af:decorativeBox>
+                                </af:gridCell>
+                            </af:gridRow>
+                        </af:panelGridLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="50px" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <!-- Footer -->
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+        <af:form id="f2">
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached"
+                      binding="#{RegisterBean.popUp}">
+                <af:dialog id="d2" type="none" resize="on" contentWidth="600" contentHeight="150">
+                    <f:facet name="buttonBar">
+                        <af:button text="Ok" id="b2" action="Login"/>
+                    </f:facet>
+                    <af:panelGridLayout id="pgl4">
+                        <af:gridRow marginTop="5px" height="100%" marginBottom="5px" id="gr5">
+                            <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc3" halign="center"
+                                         valign="middle">
+                                <af:panelGroupLayout id="pgl5" layout="horizontal">
+                                    <af:image source="/resources/images/JD-16-128.png" id="i1"/>
+                                    <af:outputText value="Your Email Verified sucessfully" id="ot1"
+                                                   inlineStyle="font-size:20px;"/>
+                                </af:panelGroupLayout>
+                            </af:gridCell>
+                        </af:gridRow>
+                    </af:panelGridLayout>
+                </af:dialog>
+            </af:popup>
+        </af:form>
+        <af:popup childCreation="deferred" autoCancel="disabled" id="p2" contentDelivery="lazyUncached"
+                  binding="#{RegisterBean.verifyFailed}">
+            <af:dialog id="d3" type="ok" resize="on" contentWidth="500" contentHeight="150">
+                <af:panelGridLayout id="pgl6">
+                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr6">
+                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc4" halign="center"
+                                     valign="middle">
+                            <af:panelGroupLayout id="pgl7" layout="horizontal">
+                                <af:outputText value="Invalid Code" id="ot2"
+                                               inlineStyle="font-size:25px;margin-right:5px;color:black;"/>
+                                <af:image source="/resources/images/stop_wrong_cross-128.png" id="i2"/>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+                <f:facet name="buttonBar"/>
+            </af:dialog>
+        </af:popup>
+    </af:document>
+</f:view>

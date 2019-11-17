@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Settings-BTFFrag">
+    <default-activity>Settings</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__3">
+      <managed-bean-name>SettingsBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.classes.SettingsBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__7">
+      <managed-bean-name>UploadCVFile</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.professors.UploadCVFile</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <view id="Settings">
+      <page>/pages/fragments/settings/Settings.jsff</page>
+    </view>
+    <task-flow-return id="Back">
+      <outcome>
+        <name>Back</name>
+      </outcome>
+    </task-flow-return>
+    <view id="ProfessorSettings">
+      <page>/pages/fragments/settings/ProfessorSettings.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>Settings</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>Back</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__4">
+        <from-outcome>ProfessorSettings</from-outcome>
+        <to-activity-id>ProfessorSettings</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>ProfessorSettings</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>Settings</from-outcome>
+        <to-activity-id>Settings</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Login.jsf" id="d1">
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl3" rendered="false">
+                <af:gridRow marginTop="5px" height="10%" id="gr6">
+                    <af:gridCell marginStart="5px" width="34%" id="gc12" halign="stretch" valign="stretch"/>
+                    <af:gridCell marginStart="5px" width="33%" id="gc13" halign="stretch" valign="stretch"/>
+                    <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc14" halign="stretch"
+                                 valign="stretch"/>
+                </af:gridRow>
+                <af:gridRow marginTop="5px" height="80%" id="gr7">
+                    <af:gridCell marginStart="5px" width="30%" id="gc15" halign="stretch" valign="stretch"/>
+                    <af:gridCell marginStart="5px" width="50%" id="gc16" halign="stretch" valign="stretch">
+                        <af:decorativeBox id="db1" topHeight="0px" theme="medium" inlineStyle="height:auto;">
+                            <f:facet name="center">
+                                <af:panelGridLayout id="pgl2">
+                                    <af:gridRow marginTop="5px" height="100px" id="gr4">
+                                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc10"
+                                                     halign="stretch" valign="stretch">
+                                            <af:image source="/resources/images/152556394590792170.png" id="i1"/>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                    <af:gridRow id="gr1" height="30px">
+                                        <af:gridCell id="gc1"/>
+                                    </af:gridRow>
+                                    <af:gridRow marginTop="5px" height="100%" marginBottom="5px" id="gr5">
+                                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc11"
+                                                     halign="center" valign="stretch" rowSpan="1">
+                                            <af:panelFormLayout id="pfl1">
+                                            <center><label ><span style="color: lightblue;font-size:30px;font-weight:bold;"> E</span><span style="color: #e6e600;font-size:30px;font-weight:bold;">m</span><span style="font-size:30px;font-weight:bold;">ail address</span></label></center>
+                                                <af:inputText id="it1"
+                                                              contentStyle="font-size:25px;padding:3px;color:teal;width:500px;margin-left:15px;height:40px;"
+                                                              labelStyle="font-size:25px;"
+                                                              styleClass="AFStretchWidth" placeholder="Email"
+                                                              binding="#{LoginBean.userEmail}"/>
+                                                <center><label ><span style="color: lightblue;font-size:30px;font-weight:bold;">P</span><span style="color: #e6e600;font-size:30px;font-weight:bold;">a</span><span style="font-size:30px;font-weight:bold;">ssword</span></label></center>
+                                                <af:inputText id="it2"
+                                                              contentStyle="font-size:25px;padding:2px;color:teal;width:500px;margin-left:15px;height:40px;"
+                                                              labelStyle="font-size:25px;"
+                                                              styleClass="AFStretchWidth ;text_field user_text_field" secret="true" placeholder="Password"
+                                                              binding="#{LoginBean.userPassword}"/>
+                                                <af:button text="Login" id="b1"
+                                                           inlineStyle="padding:3px; width:490px; font-size:25px; text-align:center; height:40px; margin-top:15px; color:Navy;padding-left:10px;"
+                                                           action="#{LoginBean.checkUserLogin}"/>
+                                                <af:panelGroupLayout id="pgl1" inlineStyle="margin-top:10px;"
+                                                                     layout="horizontal">
+                                                    <af:outputText value="Don't have account ?" id="ot1"
+                                                                   inlineStyle="font-size:15px;"/>
+                                                    <af:link text="Register now" id="l1" inlineStyle="font-size:15px;"
+                                                             action="Register"/>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout id="pgl6" layout="horizontal">
+                                                    <af:outputText value="Forget Password ? " id="ot3"
+                                                                   inlineStyle="font-size:15px;"/>
+                                                    <af:link text="Restore Password now" id="l2"
+                                                             inlineStyle="font-size:15px;" action="RestorePassword"/>
+                                                </af:panelGroupLayout>
+                                                <f:facet name="footer"/>
+                                            </af:panelFormLayout>
+                                        </af:gridCell>
+                                    </af:gridRow>
+                                </af:panelGridLayout>
+                            </f:facet>
+                            <f:facet name="top"/>
+                        </af:decorativeBox>
+                    </af:gridCell>
+                    <af:gridCell marginStart="5px" width="30%" marginEnd="5px" id="gc17" halign="stretch"
+                                 valign="stretch"/>
+                </af:gridRow>
+                <af:gridRow marginTop="5px" height="10%" marginBottom="5px" id="gr8">
+                    <af:gridCell marginStart="5px" width="34%" id="gc18" halign="stretch" valign="stretch"/>
+                    <af:gridCell marginStart="5px" width="33%" id="gc19" valign="stretch" halign="stretch"/>
+                    <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc20" valign="stretch"
+                                 halign="stretch"/>
+                </af:gridRow>
+            </af:panelGridLayout>
+            <af:panelGridLayout id="pgl7" styleClass="AFStretchWidth">
+                <af:gridRow height="120px" id="gr3">
+                    <af:gridCell marginStart="5px" width="50%" id="gc3" halign="stretch" valign="middle">
+                        <af:decorativeBox id="db3" theme="medium">
+                            <f:facet name="center">
+                                <af:image source="/resources/images/logo.png" id="i3"
+                                          inlineStyle="height:150px;width:350px;"/>
+                            </f:facet>
+                            <f:facet name="top"/>
+                        </af:decorativeBox>
+                    </af:gridCell>
+                    <af:gridCell width="50%" id="gc4" halign="stretch"
+                                 valign="stretch">
+                        <af:decorativeBox id="db2" theme="medium" styleClass="AFStretchWidth">
+                            <f:facet name="center">
+                                <af:panelGroupLayout id="pgl8" layout="vertical">
+                                    <af:panelGroupLayout id="pgl80" layout="horizontal">
+                                        <af:inputText label="Email" id="it3"
+                                                      contentStyle="padding:3px;font-size:15px;color:teal;"
+                                                      labelStyle="color:black;font-size:15px;"
+                                                      binding="#{LoginBean.userEmail}"/>
+                                        <af:inputText label="Password" id="it4"
+                                                      contentStyle="padding:3px;font-size:15px;color:teal;"
+                                                      labelStyle="color:black;font-size:15px;"
+                                                      binding="#{LoginBean.userPassword}"/>
+                                        <af:button id="b3" inlineStyle="font-size:15px;padding-bottom:3px;" text="Login"
+                                                   action="#{LoginBean.checkUserLogin}"/>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pgl10">
+                                        <af:outputText value="Forget Password ? " id="ot5"
+                                                       inlineStyle="font-size:15px;"/>
+                                        <af:link text="Reset Password" id="l3" inlineStyle="font-size:15px;"
+                                                 action="RestorePassword"/>
+                                    </af:panelGroupLayout>
+                                    <af:panelGroupLayout id="pgl9" layout="horizontal">
+                                        <af:outputText value="Don't have Account ? " id="ot4"
+                                                       inlineStyle="font-size:15px;"/>
+                                        <af:link text="Register now !" id="l4" inlineStyle="font-size:15px;"
+                                                 action="Register"/>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                            </f:facet>
+                            <f:facet name="top"/>
+                        </af:decorativeBox>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="gr9">
+                    <af:gridCell columnSpan="2" id="gc5" halign="stretch"
+                                 valign="stretch">
+                        <af:activeImage source="/resources/images/AppDesign.png" id="ai1"
+                                        styleClass="AFStretchWidth"/>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+        <af:form id="f2">
+            <af:popup childCreation="deferred" autoCancel="enabled" id="p1" binding="#{LoginBean.popUp}"
+                      contentDelivery="lazyUncached">
+                <af:dialog id="d2" type="none" resize="on" contentHeight="150" contentWidth="500">
+                    <af:panelGridLayout id="pgl4">
+                        <af:gridRow marginTop="5px" height="100%" marginBottom="5px" id="gr2">
+                            <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc2" halign="center"
+                                         valign="middle">
+                                <af:panelGroupLayout id="pgl5" layout="horizontal">
+                                    <af:image source="/resources/images/stop_wrong_cross-128.png" id="i2"/>
+                                    <af:outputText value="Account not activated yet !!" id="ot2"
+                                                   inlineStyle="color:black;font-size:20px;"/>
+                                </af:panelGroupLayout>
+                            </af:gridCell>
+                        </af:gridRow>
+                    </af:panelGridLayout>
+                    <f:facet name="buttonBar">
+                        <af:button text="Active Account" id="b2" action="Code">
+                            <af:setPropertyListener type="action" from="#{LoginBean.userEmail.value}"
+                                                    to="#{pageFlowScope.email}"/>
+                        </af:button>
+                    </f:facet>
+                </af:dialog>
+            </af:popup>
+        </af:form>
+        <af:popup childCreation="deferred" autoCancel="disabled" id="p2" contentDelivery="lazyUncached"
+                  binding="#{LoginBean.emptyPopUp}">
+            <af:dialog id="d3" type="ok" contentWidth="300" contentHeight="150">
+                <af:panelGroupLayout id="pgl11" layout="horizontal" halign="center">
+                    <af:outputText value="Email/Password Wrong" id="ot6"
+                                   inlineStyle="margin-right:3px;color:black;font-size:20px;"/>
+                    <af:image source="/resources/images/stop_wrong_cross-128.png" id="i4"/>
+                </af:panelGroupLayout>
+                <f:facet name="buttonBar"/>
+            </af:dialog>
+        </af:popup>
+    </af:document>
+</f:view>

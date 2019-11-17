@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelBox text="User Info." id="pb1" showDisclosure="false">
+    <f:facet name="toolbar">
+      <af:toolbar id="t1">
+        <af:button text="Projects" id="b2"
+                   icon="/resources/images/cmyk-08-16.png" inlineStyle="font-size:12px;padding-bottom:3px;"
+                   action="ProfProjects" rendered="false"/>
+        <af:button text="Professor Registeration" id="b1" icon="/resources/images/professorRegisteraiton.png"
+                   iconPosition="trailing" inlineStyle="font-size:12px;padding-bottom:3px;"
+                   action="ProfessorRegisteration" rendered="#{LoginBean.user.roleName eq 'User' ? true : false}"/>
+      </af:toolbar>
+    </f:facet>
+    <af:panelFormLayout id="pfl1">
+      <af:inputText value="#{bindings.FirstName.inputValue}" label="#{bindings.FirstName.hints.label}"
+                    required="#{bindings.FirstName.hints.mandatory}" columns="#{bindings.FirstName.hints.displayWidth}"
+                    maximumLength="#{bindings.FirstName.hints.precision}"
+                    shortDesc="#{bindings.FirstName.hints.tooltip}" id="it1"
+                    contentStyle="margin:2px;padding:3px;font-size:15px;color:teal;" readOnly="true"
+                    labelStyle="margin:2px;color:black;font-size:15px;" inlineStyle="margin:2px;">
+        <f:validator binding="#{bindings.FirstName.validator}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}"
+                    required="#{bindings.LastName.hints.mandatory}" columns="#{bindings.LastName.hints.displayWidth}"
+                    maximumLength="#{bindings.LastName.hints.precision}" shortDesc="#{bindings.LastName.hints.tooltip}"
+                    id="it2" contentStyle="margin:2px;padding:3px;font-size:15px;color:teal;" readOnly="true"
+                    labelStyle="margin:2px;color:black;font-size:15px;" inlineStyle="margin:2px;">
+        <f:validator binding="#{bindings.LastName.validator}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
+                    required="#{bindings.Email.hints.mandatory}" columns="#{bindings.Email.hints.displayWidth}"
+                    maximumLength="#{bindings.Email.hints.precision}" shortDesc="#{bindings.Email.hints.tooltip}"
+                    id="it3" contentStyle="margin:2px;padding:3px;font-size:15px;color:teal;" readOnly="true"
+                    labelStyle="margin:2px;color:black;font-size:15px;" inlineStyle="margin:2px;">
+        <f:validator binding="#{bindings.Email.validator}"/>
+      </af:inputText>
+      <af:selectOneChoice value="#{bindings.Gender.inputValue}" label="#{bindings.Gender.label}"
+                          required="#{bindings.Gender.hints.mandatory}" shortDesc="#{bindings.Gender.hints.tooltip}"
+                          id="soc1" contentStyle="margin:2px;padding:3px;font-size:15px;color:teal;" readOnly="true"
+                          labelStyle="margin:2px;color:black;font-size:15px;" inlineStyle="margin:2px;">
+        <f:selectItems value="#{bindings.Gender.items}" id="si1"/>
+        <f:validator binding="#{bindings.Gender.validator}"/>
+      </af:selectOneChoice>
+      <af:inputText value="#{bindings.BirthDate.inputValue}" label="#{bindings.BirthDate.hints.label}"
+                    required="#{bindings.BirthDate.hints.mandatory}" columns="#{bindings.BirthDate.hints.displayWidth}"
+                    maximumLength="#{bindings.BirthDate.hints.precision}"
+                    shortDesc="#{bindings.BirthDate.hints.tooltip}" id="it5"
+                    contentStyle="margin:2px;padding:3px;font-size:15px;color:teal;" readOnly="true"
+                    labelStyle="margin:2px;color:black;font-size:15px;" inlineStyle="margin:2px;">
+        <f:validator binding="#{bindings.BirthDate.validator}"/>
+        <af:convertDateTime pattern="#{bindings.BirthDate.format}"/>
+      </af:inputText>
+      <af:deck id="d1" styleClass="width:50px;height:50px;">
+        <af:image source="/professorsimages?id=#{LoginBean.userEmail.value}" id="i1" inlineStyle="width:50px;height:50px;"/>
+        <af:selectOneChoice value="#{bindings.Gender.inputValue}" label="#{bindings.Gender.label}"
+                            required="#{bindings.Gender.hints.mandatory}" shortDesc="#{bindings.Gender.hints.tooltip}"
+                            id="soc2">
+          <f:selectItems value="#{bindings.Gender.items}" id="si2"/>
+          <f:validator binding="#{bindings.Gender.validator}"/>
+        </af:selectOneChoice>
+      </af:deck>
+      <f:facet name="footer"/>
+    </af:panelFormLayout>
+  </af:panelBox>
+</ui:composition>

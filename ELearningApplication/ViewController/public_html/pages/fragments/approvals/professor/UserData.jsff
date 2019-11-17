@@ -1,0 +1,321 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelBox text="Professor" id="pb1" showDisclosure="false">
+        <f:facet name="toolbar">
+            <af:toolbar id="t1">
+                <af:button text="Accept" id="b2" icon="/resources/images/Accept-Male-User.png" iconPosition="trailing"
+                           action="#{viewScope.ApprovalsBean.acceptProf}"
+                           binding="#{viewScope.ApprovalsBean.acceptButton}"/>
+                <af:button text="Back" id="b1" icon="/resources/images/srch_go.gif" iconPosition="trailing"
+                           action="SelectApproval"/>
+            </af:toolbar>
+        </f:facet>
+        <af:panelTabbed position="above" id="pt1">
+            <af:showDetailItem id="PersonalData" text="Personal Data" icon="/resources/images/031.png" disclosed="true">
+                <af:panelFormLayout id="pfl1" rows="3">
+                    <f:facet name="footer"/>
+                    <af:inputText value="#{bindings.FirstName.inputValue}" label="#{bindings.FirstName.hints.label}"
+                                  required="#{bindings.FirstName.hints.mandatory}"
+                                  columns="#{bindings.FirstName.hints.displayWidth}"
+                                  maximumLength="#{bindings.FirstName.hints.precision}"
+                                  shortDesc="#{bindings.FirstName.hints.tooltip}" id="it1" readOnly="true"
+                                  contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                                  labelStyle="font-size:17px;color:black;">
+                        <f:validator binding="#{bindings.FirstName.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}"
+                                  required="#{bindings.LastName.hints.mandatory}"
+                                  columns="#{bindings.LastName.hints.displayWidth}"
+                                  maximumLength="#{bindings.LastName.hints.precision}"
+                                  shortDesc="#{bindings.LastName.hints.tooltip}" id="it2" readOnly="true"
+                                  contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                                  labelStyle="font-size:17px;color:black;">
+                        <f:validator binding="#{bindings.LastName.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.BirthDate.inputValue}" label="#{bindings.BirthDate.hints.label}"
+                                  required="#{bindings.BirthDate.hints.mandatory}"
+                                  columns="#{bindings.BirthDate.hints.displayWidth}"
+                                  maximumLength="#{bindings.BirthDate.hints.precision}"
+                                  shortDesc="#{bindings.BirthDate.hints.tooltip}" id="it3" readOnly="true"
+                                  contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                                  labelStyle="font-size:17px;color:black;">
+                        <f:validator binding="#{bindings.BirthDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.BirthDate.format}"/>
+                    </af:inputText>
+                    <af:selectOneChoice value="#{bindings.Gender1.inputValue}" label="#{bindings.Gender1.label}"
+                                        required="#{bindings.Gender1.hints.mandatory}"
+                                        shortDesc="#{bindings.Gender1.hints.tooltip}" id="soc6"
+                                        contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                                        labelStyle="font-size:17px;color:black;" readOnly="true">
+                        <f:selectItems value="#{bindings.Gender1.items}" id="si6"/>
+                        <f:validator binding="#{bindings.Gender1.validator}"/>
+                    </af:selectOneChoice>
+                    <af:selectOneChoice value="#{bindings.StatusId1.inputValue}" label="#{bindings.StatusId1.label}"
+                                        required="#{bindings.StatusId1.hints.mandatory}"
+                                        shortDesc="#{bindings.StatusId1.hints.tooltip}" id="soc7"
+                                        contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                                        labelStyle="font-size:17px;color:black;" readOnly="true">
+                        <f:selectItems value="#{bindings.StatusId1.items}" id="si7"/>
+                        <f:validator binding="#{bindings.StatusId1.validator}"/>
+                    </af:selectOneChoice>
+                    <af:inputText value="#{bindings.NationalId.inputValue}" label="#{bindings.NationalId.hints.label}"
+                                  required="#{bindings.NationalId.hints.mandatory}"
+                                  columns="#{bindings.NationalId.hints.displayWidth}"
+                                  maximumLength="#{bindings.NationalId.hints.precision}"
+                                  shortDesc="#{bindings.NationalId.hints.tooltip}" id="it4" readOnly="true"
+                                  contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                                  labelStyle="font-size:17px;color:black;">
+                        <f:validator binding="#{bindings.NationalId.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.NationalId.format}"/>
+                    </af:inputText>
+                </af:panelFormLayout>
+            </af:showDetailItem>
+            <af:showDetailItem id="ContactData" text="Contact Data" icon="/resources/images/contactData.png">
+                <af:panelFormLayout id="pfl2" rows="3">
+                    <f:facet name="footer"/>
+                    <af:inputText value="#{bindings.Mobile.inputValue}" label="#{bindings.Mobile.hints.label}"
+                                  required="#{bindings.Mobile.hints.mandatory}"
+                                  columns="#{bindings.Mobile.hints.displayWidth}"
+                                  maximumLength="#{bindings.Mobile.hints.precision}"
+                                  shortDesc="#{bindings.Mobile.hints.tooltip}" id="it5" readOnly="true"
+                                  contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                                  labelStyle="font-size:17px;color:black;">
+                        <f:validator binding="#{bindings.Mobile.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.PostOfficeCode.inputValue}"
+                                  label="#{bindings.PostOfficeCode.hints.label}"
+                                  required="#{bindings.PostOfficeCode.hints.mandatory}"
+                                  columns="#{bindings.PostOfficeCode.hints.displayWidth}"
+                                  maximumLength="#{bindings.PostOfficeCode.hints.precision}"
+                                  shortDesc="#{bindings.PostOfficeCode.hints.tooltip}" id="it6" readOnly="true"
+                                  contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                                  labelStyle="font-size:17px;color:black;">
+                        <f:validator binding="#{bindings.PostOfficeCode.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.Fax.inputValue}" label="#{bindings.Fax.hints.label}"
+                                  required="#{bindings.Fax.hints.mandatory}"
+                                  columns="#{bindings.Fax.hints.displayWidth}"
+                                  maximumLength="#{bindings.Fax.hints.precision}"
+                                  shortDesc="#{bindings.Fax.hints.tooltip}" id="it7" readOnly="true"
+                                  contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                                  labelStyle="font-size:17px;color:black;">
+                        <f:validator binding="#{bindings.Fax.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
+                                  required="#{bindings.Email.hints.mandatory}"
+                                  columns="#{bindings.Email.hints.displayWidth}"
+                                  maximumLength="#{bindings.Email.hints.precision}"
+                                  shortDesc="#{bindings.Email.hints.tooltip}" id="it8" readOnly="true"
+                                  contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                                  labelStyle="font-size:17px;color:black;"
+                                  binding="#{viewScope.ApprovalsBean.userAcceptEmail}">
+                        <f:validator binding="#{bindings.Email.validator}"/>
+                    </af:inputText>
+                    <af:selectOneChoice value="#{bindings.CountryId.inputValue}" label="#{bindings.CountryId.label}"
+                                        required="#{bindings.CountryId.hints.mandatory}"
+                                        shortDesc="#{bindings.CountryId.hints.tooltip}" id="soc2"
+                                        labelStyle="font-size:17px;color:black;" readOnly="true"
+                                        contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;">
+                        <f:selectItems value="#{bindings.CountryId.items}" id="si2"/>
+                        <f:validator binding="#{bindings.CountryId.validator}"/>
+                    </af:selectOneChoice>
+                    <af:selectOneChoice value="#{bindings.CityId.inputValue}" label="#{bindings.CityId.label}"
+                                        required="#{bindings.CityId.hints.mandatory}"
+                                        shortDesc="#{bindings.CityId.hints.tooltip}" id="soc3"
+                                        labelStyle="font-size:17px;color:black;" readOnly="true"
+                                        contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;">
+                        <f:selectItems value="#{bindings.CityId.items}" id="si3"/>
+                        <f:validator binding="#{bindings.CityId.validator}"/>
+                    </af:selectOneChoice>
+                </af:panelFormLayout>
+            </af:showDetailItem>
+            <af:showDetailItem id="Qualifications" text="Qualifications" icon="/resources/images/personalData.png">
+                <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar"/>
+                    <af:table value="#{bindings.Qualifiactions2.collectionModel}" var="row"
+                              rows="#{bindings.Qualifiactions2.rangeSize}"
+                              emptyText="#{bindings.Qualifiactions2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.Qualifiactions2.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.Qualifiactions2.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.Qualifiactions2.rangeSize}"
+                              filterModel="#{bindings.Qualifiactions2Query.queryDescriptor}"
+                              queryListener="#{bindings.Qualifiactions2Query.processQuery}" filterVisible="true"
+                              varStatus="vs" id="t2" columnStretching="last">
+                        <af:column sortProperty="#{bindings.Qualifiactions2.hints.QualTypeCode.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.Qualifiactions2.hints.QualTypeCode.label}"
+                                   id="c2">
+                            <af:selectOneChoice value="#{row.bindings.QualTypeCode.inputValue}"
+                                                label="#{row.bindings.QualTypeCode.label}"
+                                                required="#{bindings.Qualifiactions2.hints.QualTypeCode.mandatory}"
+                                                shortDesc="#{bindings.Qualifiactions2.hints.QualTypeCode.tooltip}"
+                                                id="soc1">
+                                <f:selectItems value="#{row.bindings.QualTypeCode.items}" id="si1"/>
+                                <f:validator binding="#{row.bindings.QualTypeCode.validator}"/>
+                            </af:selectOneChoice>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.Qualifiactions2.hints.ScienceName.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.Qualifiactions2.hints.ScienceName.label}"
+                                   id="c10">
+                            <af:inputListOfValues id="scienceNameId"
+                                                  popupTitle="Search and Select: #{bindings.Qualifiactions2.hints.ScienceName.label}"
+                                                  value="#{row.bindings.ScienceName.inputValue}"
+                                                  model="#{row.bindings.ScienceName.listOfValuesModel}"
+                                                  required="#{bindings.Qualifiactions2.hints.ScienceName.mandatory}"
+                                                  columns="#{bindings.Qualifiactions2.hints.ScienceName.displayWidth}"
+                                                  shortDesc="#{bindings.Qualifiactions2.hints.ScienceName.tooltip}">
+                                <f:validator binding="#{row.bindings.ScienceName.validator}"/>
+                            </af:inputListOfValues>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.Qualifiactions2.hints.QualDate.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.Qualifiactions2.hints.QualDate.label}"
+                                   id="c4">
+                            <af:inputDate value="#{row.bindings.QualDate.inputValue}"
+                                          label="#{bindings.Qualifiactions2.hints.QualDate.label}"
+                                          required="#{bindings.Qualifiactions2.hints.QualDate.mandatory}"
+                                          columns="#{bindings.Qualifiactions2.hints.QualDate.displayWidth}"
+                                          shortDesc="#{bindings.Qualifiactions2.hints.QualDate.tooltip}" id="id3">
+                                <f:validator binding="#{row.bindings.QualDate.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.Qualifiactions2.hints.QualDate.format}"/>
+                            </af:inputDate>
+                            <f:facet name="filter">
+                                <af:inputDate value="#{bindings.Qualifiactions2Query.queryDescriptor.filterConjunctionCriterion.criterionMap.QualDate.value}"
+                                              id="id1">
+                                    <af:convertDateTime pattern="#{bindings.Qualifiactions2.hints.QualDate.format}"/>
+                                </af:inputDate>
+                            </f:facet>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.Qualifiactions2.hints.UniversityName.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.Qualifiactions2.hints.UniversityName.label}" id="c12">
+                            <af:inputListOfValues id="universityNameId"
+                                                  popupTitle="Search and Select: #{bindings.Qualifiactions2.hints.UniversityName.label}"
+                                                  value="#{row.bindings.UniversityName.inputValue}"
+                                                  model="#{row.bindings.UniversityName.listOfValuesModel}"
+                                                  required="#{bindings.Qualifiactions2.hints.UniversityName.mandatory}"
+                                                  columns="#{bindings.Qualifiactions2.hints.UniversityName.displayWidth}"
+                                                  shortDesc="#{bindings.Qualifiactions2.hints.UniversityName.tooltip}">
+                                <f:validator binding="#{row.bindings.UniversityName.validator}"/>
+                            </af:inputListOfValues>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.Qualifiactions2.hints.Notes.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.Qualifiactions2.hints.Notes.label}" id="c9">
+                            <af:inputText value="#{row.bindings.Notes.inputValue}"
+                                          label="#{bindings.Qualifiactions2.hints.Notes.label}"
+                                          required="#{bindings.Qualifiactions2.hints.Notes.mandatory}"
+                                          columns="#{bindings.Qualifiactions2.hints.Notes.displayWidth}"
+                                          maximumLength="#{bindings.Qualifiactions2.hints.Notes.precision}"
+                                          shortDesc="#{bindings.Qualifiactions2.hints.Notes.tooltip}" id="it10">
+                                <f:validator binding="#{row.bindings.Notes.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                    </af:table>
+                    <f:facet name="statusbar"/>
+                </af:panelCollection>
+            </af:showDetailItem>
+            <af:showDetailItem id="Awards" text="Awards" icon="/resources/images/--04-128.png">
+                <af:panelCollection id="pc2" styleClass="AFStretchWidth">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar"/>
+                    <af:table value="#{bindings.Awards2.collectionModel}" var="row" rows="#{bindings.Awards2.rangeSize}"
+                              emptyText="#{bindings.Awards2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0" selectedRowKeys="#{bindings.Awards2.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.Awards2.collectionModel.makeCurrent}" rowSelection="single"
+                              fetchSize="#{bindings.Awards2.rangeSize}"
+                              filterModel="#{bindings.Awards2Query.queryDescriptor}"
+                              queryListener="#{bindings.Awards2Query.processQuery}" filterVisible="true" varStatus="vs"
+                              id="t3" columnStretching="last">
+                        <af:column sortProperty="#{bindings.Awards2.hints.AwardId.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.Awards2.hints.AwardId.label}" id="c1">
+                            <af:inputText value="#{row.bindings.AwardId.inputValue}"
+                                          label="#{bindings.Awards2.hints.AwardId.label}"
+                                          required="#{bindings.Awards2.hints.AwardId.mandatory}"
+                                          columns="#{bindings.Awards2.hints.AwardId.displayWidth}"
+                                          maximumLength="#{bindings.Awards2.hints.AwardId.precision}"
+                                          shortDesc="#{bindings.Awards2.hints.AwardId.tooltip}" id="it9">
+                                <f:validator binding="#{row.bindings.AwardId.validator}"/>
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.Awards2.hints.AwardId.format}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.Awards2.hints.AwardText.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.Awards2.hints.AwardText.label}" id="c3">
+                            <af:inputText value="#{row.bindings.AwardText.inputValue}"
+                                          label="#{bindings.Awards2.hints.AwardText.label}"
+                                          required="#{bindings.Awards2.hints.AwardText.mandatory}"
+                                          columns="#{bindings.Awards2.hints.AwardText.displayWidth}"
+                                          maximumLength="#{bindings.Awards2.hints.AwardText.precision}"
+                                          shortDesc="#{bindings.Awards2.hints.AwardText.tooltip}" id="it11">
+                                <f:validator binding="#{row.bindings.AwardText.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.Awards2.hints.AwardDate.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.Awards2.hints.AwardDate.label}" id="c5">
+                            <f:facet name="filter">
+                                <af:inputDate value="#{bindings.Awards2Query.queryDescriptor.filterConjunctionCriterion.criterionMap.AwardDate.value}"
+                                              id="id2">
+                                    <af:convertDateTime pattern="#{bindings.Awards2.hints.AwardDate.format}"/>
+                                </af:inputDate>
+                            </f:facet>
+                            <af:inputDate value="#{row.bindings.AwardDate.inputValue}"
+                                          label="#{bindings.Awards2.hints.AwardDate.label}"
+                                          required="#{bindings.Awards2.hints.AwardDate.mandatory}"
+                                          columns="#{bindings.Awards2.hints.AwardDate.displayWidth}"
+                                          shortDesc="#{bindings.Awards2.hints.AwardDate.tooltip}" id="id4">
+                                <f:validator binding="#{row.bindings.AwardDate.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.Awards2.hints.AwardDate.format}"/>
+                            </af:inputDate>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.Awards2.hints.Notes.name}" filterable="true" sortable="true"
+                                   headerText="#{bindings.Awards2.hints.Notes.label}" id="c6">
+                            <af:inputText value="#{row.bindings.Notes.inputValue}"
+                                          label="#{bindings.Awards2.hints.Notes.label}"
+                                          required="#{bindings.Awards2.hints.Notes.mandatory}"
+                                          columns="#{bindings.Awards2.hints.Notes.displayWidth}"
+                                          maximumLength="#{bindings.Awards2.hints.Notes.precision}"
+                                          shortDesc="#{bindings.Awards2.hints.Notes.tooltip}" id="it12">
+                                <f:validator binding="#{row.bindings.Notes.validator}"/>
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.Awards2.hints.Notes.format}"/>
+                            </af:inputText>
+                        </af:column>
+                    </af:table>
+                    <f:facet name="statusbar"/>
+                </af:panelCollection>
+            </af:showDetailItem>
+            <af:showDetailItem id="cv" text="CV" icon="/resources/images/SEO_CV-01-16.png">
+                <af:link text="Download CV" id="l1" inlineStyle="font-size:20px;">
+                    <af:fileDownloadActionListener filename="#{bindings.FirstName.inputValue}#{bindings.LastName.inputValue}CV"
+                                                   method="#{viewScope.DownloadCVFile.downloadFile}"/>
+                </af:link>
+            </af:showDetailItem>
+        </af:panelTabbed>
+    </af:panelBox>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached"
+              binding="#{viewScope.ApprovalsBean.profAccept}">
+        <af:dialog id="d1" type="none" contentWidth="500" contentHeight="150">
+            <f:facet name="buttonBar">
+                <af:button text="Ok" id="b3" action="SelectApproval"
+                           binding="#{viewScope.ApprovalsBean.submitButtonProApproval}"/>
+            </f:facet>
+            <af:panelGroupLayout id="pgl1" halign="center" valign="middle" layout="horizontal">
+                <af:outputText value="Professor Accepted Successfully" id="ot1"
+                               inlineStyle="color:Green;font-size:25px;margin-right:5px;"/>
+                <af:image source="/resources/images/JD-16-128.png" id="i1"/>
+            </af:panelGroupLayout>
+        </af:dialog>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p2" binding="#{viewScope.ApprovalsBean.profFailed}"
+              contentDelivery="lazyUncached">
+        <af:dialog id="d2" contentWidth="500" contentHeight="150" type="cancel" binding="#{AcceptBean.proFaild}">
+            <af:panelGroupLayout id="pgl2" halign="center" valign="middle" layout="horizontal">
+                <af:outputText value="User Not Found" id="ot2"
+                               inlineStyle="color:Maroon;font-size:25px;margin-right:5px;"/>
+                <af:image source="/resources/images/stop_wrong_cross-128.png" id="i2"/>
+            </af:panelGroupLayout>
+            <f:facet name="buttonBar"/>
+        </af:dialog>
+    </af:popup>
+</ui:composition>

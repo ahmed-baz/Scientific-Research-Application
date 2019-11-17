@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGridLayout id="pgl1">
+    <af:gridRow marginTop="5px" height="5%" id="gr1">
+      <af:gridCell marginStart="5px" width="30%" id="gc1" halign="center" valign="middle">
+        <af:button text="Access Private Course" id="b1"
+                   icon="/resources/images/access_pass_password_unlock_private-20.png"
+                   inlineStyle="font-size:12px;padding:3px;">
+          <af:showPopupBehavior popupId="p1"/>
+        </af:button>
+      </af:gridCell>
+      <af:gridCell marginStart="5px" width="40%" id="gc2" halign="center" valign="middle">
+        <af:selectOneChoice value="#{bindings.CategoryId.inputValue}" label="#{bindings.CategoryId.label}"
+                            required="#{bindings.CategoryId.hints.mandatory}"
+                            shortDesc="#{bindings.CategoryId.hints.tooltip}" id="soc1" autoSubmit="true"
+                            labelStyle="color:black;font-size:15px;"
+                            contentStyle="padding:3px;color:teal;font-size:15px;">
+          <f:selectItems value="#{bindings.CategoryId.items}" id="si1"/>
+          <f:validator binding="#{bindings.CategoryId.validator}"/>
+        </af:selectOneChoice>
+      </af:gridCell>
+      <af:gridCell marginStart="5px" width="30%" marginEnd="5px" id="gc3" halign="center" valign="middle">
+        <af:button text="Add New Course" id="b2" icon="/resources/images/Add.gif" action="NewCourse"
+                   rendered="#{LoginBean.user.roleName eq'Prof'}" inlineStyle="font-size:12px;padding:3px;"/>
+      </af:gridCell>
+    </af:gridRow>
+    <af:gridRow marginTop="5px" height="95%" marginBottom="5px" id="gr2">
+      <af:gridCell marginStart="5px" columnSpan="3" marginEnd="5px" id="gc4" width="auto" valign="stretch"
+                   halign="stretch">
+        <af:listView value="#{bindings.PublicCourses.collectionModel}" var="item"
+                     emptyText="#{bindings.PublicCourses.viewable ? 'No data to display.' : 'Access Denied.'}"
+                     fetchSize="#{bindings.PublicCourses.rangeSize}" id="lv1"
+                     selectionListener="#{SelectedCourseBean.getSelectedCourse}" partialTriggers="::soc1"
+                     selection="single">
+          <af:listItem id="li1">
+            <af:panelGridLayout id="pgl8">
+              <af:gridRow marginTop="5px" height="auto" id="gr7">
+                <af:gridCell marginStart="5px" width="50%" id="gc9">
+                  <af:panelGroupLayout id="pgl5" layout="horizontal">
+                    <af:outputText value="Course Name" id="ot2" inlineStyle="color:black;font-size:15px;"/>
+                    <af:outputFormatted value="#{item.bindings.CourseName.inputValue}" id="of1"
+                                        inlineStyle="font-size:15px;padding-left:5px;color:teal;"/>
+                  </af:panelGroupLayout>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc10">
+                  <af:selectOneChoice value="#{bindings.UserId.inputValue}" label="Uploaded By"
+                                      required="#{bindings.UserId.hints.mandatory}"
+                                      shortDesc="#{bindings.UserId.hints.tooltip}" id="soc2" readOnly="true"
+                                      contentStyle="font-size:15px;color:teal;padding:3px;"
+                                      labelStyle="color:black;font-size:15px;">
+                    <f:selectItems value="#{bindings.UserId.items}" id="si2"/>
+                    <f:validator binding="#{bindings.UserId.validator}"/>
+                  </af:selectOneChoice>
+                </af:gridCell>
+              </af:gridRow>
+              <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr8">
+                <af:gridCell marginStart="5px" width="50%" id="gc11">
+                  <af:panelGroupLayout id="pgl6" layout="horizontal">
+                    <af:outputText value="Uploaded Date" id="ot4" inlineStyle="color:black;font-size:15px;"/>
+                    <af:outputFormatted value="#{item.bindings.CourseDate.inputValue}" id="of4"
+                                        inlineStyle="font-size:15px;padding-left:5px;color:teal;">
+                      <af:convertDateTime pattern="#{bindings.PublicCourses.hints.CourseDate.format}"/>
+                    </af:outputFormatted>
+                  </af:panelGroupLayout>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc12"/>
+              </af:gridRow>
+            </af:panelGridLayout>
+          </af:listItem>
+        </af:listView>
+      </af:gridCell>
+    </af:gridRow>
+  </af:panelGridLayout>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+    <af:dialog id="d1" type="cancel">
+      <f:facet name="buttonBar"/>
+      <af:panelGroupLayout id="pgl3" layout="vertical">
+        <af:panelGroupLayout id="pgl2" layout="horizontal">
+          <af:inputText label="Code" id="it1" contentStyle="color:teal;font-size:15px;padding:3px;"
+                        labelStyle="color:black;font-size:15px;" value="#{AccessPrivateCourseBean.code}"/>
+          <af:button text="Access" id="b3" action="#{AccessPrivateCourseBean.getPrivateCourse}"/>
+        </af:panelGroupLayout>
+        <af:outputText id="ot1" styleClass="red" binding="#{AccessPrivateCourseBean.codeMessage}" partialTriggers="b3"
+                       inlineStyle="color:red;"/>
+      </af:panelGroupLayout>
+    </af:dialog>
+  </af:popup>
+</ui:composition>

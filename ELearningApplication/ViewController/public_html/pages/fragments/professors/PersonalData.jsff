@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:form id="f1"></af:form>
+  <af:panelFormLayout id="pfl1" rows="3">
+    <f:facet name="footer"/>
+    <af:inputText value="#{bindings.FirstName.inputValue}" label="#{bindings.FirstName.hints.label}"
+                  required="#{bindings.FirstName.hints.mandatory}" columns="#{bindings.FirstName.hints.displayWidth}"
+                  maximumLength="#{bindings.FirstName.hints.precision}" shortDesc="#{bindings.FirstName.hints.tooltip}"
+                  id="it1" readOnly="true" contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                  labelStyle="font-size:17px;color:black;">
+      <f:validator binding="#{bindings.FirstName.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}"
+                  required="#{bindings.LastName.hints.mandatory}" columns="#{bindings.LastName.hints.displayWidth}"
+                  maximumLength="#{bindings.LastName.hints.precision}" shortDesc="#{bindings.LastName.hints.tooltip}"
+                  id="it2" readOnly="true" contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                  labelStyle="font-size:17px;color:black;">
+      <f:validator binding="#{bindings.LastName.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.BirthDate.inputValue}" label="#{bindings.BirthDate.hints.label}"
+                  required="#{bindings.BirthDate.hints.mandatory}" columns="#{bindings.BirthDate.hints.displayWidth}"
+                  maximumLength="#{bindings.BirthDate.hints.precision}" shortDesc="#{bindings.BirthDate.hints.tooltip}"
+                  id="it3" readOnly="true" contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                  labelStyle="font-size:17px;color:black;">
+      <f:validator binding="#{bindings.BirthDate.validator}"/>
+      <af:convertDateTime pattern="#{bindings.BirthDate.format}"/>
+    </af:inputText>
+    <af:inputComboboxListOfValues id="genderId" popupTitle="Search and Select: #{bindings.Gender.hints.label}"
+                                  value="#{bindings.Gender.inputValue}" label="#{bindings.Gender.hints.label}"
+                                  model="#{bindings.Gender.listOfValuesModel}"
+                                  required="#{bindings.Gender.hints.mandatory}"
+                                  columns="#{bindings.Gender.hints.displayWidth}"
+                                  shortDesc="#{bindings.Gender.hints.tooltip}" readOnly="true"
+                                  contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                                  labelStyle="font-size:17px;color:black;">
+      <f:validator binding="#{bindings.Gender.validator}"/>
+    </af:inputComboboxListOfValues>
+    <af:inputText value="#{bindings.NationalId.inputValue}" label="#{bindings.NationalId.hints.label}"
+                  required="#{bindings.NationalId.hints.mandatory}" columns="#{bindings.NationalId.hints.displayWidth}"
+                  maximumLength="#{bindings.NationalId.hints.precision}"
+                  shortDesc="#{bindings.NationalId.hints.tooltip}" id="it4" readOnly="true"
+                  contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                  labelStyle="font-size:17px;color:black;">
+      <f:validator binding="#{bindings.NationalId.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.NationalId.format}"/>
+    </af:inputText>
+    <af:inputComboboxListOfValues id="statusIdId" popupTitle="Search and Select: #{bindings.StatusId.hints.label}"
+                                  value="#{bindings.StatusId.inputValue}" label="#{bindings.StatusId.hints.label}"
+                                  model="#{bindings.StatusId.listOfValuesModel}"
+                                  required="#{bindings.StatusId.hints.mandatory}"
+                                  columns="#{bindings.StatusId.hints.displayWidth}"
+                                  shortDesc="#{bindings.StatusId.hints.tooltip}" readOnly="true"
+                                  contentStyle="width:200px;font-size:15px;color:navy;margin-right:20px;"
+                                  labelStyle="font-size:17px;color:black;">
+      <f:validator binding="#{bindings.StatusId.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.StatusId.format}"/>
+    </af:inputComboboxListOfValues>
+  </af:panelFormLayout>
+</ui:composition>

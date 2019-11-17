@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Home-BTF">
+    <default-activity>Home</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__3">
+      <managed-bean-name>RegionsBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.user.RegionsBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__4">
+      <managed-bean-name>LogoutBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.user.LogoutBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="Home">
+      <page>/Home.jsf</page>
+    </view>
+    <task-flow-return id="Logout">
+      <outcome>
+        <name>Logout</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__1">
+      <from-activity-id>Home</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>Logout</from-outcome>
+        <to-activity-id>Logout</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

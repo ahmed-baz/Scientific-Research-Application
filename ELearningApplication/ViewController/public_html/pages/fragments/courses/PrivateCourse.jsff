@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="#{bindings.CourseName.inputValue}" id="ph1">
+    <f:facet name="context"/>
+    <f:facet name="menuBar"/>
+    <f:facet name="toolbar">
+      <af:toolbar id="t1">
+        <af:button text="Delete Course" disabled="#{!bindings.Delete.enabled}"
+                   id="b4" icon="/resources/images/remove_from_shortlist.gif"
+                   rendered="#{LoginBean.user.userId eq bindings.UserId.inputValue ? 'true' : 'false'}">
+          <af:showPopupBehavior popupId="p1"/>
+        </af:button>
+        <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback" immediate="true" id="b3"
+                   icon="/resources/images/undo_arrow_left_edit_back-16.png"
+                   rendered="#{LoginBean.user.userId eq bindings.UserId.inputValue ? 'true' : 'false'}">
+          <af:resetActionListener/>
+        </af:button>
+        <af:button actionListener="#{bindings.Commit.execute}" text="Save" id="b2"
+                   icon="/resources/images/save-16.png"
+                   rendered="#{LoginBean.user.userId eq bindings.UserId.inputValue ? 'true' : 'false'}"/>
+        <af:button text="back" id="b1" icon="/resources/images/srch_go.gif" action="Courses" iconPosition="trailing"
+                   actionListener="#{DefaultCourseBean.setDefaultCourse}"/>
+      </af:toolbar>
+    </f:facet>
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:panelGridLayout id="pgl2">
+      <af:gridRow marginTop="5px" height="20%" id="gr3">
+        <af:gridCell marginStart="5px" width="100%" id="gc5" valign="stretch" halign="stretch">
+          <af:panelFormLayout id="pfl1">
+            <af:inputText value="#{bindings.CourseName.inputValue}" label="#{bindings.CourseName.hints.label}"
+                          required="#{bindings.CourseName.hints.mandatory}"
+                          columns="40"
+                          maximumLength="#{bindings.CourseName.hints.precision}"
+                          shortDesc="#{bindings.CourseName.hints.tooltip}" id="it1"
+                          readOnly="#{LoginBean.user.userId eq bindings.UserId.inputValue ? 'false' : 'true'}"
+                          contentStyle="font-size:15px;color:teal;padding:3px;"
+                          labelStyle="color:black;font-size:15px;">
+              <f:validator binding="#{bindings.CourseName.validator}"/>
+            </af:inputText>
+            <af:selectOneChoice value="#{bindings.UserId.inputValue}" label="Uploaded By"
+                                required="#{bindings.UserId.hints.mandatory}"
+                                shortDesc="#{bindings.UserId.hints.tooltip}" id="soc1" readOnly="true"
+                                contentStyle="font-size:15px;color:teal;padding:3px;"
+                                labelStyle="color:black;font-size:15px;">
+              <f:selectItems value="#{bindings.UserId.items}" id="si1"/>
+              <f:validator binding="#{bindings.UserId.validator}"/>
+            </af:selectOneChoice>
+            <af:inputDate value="#{bindings.CourseDate.inputValue}" label="#{bindings.CourseDate.hints.label}"
+                          required="#{bindings.CourseDate.hints.mandatory}"
+                          columns="40"
+                          shortDesc="#{bindings.CourseDate.hints.tooltip}" id="id1"
+                          readOnly="#{LoginBean.user.userId eq bindings.UserId.inputValue ? 'false' : 'true'}"
+                          rendered="#{LoginBean.user.userId eq bindings.UserId.inputValue ? 'false' : 'true'}"
+                          contentStyle="font-size:15px;color:teal;padding:3px;"
+                          labelStyle="color:black;font-size:15px;">
+              <f:validator binding="#{bindings.CourseDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.CourseDate.format}"/>
+            </af:inputDate>
+          </af:panelFormLayout>
+        </af:gridCell>
+      </af:gridRow>
+      <af:gridRow marginTop="5px" height="80%" marginBottom="5px" id="gr4">
+        <af:gridCell marginStart="5px" width="100%" id="gc7" halign="stretch" valign="stretch">
+          <af:panelHeader text="Course Videos" id="ph2">
+            <f:facet name="context"/>
+            <f:facet name="menuBar"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t2">
+                <af:button text="Delete Video" disabled="#{!bindings.Delete1.enabled}" id="b5"
+                           icon="/resources/images/remove_from_shortlist.gif"
+                           rendered="#{LoginBean.user.userId eq bindings.UserId.inputValue ? 'true' : 'false'}">
+                  <af:showPopupBehavior popupId="p2"/>
+                </af:button>
+                <af:button text="Edit Video" id="b6" icon="/resources/images/edit.gif"
+                           rendered="#{LoginBean.user.userId eq bindings.UserId.inputValue ? 'true' : 'false'}">
+                  <af:showPopupBehavior popupId="p3"/>
+                </af:button>
+                <af:button text="Add Video" id="b7" icon="/resources/images/Add.gif"
+                           action="#{DefaultCourseBean.addPrivateVideo}"
+                           rendered="#{LoginBean.user.userId eq bindings.UserId.inputValue ? 'true' : 'false'}"/>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="legend"/>
+            <f:facet name="info"/>
+            <af:listView value="#{bindings.PrivateVideos.collectionModel}" var="item"
+                         emptyText="#{bindings.PrivateVideos.viewable ? 'No data to display.' : 'Access Denied.'}"
+                         fetchSize="#{bindings.PrivateVideos.rangeSize}" id="lv1" selection="single"
+                         selectionListener="#{bindings.PrivateVideos.treeModel.makeCurrent}"
+                         partialTriggers="::b4 ::b3 ::b2 ::b1 ::b9 ::b8 ::b10 ::b11 ::b5 ::b6 ::b7">
+              <af:listItem id="li1" partialTriggers="::b4 ::b3 ::b2 ::b1 ::b9 ::b8 ::b10 ::b11 ::b5 ::b6 ::b7">
+                <af:panelGridLayout id="pgl4">
+                  <af:gridRow marginTop="5px" height="auto" id="gr5">
+                    <af:gridCell marginStart="5px" width="50%" id="gc4">
+                      <af:outputFormatted value="#{item.bindings.VideoName.inputValue}" id="of1"
+                                          inlineStyle="font-size:15px;"/>
+                    </af:gridCell>
+                    <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc9">
+                      <af:media id="m1" source="#{bindings.VideoUpload.inputValue}" autostart="true" player="windows"
+                                controls="all" standbyText="Wait loading"/>
+                    </af:gridCell>
+                  </af:gridRow>
+                  <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr6">
+                    <af:gridCell marginStart="5px" width="50%" id="gc10">
+                      <af:outputFormatted value="#{item.bindings.Discription.inputValue}" id="of2"
+                                          inlineStyle="font-size:15px;"/>
+                    </af:gridCell>
+                    <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc11">
+                      <af:link text="Download #{item.bindings.VideoName.inputValue}" id="l1"
+                               icon="/resources/images/download_1-20.png" inlineStyle="font-size:15px;">
+                        <af:fileDownloadActionListener filename="#{item.bindings.VideoName.inputValue}"
+                                                       method="#{DownloadPrivateCourseBean.downloadPrivateVideo}"/>
+                      </af:link>
+                    </af:gridCell>
+                  </af:gridRow>
+                </af:panelGridLayout>
+              </af:listItem>
+            </af:listView>
+          </af:panelHeader>
+        </af:gridCell>
+      </af:gridRow>
+    </af:panelGridLayout>
+  </af:panelHeader>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached"
+            binding="#{DefaultCourseBean.deletePrivateCourse}">
+    <af:dialog id="d1" type="none" contentWidth="400" contentHeight="200">
+      <af:panelGroupLayout id="pgl1" layout="horizontal" halign="center">
+        <af:outputText value="Delete This Course ? " id="ot1"
+                       inlineStyle="color:black;font-size:20px;margin-right:5px;"/>
+        <af:image source="/resources/images/confirmation.png" id="i1"/>
+      </af:panelGroupLayout>
+      <f:facet name="buttonBar">
+        <af:button text="Delete" id="b9" icon="/resources/images/remove_from_shortlist.gif" iconPosition="trailing"
+                   actionListener="#{bindings.Delete.execute}" action="#{DefaultCourseBean.deletePrivateCourse}"/>
+      </f:facet>
+    </af:dialog>
+  </af:popup>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p2" binding="#{DefaultCourseBean.deletePrivateVideo}"
+            contentDelivery="lazyUncached">
+    <af:dialog id="d2" type="none" contentWidth="400" contentHeight="200">
+      <af:panelGroupLayout id="pgl3" halign="center" layout="horizontal">
+        <af:outputText value="Delete Selected Video ? " id="ot2"
+                       inlineStyle="margin-right:5px;font-size:20px;color:black;"/>
+        <af:image source="/resources/images/confirmation.png" id="i2"/>
+      </af:panelGroupLayout>
+      <f:facet name="buttonBar">
+        <af:button text="Delete" id="b8" icon="/resources/images/remove_from_shortlist.gif" iconPosition="trailing"
+                   actionListener="#{bindings.Delete1.execute}" action="#{DefaultCourseBean.deletePrivateVideo}"/>
+      </f:facet>
+    </af:dialog>
+  </af:popup>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p3" binding="#{DefaultCourseBean.editPrivateVideo}"
+            contentDelivery="lazyUncached">
+    <af:dialog id="d3" type="none" contentWidth="500" contentHeight="250">
+      <af:panelFormLayout id="pfl2">
+        <af:inputText value="#{bindings.VideoName.inputValue}" label="#{bindings.VideoName.hints.label}"
+                      required="#{bindings.VideoName.hints.mandatory}"
+                      columns="#{bindings.VideoName.hints.displayWidth}"
+                      maximumLength="#{bindings.VideoName.hints.precision}"
+                      shortDesc="#{bindings.VideoName.hints.tooltip}" id="it2"
+                      contentStyle="width:300px;color:teal;font-size:15px;padding:3px;"
+                      labelStyle="color:black;font-size:15px;">
+          <f:validator binding="#{bindings.VideoName.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Discription.inputValue}" label="#{bindings.Discription.hints.label}"
+                      required="#{bindings.Discription.hints.mandatory}"
+                      columns="#{bindings.Discription.hints.displayWidth}"
+                      maximumLength="#{bindings.Discription.hints.precision}"
+                      shortDesc="#{bindings.Discription.hints.tooltip}" id="it3"
+                      contentStyle="width:300px;color:teal;font-size:15px;padding:3px;"
+                      labelStyle="color:black;font-size:15px;">
+          <f:validator binding="#{bindings.Discription.validator}"/>
+        </af:inputText>
+        <af:inputFile label="Upload Video" id="if1" contentStyle="width:300px;color:teal;font-size:15px;padding:3px;"
+                      labelStyle="color:black;font-size:15px;"
+                      valueChangeListener="#{viewScope.EditVideoBean.editVideo}"/>
+      </af:panelFormLayout>
+      <f:facet name="buttonBar">
+        <af:button text="Save" id="b10" icon="/resources/images/save-16.png" iconPosition="trailing"
+                   action="#{DefaultCourseBean.editPrivateVideo}"/>
+      </f:facet>
+    </af:dialog>
+  </af:popup>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p4" contentDelivery="lazyUncached"
+            binding="#{DefaultCourseBean.addPrivateVideo}">
+    <af:dialog id="d4" type="none" contentWidth="500" contentHeight="250">
+      <af:panelFormLayout id="pfl3">
+        <af:inputText value="#{bindings.VideoName.inputValue}" label="#{bindings.VideoName.hints.label}"
+                      required="#{bindings.VideoName.hints.mandatory}"
+                      columns="#{bindings.VideoName.hints.displayWidth}"
+                      maximumLength="#{bindings.VideoName.hints.precision}"
+                      shortDesc="#{bindings.VideoName.hints.tooltip}" id="it4"
+                      contentStyle="padding:3px;width:300px;font-size:15px;color:teal;"
+                      labelStyle="font-size:15px;color:black" showRequired="true">
+          <f:validator binding="#{bindings.VideoName.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Discription.inputValue}" label="#{bindings.Discription.hints.label}"
+                      required="#{bindings.Discription.hints.mandatory}"
+                      columns="#{bindings.Discription.hints.displayWidth}"
+                      maximumLength="#{bindings.Discription.hints.precision}"
+                      shortDesc="#{bindings.Discription.hints.tooltip}" id="it5"
+                      contentStyle="padding:3px;width:300px;font-size:15px;color:teal;"
+                      labelStyle="font-size:15px;color:black">
+          <f:validator binding="#{bindings.Discription.validator}"/>
+        </af:inputText>
+        <af:inputFile label="Upload Video" id="if2" contentStyle="padding:3px;width:300px;font-size:15px;color:teal;"
+                      labelStyle="font-size:15px;color:black" showRequired="true"
+                      valueChangeListener="#{viewScope.EditVideoBean.editVideo}"/>
+      </af:panelFormLayout>
+      <f:facet name="buttonBar">
+        <af:button text="Save" id="b11" icon="/resources/images/save-16.png"
+                   action="#{DefaultCourseBean.savePrivateVideo}"/>
+      </f:facet>
+    </af:dialog>
+  </af:popup>
+</ui:composition>

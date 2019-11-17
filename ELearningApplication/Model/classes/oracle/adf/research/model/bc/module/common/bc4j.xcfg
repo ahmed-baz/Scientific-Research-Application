@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="oracle.adf.research.model.bc.module.ProfessorsAM">
+      <AppModuleConfig DeployPlatform="LOCAL" name="ProfessorsAMLocal" ApplicationName="oracle.adf.research.model.bc.module.ProfessorsAM" jbo.project="oracle.adf.research.model.Model">
+         <Security AppModuleJndiName="oracle.adf.research.model.bc.module.ProfessorsAM"/>
+         <Custom ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" ns0:JDBCDataSource="java:comp/env/jdbc/ResearchAppDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="ProfessorsAMShared" ApplicationName="oracle.adf.research.model.bc.module.ProfessorsAM" DeployPlatform="LOCAL" jbo.project="oracle.adf.research.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="oracle.adf.research.model.bc.module.ProfessorsAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/ResearchAppDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="oracle.adf.research.model.bc.module.SecurityAM">
+      <AppModuleConfig name="SecurityAMLocal" ApplicationName="oracle.adf.research.model.bc.module.SecurityAM" DeployPlatform="LOCAL" jbo.project="oracle.adf.research.model.Model">
+         <Security AppModuleJndiName="oracle.adf.research.model.bc.module.SecurityAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/ResearchAppDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="SecurityAMShared" ApplicationName="oracle.adf.research.model.bc.module.SecurityAM" DeployPlatform="LOCAL" jbo.project="oracle.adf.research.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="oracle.adf.research.model.bc.module.SecurityAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/ResearchAppDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="oracle.adf.research.model.bc.module.ProjectsAM">
+      <AppModuleConfig name="ProjectsAMLocal" ApplicationName="oracle.adf.research.model.bc.module.ProjectsAM" DeployPlatform="LOCAL" jbo.project="oracle.adf.research.model.Model">
+         <Security AppModuleJndiName="oracle.adf.research.model.bc.module.ProjectsAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/ResearchAppDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="ProjectsAMShared" ApplicationName="oracle.adf.research.model.bc.module.ProjectsAM" DeployPlatform="LOCAL" jbo.project="oracle.adf.research.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="oracle.adf.research.model.bc.module.ProjectsAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/ResearchAppDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="oracle.adf.research.model.bc.module.LibraryAM">
+      <AppModuleConfig name="LibraryAMLocal" ApplicationName="oracle.adf.research.model.bc.module.LibraryAM" DeployPlatform="LOCAL" jbo.project="oracle.adf.research.model.Model">
+         <Security AppModuleJndiName="oracle.adf.research.model.bc.module.LibraryAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/ResearchAppDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="LibraryAMShared" ApplicationName="oracle.adf.research.model.bc.module.LibraryAM" DeployPlatform="LOCAL" jbo.project="oracle.adf.research.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="oracle.adf.research.model.bc.module.LibraryAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/ResearchAppDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="oracle.adf.research.model.bc.module.CoursesAM">
+      <AppModuleConfig name="CoursesAMLocal" ApplicationName="oracle.adf.research.model.bc.module.CoursesAM" DeployPlatform="LOCAL" jbo.project="oracle.adf.research.model.Model">
+         <Security AppModuleJndiName="oracle.adf.research.model.bc.module.CoursesAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/ResearchAppDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="CoursesAMShared" ApplicationName="oracle.adf.research.model.bc.module.CoursesAM" DeployPlatform="LOCAL" jbo.project="oracle.adf.research.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="oracle.adf.research.model.bc.module.CoursesAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/ResearchAppDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

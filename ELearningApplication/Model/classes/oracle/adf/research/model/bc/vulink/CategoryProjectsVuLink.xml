@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CategoryProjectsVuLink"
+  Version="12.1.3.2.1"
+  InheritPersonalization="merge"
+  EntityAssociation="oracle.adf.research.model.bc.assoc.CategoryProjectsAssoc">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="oracle.adf.research.model.bc.vulink.CategoryProjectsVuLink_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="Category"
+    Cardinality="1"
+    Source="true"
+    Owner="oracle.adf.research.model.bc.uiview.CategoryVO">
+    <DesignTime>
+      <Attr Name="_accessor" Value="true"/>
+      <Attr Name="_finderName" Value="Category"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.uiview.CategoryVO.CategoryId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="Projects"
+    Cardinality="-1"
+    Owner="oracle.adf.research.model.bc.uiview.ProjectsVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="Projects"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.uiview.ProjectsVO.CategoryId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="oracle.adf.research.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

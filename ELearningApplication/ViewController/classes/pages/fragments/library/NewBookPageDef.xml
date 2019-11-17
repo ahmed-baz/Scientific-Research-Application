@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="NewBookPageDef"
+                Package="pages.fragments.library">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Books" RangeSize="25" DataControl="LibraryAMDataControl" id="BooksIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="BooksIterator" id="BookName">
+      <AttrNames>
+        <Item Value="BookName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="BooksIterator" StaticList="false" Uses="LOV_CategoryId" id="CategoryId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="BooksIterator" id="AutherName">
+      <AttrNames>
+        <Item Value="AutherName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BooksIterator" id="BookDate">
+      <AttrNames>
+        <Item Value="BookDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="BooksIterator" StaticList="false" Uses="LOV_Status" id="Status" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="BooksIterator" id="Code">
+      <AttrNames>
+        <Item Value="Code"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BooksIterator" id="BookImage">
+      <AttrNames>
+        <Item Value="BookImage"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BooksIterator" id="Screenshot1">
+      <AttrNames>
+        <Item Value="Screenshot1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BooksIterator" id="Screenshot2">
+      <AttrNames>
+        <Item Value="Screenshot2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="BooksIterator" id="BookPath">
+      <AttrNames>
+        <Item Value="BookPath"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="LibraryAMDataControl"/>
+    <methodAction id="bookCode" RequiresUpdateModel="true" Action="invokeMethod" MethodName="bookCode"
+                  IsViewObjectMethod="false" DataControl="LibraryAMDataControl"
+                  InstanceName="data.LibraryAMDataControl.dataProvider"
+                  ReturnName="data.LibraryAMDataControl.methodResults.bookCode_LibraryAMDataControl_dataProvider_bookCode_result"/>
+  </bindings>
+</pageDefinition>

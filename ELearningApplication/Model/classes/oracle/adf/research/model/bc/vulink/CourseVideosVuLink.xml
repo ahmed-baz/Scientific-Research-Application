@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CourseVideosVuLink"
+  Version="12.1.3.2.1"
+  InheritPersonalization="merge"
+  EntityAssociation="oracle.adf.research.model.bc.assoc.CourseVideosAssoc">
+  <ViewLinkDefEnd
+    Name="Courses"
+    Cardinality="1"
+    Source="true"
+    Owner="oracle.adf.research.model.bc.uiview.CoursesVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="Courses"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.uiview.CoursesVO.CourseId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="Videos"
+    Cardinality="-1"
+    Owner="oracle.adf.research.model.bc.uiview.VideosVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="Videos"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.uiview.VideosVO.CourseId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="oracle.adf.research.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

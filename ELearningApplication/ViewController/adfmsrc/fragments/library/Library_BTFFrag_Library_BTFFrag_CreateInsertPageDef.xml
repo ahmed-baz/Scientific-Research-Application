@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1"
+                id="Library_BTFFrag_Library_BTFFrag_CreateInsertPageDef" Package="fragments.library"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="Books" RangeSize="25" DataControl="LibraryAMDataControl" id="BooksIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="BooksIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

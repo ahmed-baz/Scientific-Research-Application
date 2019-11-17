@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="UploadProjectPageDef"
+                Package="pages.fragments.projects">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Projects3" RangeSize="25" DataControl="ProjectsAMDataControl" id="Projects3Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Projects3Iterator" id="ProjectName">
+      <AttrNames>
+        <Item Value="ProjectName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects3Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects3Iterator" id="Link">
+      <AttrNames>
+        <Item Value="Link"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Projects3Iterator" StaticList="false" Uses="LOV_CategoryId" id="CategoryId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Projects3Iterator" id="ProjectDate">
+      <AttrNames>
+        <Item Value="ProjectDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects3Iterator" id="Type">
+      <AttrNames>
+        <Item Value="Type"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects3Iterator" id="Code">
+      <AttrNames>
+        <Item Value="Code"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects3Iterator" id="ProjectId">
+      <AttrNames>
+        <Item Value="ProjectId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects3Iterator" id="ProjectFile">
+      <AttrNames>
+        <Item Value="ProjectFile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects3Iterator" id="UserId">
+      <AttrNames>
+        <Item Value="UserId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects3Iterator" id="ProjectImage">
+      <AttrNames>
+        <Item Value="ProjectImage"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects3Iterator" id="Screenshot1">
+      <AttrNames>
+        <Item Value="Screenshot1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects3Iterator" id="Screenshot2">
+      <AttrNames>
+        <Item Value="Screenshot2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects3Iterator" id="Path">
+      <AttrNames>
+        <Item Value="Path"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterPrivateProjects" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterPrivateProjects" IsViewObjectMethod="false" DataControl="ProjectsAMDataControl"
+                  InstanceName="data.ProjectsAMDataControl.dataProvider"
+                  ReturnName="data.ProjectsAMDataControl.methodResults.filterPrivateProjects_ProjectsAMDataControl_dataProvider_filterPrivateProjects_result"/>
+    <methodAction id="filterPublicProjects" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterPublicProjects" IsViewObjectMethod="false" DataControl="ProjectsAMDataControl"
+                  InstanceName="data.ProjectsAMDataControl.dataProvider"
+                  ReturnName="data.ProjectsAMDataControl.methodResults.filterPublicProjects_ProjectsAMDataControl_dataProvider_filterPublicProjects_result"/>
+    <methodAction id="getCode" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getCode"
+                  IsViewObjectMethod="false" DataControl="ProjectsAMDataControl"
+                  InstanceName="data.ProjectsAMDataControl.dataProvider"
+                  ReturnName="data.ProjectsAMDataControl.methodResults.getCode_ProjectsAMDataControl_dataProvider_getCode_result"/>
+    <action id="Commit" DataControl="ProjectsAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="ProjectsAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <list IterBinding="Projects3Iterator" StaticList="false" Uses="LOV_Type" id="Type1" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

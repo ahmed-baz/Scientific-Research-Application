@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelDashboard id="pd1" columns="3" rowHeight="200px">
+    <af:panelBox text="Professors" id="pb1" showDisclosure="false">
+      <f:facet name="toolbar"/>
+      <af:panelGroupLayout id="pgl1" halign="center" valign="middle" layout="scroll">
+        <af:link id="l1" icon="/resources/images/Manager.png" action="#{RegionsBean.professor_BTFFrag}"/>
+      </af:panelGroupLayout>
+    </af:panelBox>
+    <af:panelBox text="Library" id="pb2" showDisclosure="false">
+      <f:facet name="toolbar"/>
+      <af:panelGroupLayout id="pgl2" halign="center" valign="middle" layout="scroll">
+        <af:link id="l2" icon="/resources/images/library.png" action="#{RegionsBean.libraryBTFFrag}"/>
+      </af:panelGroupLayout>
+    </af:panelBox>
+    <af:panelBox text="Projects" id="pb3" showDisclosure="false">
+      <f:facet name="toolbar"/>
+      <af:panelGroupLayout id="pgl3" halign="center" layout="scroll" valign="middle">
+        <af:link id="l3" icon="/resources/images/project-plan.png" action="#{RegionsBean.projectsBTFFrag}"/>
+      </af:panelGroupLayout>
+    </af:panelBox>
+    <af:panelBox text="Courses" id="pb4" showDisclosure="false">
+      <f:facet name="toolbar"/>
+      <af:panelGroupLayout id="pgl4" halign="center" layout="scroll">
+        <af:link id="l6" icon="/resources/images/if_Courses_70613.png" action="#{RegionsBean.coursesBTFFrag}"/>
+      </af:panelGroupLayout>
+    </af:panelBox>
+    <af:panelBox text="Settings" id="pb5" showDisclosure="false">
+      <f:facet name="toolbar"/>
+      <af:panelGroupLayout id="pgl5" halign="center" valign="middle" layout="scroll">
+        <af:link id="l5" icon="/resources/images/Service-Manager.png" action="#{RegionsBean.settingsBTFFrag}"/>
+      </af:panelGroupLayout>
+    </af:panelBox>
+    <af:panelBox text="Approvals" id="pb6" showDisclosure="false"
+                 rendered='#{LoginBean.user.roleName eq "Admin" ? true : false}'>
+      <f:facet name="toolbar"/>
+      <af:panelGroupLayout id="pgl6" layout="scroll" halign="center" valign="middle">
+        <af:link id="l4" icon="/resources/images/shop-24-128.png" action="#{RegionsBean.approvalsBTFFrag}"/>
+      </af:panelGroupLayout>
+    </af:panelBox>
+  </af:panelDashboard>
+</ui:composition>

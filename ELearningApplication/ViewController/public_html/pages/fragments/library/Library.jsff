@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGridLayout id="pgl1">
+    <af:gridRow marginTop="5px" height="auto" id="gr1">
+      <af:gridCell marginStart="5px" width="30%" id="gc1" halign="center" valign="middle">
+        <af:button text="Access Private Book" id="b1" icon="/resources/images/private_book_20px.png"
+                   iconPosition="trailing">
+          <af:showPopupBehavior popupId="p1"/>
+        </af:button>
+      </af:gridCell>
+      <af:gridCell marginStart="5px" width="40%" id="gc2" halign="center" valign="middle">
+        <af:selectOneChoice value="#{bindings.CategoryId.inputValue}" label="Category"
+                            required="#{bindings.CategoryId.hints.mandatory}"
+                            shortDesc="#{bindings.CategoryId.hints.tooltip}" id="soc1" autoSubmit="true"
+                            contentStyle="color:teal;font-size:20px;" labelStyle="color:black;font-size:20px;">
+          <f:selectItems value="#{bindings.CategoryId.items}" id="si1"/>
+          <f:validator binding="#{bindings.CategoryId.validator}"/>
+        </af:selectOneChoice>
+      </af:gridCell>
+      <af:gridCell marginStart="5px" width="30%" marginEnd="5px" id="gc3" halign="center" valign="middle">
+        <af:button text="Upload Book" id="b2" rendered="#{LoginBean.user.roleName eq'Prof'}" action="AddNewBook"
+                   icon="/resources/images/Add.gif"/>
+      </af:gridCell>
+    </af:gridRow>
+    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+      <af:gridCell marginStart="5px" columnSpan="3" marginEnd="5px" id="gc4" halign="stretch" valign="stretch">
+        <af:listView value="#{bindings.PublicBooks.collectionModel}" var="item"
+                     emptyText="#{bindings.PublicBooks.viewable ? 'No data to display.' : 'Access Denied.'}"
+                     fetchSize="#{bindings.PublicBooks.rangeSize}" id="lv1" partialTriggers="::soc1"
+                     selectionListener="#{SelectedBookBean.getSelectedBook}" selection="single">
+          <af:listItem id="li1">
+            <af:panelGridLayout id="pgl3">
+              <af:gridRow marginTop="5px" height="auto" id="gr3">
+                <af:gridCell marginStart="5px" rowSpan="2" width="10%" id="gc5" halign="center" valign="middle">
+                  <af:image source="/bookcoverservlet?id=#{item.bindings.BookId.inputValue}" id="i1" inlineStyle="width:70px;height:50px;"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="90%" marginEnd="5px" id="gc6">
+                  <af:outputFormatted value="#{item.bindings.BookName.inputValue}" id="of1"/>
+                </af:gridCell>
+              </af:gridRow>
+              <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr4">
+                <af:gridCell marginStart="5px" width="90%" marginEnd="5px" id="gc7">
+                  <af:outputFormatted value="#{item.bindings.AutherName.inputValue}" id="of2"/>
+                </af:gridCell>
+              </af:gridRow>
+            </af:panelGridLayout>
+          </af:listItem>
+        </af:listView>
+      </af:gridCell>
+    </af:gridRow>
+  </af:panelGridLayout>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+    <af:dialog id="d1" type="cancel">
+      <f:facet name="buttonBar"/>
+      <af:panelFormLayout id="pfl1">
+        <f:facet name="footer"/>
+        <af:panelGroupLayout id="pgl2" layout="horizontal">
+          <af:inputText label="Book Code" id="it1" value="#{AccessPrivateBooksBean.code}"/>
+          <af:button text="Go" id="b3" action="#{AccessPrivateBooksBean.getSelectedPrivateBook}"/>
+        </af:panelGroupLayout>
+        <af:outputText id="ot1" partialTriggers="b3" binding="#{AccessPrivateBooksBean.codeMessage}"
+                       inlineStyle="color:red;"/>
+      </af:panelFormLayout>
+    </af:dialog>
+  </af:popup>
+</ui:composition>

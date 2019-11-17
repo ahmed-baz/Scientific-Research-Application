@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="ProjectsPageDef"
+                Package="pages.fragments.projects">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Category1" RangeSize="25" DataControl="ProjectsAMDataControl" id="Category1Iterator"/>
+    <iterator Binds="Projects1" RangeSize="25" DataControl="ProjectsAMDataControl" id="Projects1Iterator"/>
+    <iterator Binds="CategoryDropDown2" RangeSize="-1" DataControl="ProjectsAMDataControl"
+              id="CategoryDropDown2Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="Category1Iterator" StaticList="false" id="CategoryId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject" ListIter="CategoryDropDown2Iterator" MRUCount="1"
+          MRUId="mruId" ListOperMode="navigation">
+      <AttrNames>
+        <Item Value="CategoryName"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="CategoryId"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="CategoryName"/>
+      </ListDisplayAttrNames>
+    </list>
+    <tree IterBinding="Projects1Iterator" id="Projects1">
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.ProjectsVO" Name="Projects10">
+        <AttrNames>
+          <Item Value="ProjectName"/>
+          <Item Value="Description"/>
+          <Item Value="ProjectId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="accessProject" RequiresUpdateModel="true" Action="invokeMethod" MethodName="accessProject"
+                  IsViewObjectMethod="false" DataControl="ProjectsAMDataControl"
+                  InstanceName="data.ProjectsAMDataControl.dataProvider"
+                  ReturnName="data.ProjectsAMDataControl.methodResults.accessProject_ProjectsAMDataControl_dataProvider_accessProject_result">
+      <NamedData NDName="code" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

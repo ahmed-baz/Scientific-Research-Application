@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="PrivateBookPageDef"
+                Package="pages.fragments.library">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PrivateBooks" RangeSize="25" DataControl="LibraryAMDataControl" id="PrivateBooksIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PrivateBooksIterator" id="AutherName">
+      <AttrNames>
+        <Item Value="AutherName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrivateBooksIterator" id="BookDate">
+      <AttrNames>
+        <Item Value="BookDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrivateBooksIterator" id="BookName">
+      <AttrNames>
+        <Item Value="BookName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrivateBooksIterator" id="BookId">
+      <AttrNames>
+        <Item Value="BookId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrivateBooksIterator" id="Book">
+      <AttrNames>
+        <Item Value="Book"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="defaultBooks" RequiresUpdateModel="true" Action="invokeMethod" MethodName="defaultBooks"
+                  IsViewObjectMethod="false" DataControl="LibraryAMDataControl"
+                  InstanceName="data.LibraryAMDataControl.dataProvider"
+                  ReturnName="data.LibraryAMDataControl.methodResults.defaultBooks_LibraryAMDataControl_dataProvider_defaultBooks_result"/>
+    <attributeValues IterBinding="PrivateBooksIterator" id="BookImage">
+      <AttrNames>
+        <Item Value="BookImage"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="bookCode" RequiresUpdateModel="true" Action="invokeMethod" MethodName="bookCode"
+                  IsViewObjectMethod="false" DataControl="LibraryAMDataControl"
+                  InstanceName="data.LibraryAMDataControl.dataProvider"
+                  ReturnName="data.LibraryAMDataControl.methodResults.bookCode_LibraryAMDataControl_dataProvider_bookCode_result"/>
+    <methodAction id="checkBookCode" RequiresUpdateModel="true" Action="invokeMethod" MethodName="checkBookCode"
+                  IsViewObjectMethod="false" DataControl="LibraryAMDataControl"
+                  InstanceName="data.LibraryAMDataControl.dataProvider"
+                  ReturnName="data.LibraryAMDataControl.methodResults.checkBookCode_LibraryAMDataControl_dataProvider_checkBookCode_result">
+      <NamedData NDName="code" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="defaultBooks1" RequiresUpdateModel="true" Action="invokeMethod" MethodName="defaultBooks"
+                  IsViewObjectMethod="false" DataControl="LibraryAMDataControl"
+                  InstanceName="data.LibraryAMDataControl.dataProvider"
+                  ReturnName="data.LibraryAMDataControl.methodResults.defaultBooks_LibraryAMDataControl_dataProvider_defaultBooks_result"/>
+    <action IterBinding="PrivateBooksIterator" id="Delete" InstanceName="LibraryAMDataControl.PrivateBooks"
+            DataControl="LibraryAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="LibraryAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="LibraryAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="PrivateBooksIterator" id="BookPath">
+      <AttrNames>
+        <Item Value="BookPath"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrivateBooksIterator" id="Screenshot1">
+      <AttrNames>
+        <Item Value="Screenshot1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrivateBooksIterator" id="Screenshot2">
+      <AttrNames>
+        <Item Value="Screenshot2"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PrivateBooksIterator" StaticList="false" Uses="LOV_UserId" id="UserId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="PrivateBooksIterator" StaticList="false" Uses="LOV_CategoryId" id="CategoryId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="PrivateBooksIterator" StaticList="false" Uses="LOV_Status" id="Status" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="PrivateBooksIterator" id="Code">
+      <AttrNames>
+        <Item Value="Code"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

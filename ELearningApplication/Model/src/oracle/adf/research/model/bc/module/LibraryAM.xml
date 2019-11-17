@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LibraryAM"
+  Version="12.1.3.2.1"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="oracle.adf.research.model.bc.module.LibraryAMImpl"
+  ComponentInterface="oracle.adf.research.model.bc.module.common.LibraryAM">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewUsage
+    Name="Books"
+    ViewObjectName="oracle.adf.research.model.bc.uiview.BookVO"/>
+  <ViewUsage
+    Name="Category"
+    ViewObjectName="oracle.adf.research.model.bc.uiview.CategoryVO"/>
+  <ViewUsage
+    Name="PublicBooks"
+    ViewObjectName="oracle.adf.research.model.bc.uiview.BookVO">
+    <ViewCriteriaUsage
+      Name="PublicBookVOCriteria"
+      FullName="oracle.adf.research.model.bc.uiview.BookVO.PublicBookVOCriteria"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="CategoryDropDownList"
+    ViewObjectName="oracle.adf.research.model.bc.dropdownlists.CategoryVO"/>
+  <ViewUsage
+    Name="PrivateBooks"
+    ViewObjectName="oracle.adf.research.model.bc.uiview.BookVO">
+    <ViewCriteriaUsage
+      Name="PrivateBookVOCriteria"
+      FullName="oracle.adf.research.model.bc.uiview.BookVO.PrivateBookVOCriteria"/>
+  </ViewUsage>
+  <ViewLinkUsage
+    Name="CategoryBooksVuLink1"
+    ViewLinkObjectName="oracle.adf.research.model.bc.vulink.CategoryBooksVuLink"
+    SrcViewUsageName="oracle.adf.research.model.bc.module.LibraryAM.Category"
+    DstViewUsageName="oracle.adf.research.model.bc.module.LibraryAM.PublicBooks"
+    Reversed="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="bookCode"
+      MethodName="bookCode">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="checkBookCode"
+      MethodName="checkBookCode">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.Boolean"/>
+      <Parameter
+        Name="code"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="defaultBooks"
+      MethodName="defaultBooks">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="PersonalDataPageDef"
+                Package="pages.fragments.professors">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Users1" RangeSize="25" DataControl="ProfessorsAMDataControl" id="Users1Iterator"/>
+    <iterator Binds="MainProfessors" RangeSize="25" DataControl="ProfessorsAMDataControl" id="Professors1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Users1Iterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="BirthDate">
+      <AttrNames>
+        <Item Value="BirthDate"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="Users1Iterator" StaticList="false" Uses="LOV_Gender" id="Gender"/>
+    <attributeValues IterBinding="Professors1Iterator" id="NationalId">
+      <AttrNames>
+        <Item Value="NationalId"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="Professors1Iterator" StaticList="false" Uses="LOV_StatusId" id="StatusId"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="Select Request" id="ph1">
+    <f:facet name="context"/>
+    <f:facet name="menuBar"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:panelGridLayout id="pgl1">
+      <af:gridRow marginTop="5px" height="10%" id="gr1">
+        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc1" halign="center" valign="stretch"/>
+      </af:gridRow>
+      <af:gridRow marginTop="5px" height="90%" marginBottom="5px" id="gr2">
+        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc2" halign="stretch" valign="stretch">
+          <af:listView value="#{bindings.ProfessorsApprovals.collectionModel}" var="item"
+                       emptyText="#{bindings.ProfessorsApprovals.viewable ? 'No data to display.' : 'Access Denied.'}"
+                       fetchSize="#{bindings.ProfessorsApprovals.rangeSize}" id="lv1" selection="single"
+                       selectionListener="#{viewScope.ApprovalsBean.selectProfessorApproval}"
+                       binding="#{viewScope.ApprovalsBean.listViewSelectRequest}" partialTriggers="">
+            <af:listItem id="li1" binding="#{viewScope.ApprovalsBean.listItemSelectRequest}">
+              <af:panelGridLayout id="pgl2">
+                <af:gridRow marginTop="5px" height="auto" id="gr3">
+                  <af:gridCell marginStart="5px" rowSpan="2" width="10%" id="gc3" halign="center" valign="middle">
+                    <af:image source="/professorsimages?id=#{item.bindings.Email.inputValue}" id="i1" inlineStyle="width:50px;height:50px;"/>
+                  </af:gridCell>
+                  <af:gridCell marginStart="5px" width="45%" id="gc4">
+                    <af:selectOneChoice value="#{item.bindings.UserId.inputValue}"
+                                        required="#{bindings.ProfessorsApprovals.hints.UserId.mandatory}"
+                                        shortDesc="#{bindings.ProfessorsApprovals.hints.UserId.tooltip}" readOnly="true"
+                                        id="soc1">
+                      <f:selectItems value="#{item.bindings.UserId.items}" id="si1"/>
+                      <f:validator binding="#{item.bindings.UserId.validator}"/>
+                    </af:selectOneChoice>
+                  </af:gridCell>
+                  <af:gridCell marginStart="5px" width="45%" marginEnd="5px" id="gc5">
+                    <af:outputFormatted value="#{item.bindings.Email.inputValue}" id="of1"/>
+                  </af:gridCell>
+                </af:gridRow>
+                <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr4">
+                  <af:gridCell marginStart="5px" width="45%" id="gc6">
+                    <af:outputFormatted value="#{item.bindings.NationalId.inputValue}" id="of2">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.ProfessorsApprovals.hints.NationalId.format}"/>
+                    </af:outputFormatted>
+                  </af:gridCell>
+                  <af:gridCell marginStart="5px" width="45%" marginEnd="5px" id="gc7">
+                    <af:selectOneChoice value="#{item.bindings.CityId.inputValue}"
+                                        required="#{bindings.ProfessorsApprovals.hints.CityId.mandatory}"
+                                        shortDesc="#{bindings.ProfessorsApprovals.hints.CityId.tooltip}" readOnly="true"
+                                        id="soc2">
+                      <f:selectItems value="#{item.bindings.CityId.items}" id="si2"/>
+                      <f:validator binding="#{item.bindings.CityId.validator}"/>
+                    </af:selectOneChoice>
+                  </af:gridCell>
+                </af:gridRow>
+              </af:panelGridLayout>
+            </af:listItem>
+          </af:listView>
+        </af:gridCell>
+      </af:gridRow>
+    </af:panelGridLayout>
+  </af:panelHeader>
+</ui:composition>

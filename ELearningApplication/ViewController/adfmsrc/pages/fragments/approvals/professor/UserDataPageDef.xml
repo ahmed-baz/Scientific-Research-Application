@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="UserDataPageDef"
+                Package="pages.fragments.approvals.professor">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="ProfessorsApprovalsIterator" Binds="ProfessorsApprovals" DataControl="ProfessorsAMDataControl"
+              RangeSize="25"/>
+    <iterator Binds="Qualifiactions2" RangeSize="25" DataControl="ProfessorsAMDataControl"
+              id="Qualifiactions2Iterator"/>
+    <searchRegion Binds="Qualifiactions2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="Qualifiactions2Query"/>
+    <iterator Binds="Awards2" RangeSize="25" DataControl="ProfessorsAMDataControl" id="Awards2Iterator"/>
+    <searchRegion Binds="Awards2Iterator" Criteria="" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Awards2Query"/>
+    <iterator id="Users2Iterator" Binds="Users2" DataControl="ProfessorsAMDataControl" RangeSize="25"/>
+    <iterator id="ContactData2Iterator" Binds="ContactData2" DataControl="ProfessorsAMDataControl" RangeSize="25"/>
+    <iterator id="Cv2Iterator" Binds="Cv2" DataControl="ProfessorsAMDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ProfessorsApprovalsIterator" id="ProfessorId">
+      <AttrNames>
+        <Item Value="ProfessorId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfessorsApprovalsIterator" id="UserId">
+      <AttrNames>
+        <Item Value="UserId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfessorsApprovalsIterator" id="NationalId">
+      <AttrNames>
+        <Item Value="NationalId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfessorsApprovalsIterator" id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfessorsApprovalsIterator" id="CvId">
+      <AttrNames>
+        <Item Value="CvId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfessorsApprovalsIterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfessorsApprovalsIterator" id="UserId1">
+      <AttrNames>
+        <Item Value="UserId1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfessorsApprovalsIterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfessorsApprovalsIterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProfessorsApprovalsIterator" id="RoleId">
+      <AttrNames>
+        <Item Value="RoleId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="Qualifiactions2Iterator" id="Qualifiactions2">
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.QualifiactionsVO" Name="Qualifiactions20">
+        <AttrNames>
+          <Item Value="QualTypeCode"/>
+          <Item Value="ScienceName"/>
+          <Item Value="QualDate"/>
+          <Item Value="UniversityName"/>
+          <Item Value="Notes"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="Awards2Iterator" id="Awards2">
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.AwardsVO" Name="Awards20">
+        <AttrNames>
+          <Item Value="AwardId"/>
+          <Item Value="AwardText"/>
+          <Item Value="AwardDate"/>
+          <Item Value="Notes"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="Users2Iterator" id="BirthDate">
+      <AttrNames>
+        <Item Value="BirthDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactData2Iterator" id="ContactId">
+      <AttrNames>
+        <Item Value="ContactId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactData2Iterator" id="Mobile">
+      <AttrNames>
+        <Item Value="Mobile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactData2Iterator" id="Fax">
+      <AttrNames>
+        <Item Value="Fax"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactData2Iterator" id="PostOfficeCode">
+      <AttrNames>
+        <Item Value="PostOfficeCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactData2Iterator" id="ProfessrorId">
+      <AttrNames>
+        <Item Value="ProfessrorId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Users2Iterator" StaticList="false" Uses="LOV_Gender" id="Gender1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="ProfessorsApprovalsIterator" StaticList="false" Uses="LOV_StatusId" id="StatusId1"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ProfessorsApprovalsIterator" StaticList="false" Uses="LOV_CountryId" id="CountryId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ProfessorsApprovalsIterator" StaticList="false" Uses="LOV_CityId" id="CityId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Cv2Iterator" id="CvId1">
+      <AttrNames>
+        <Item Value="CvId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cv2Iterator" id="CvFile">
+      <AttrNames>
+        <Item Value="CvFile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cv2Iterator" id="Notes">
+      <AttrNames>
+        <Item Value="Notes"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cv2Iterator" id="FilePath">
+      <AttrNames>
+        <Item Value="FilePath"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="acceptProfessor" RequiresUpdateModel="true" Action="invokeMethod" MethodName="acceptProfessor"
+                  IsViewObjectMethod="false" DataControl="ProfessorsAMDataControl"
+                  InstanceName="data.ProfessorsAMDataControl.dataProvider"
+                  ReturnName="data.ProfessorsAMDataControl.methodResults.acceptProfessor_ProfessorsAMDataControl_dataProvider_acceptProfessor_result">
+      <NamedData NDName="email" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

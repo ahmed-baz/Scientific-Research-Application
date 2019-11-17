@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="PageDef"
+                Package="pages.fragments.projects.PrivateProjectInf">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Projects2" RangeSize="10" DataControl="ProjectsAMDataControl" id="Projects2Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Projects2Iterator" id="ProjectId">
+      <AttrNames>
+        <Item Value="ProjectId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects2Iterator" id="ProjectName">
+      <AttrNames>
+        <Item Value="ProjectName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects2Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects2Iterator" id="Link">
+      <AttrNames>
+        <Item Value="Link"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects2Iterator" id="CategoryId">
+      <AttrNames>
+        <Item Value="CategoryId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects2Iterator" id="ProjectFile">
+      <AttrNames>
+        <Item Value="ProjectFile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects2Iterator" id="ProjectDate">
+      <AttrNames>
+        <Item Value="ProjectDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects2Iterator" id="Screenshot1">
+      <AttrNames>
+        <Item Value="Screenshot1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects2Iterator" id="Screenshot2">
+      <AttrNames>
+        <Item Value="Screenshot2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects2Iterator" id="Path">
+      <AttrNames>
+        <Item Value="Path"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects2Iterator" id="Code">
+      <AttrNames>
+        <Item Value="Code"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Projects2Iterator" id="Type">
+      <AttrNames>
+        <Item Value="Type"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Projects2Iterator" StaticList="false" Uses="LOV_UserId" id="UserId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <methodAction id="accessProject" RequiresUpdateModel="true" Action="invokeMethod" MethodName="accessProject"
+                  IsViewObjectMethod="false" DataControl="ProjectsAMDataControl"
+                  InstanceName="data.ProjectsAMDataControl.dataProvider"
+                  ReturnName="data.ProjectsAMDataControl.methodResults.accessProject_ProjectsAMDataControl_dataProvider_accessProject_result">
+      <NamedData NDName="code" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="filterPrivateProjects" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterPrivateProjects" IsViewObjectMethod="false" DataControl="ProjectsAMDataControl"
+                  InstanceName="data.ProjectsAMDataControl.dataProvider"
+                  ReturnName="data.ProjectsAMDataControl.methodResults.filterPrivateProjects_ProjectsAMDataControl_dataProvider_filterPrivateProjects_result"/>
+    <methodAction id="filterPublicProjects" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterPublicProjects" IsViewObjectMethod="false" DataControl="ProjectsAMDataControl"
+                  InstanceName="data.ProjectsAMDataControl.dataProvider"
+                  ReturnName="data.ProjectsAMDataControl.methodResults.filterPublicProjects_ProjectsAMDataControl_dataProvider_filterPublicProjects_result"/>
+    <action id="Rollback" DataControl="ProjectsAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="ProjectsAMDataControl"/>
+    <action IterBinding="Projects2Iterator" id="Delete" InstanceName="ProjectsAMDataControl.Projects2"
+            DataControl="ProjectsAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <list IterBinding="Projects2Iterator" StaticList="false" Uses="LOV_Type" id="Type1" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

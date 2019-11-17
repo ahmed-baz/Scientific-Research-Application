@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="LibraryPageDef"
+                Package="pages.fragments.library">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PublicBooks" RangeSize="25" DataControl="LibraryAMDataControl" id="PublicBooksIterator"/>
+    <iterator Binds="Category" RangeSize="25" DataControl="LibraryAMDataControl" id="CategoryIterator"/>
+    <iterator Binds="CategoryDropDownList" RangeSize="-1" DataControl="LibraryAMDataControl"
+              id="CategoryDropDownListIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="CategoryIterator" StaticList="false" id="CategoryId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject" ListIter="CategoryDropDownListIterator" ListOperMode="navigation">
+      <AttrNames>
+        <Item Value="CategoryName"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="CategoryId"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="CategoryName"/>
+      </ListDisplayAttrNames>
+    </list>
+    <tree IterBinding="PublicBooksIterator" id="PublicBooks">
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.BookVO" Name="PublicBooks0">
+        <AttrNames>
+          <Item Value="BookName"/>
+          <Item Value="AutherName"/>
+          <Item Value="BookImage"/>
+          <Item Value="BookId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="checkBookCode" RequiresUpdateModel="true" Action="invokeMethod" MethodName="checkBookCode"
+                  IsViewObjectMethod="false" DataControl="LibraryAMDataControl"
+                  InstanceName="data.LibraryAMDataControl.dataProvider"
+                  ReturnName="data.LibraryAMDataControl.methodResults.checkBookCode_LibraryAMDataControl_dataProvider_checkBookCode_result">
+      <NamedData NDName="code" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

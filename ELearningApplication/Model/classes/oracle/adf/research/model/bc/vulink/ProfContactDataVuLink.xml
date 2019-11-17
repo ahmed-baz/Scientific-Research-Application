@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProfContactDataVuLink"
+  Version="12.1.3.2.1"
+  InheritPersonalization="merge"
+  EntityAssociation="oracle.adf.research.model.bc.assoc.ProfContactDataAssoc">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="oracle.adf.research.model.bc.vulink.ProfContactDataVuLink_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="Professors"
+    Cardinality="1"
+    Source="true"
+    Owner="oracle.adf.research.model.bc.uiview.ProfessorsVO">
+    <DesignTime>
+      <Attr Name="_accessor" Value="true"/>
+      <Attr Name="_finderName" Value="Professors"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.uiview.ProfessorsVO.ProfessorId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="ContactData"
+    Cardinality="-1"
+    Owner="oracle.adf.research.model.bc.uiview.ContactDataVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="ContactData"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.uiview.ContactDataVO.ProfessrorId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="oracle.adf.research.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

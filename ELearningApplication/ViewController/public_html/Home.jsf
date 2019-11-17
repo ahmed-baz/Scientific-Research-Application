@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Home" id="d1">
+        <af:form id="f1" usesUpload="true">
+            <af:pageTemplate viewId="/resources/templates/MainTemplate.jsf" id="pt1">
+                <f:facet name="MainContentFacet">
+                    <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"/>
+                </f:facet>
+                <f:facet name="NavigationContentFacet">
+                    <af:panelAccordion discloseMany="false" id="pa1">
+                        <af:showDetailItem id="MainMenu" text="Main Menu" disclosed="true"
+                                           icon="/resources/images/dashboard-menu-home-main-20.png">
+                            <f:facet name="toolbar"/>
+                            <af:button text="Home" id="b1"
+                                       inlineStyle="width:230px;margin:2px;padding:5px;font-size:15px;"
+                                       icon="/resources/images/go-home-16.png" type="radio" selected="true"
+                                       action="#{RegionsBean.welcomeBTFFrag}"/>
+                            <af:button text="Professors" id="b2"
+                                       inlineStyle="width:230px;margin:2px;padding:5px;font-size:15px;"
+                                       icon="/resources/images/Manager16.png" type="radio"
+                                       action="#{RegionsBean.professor_BTFFrag}"/>
+                            <af:button text="Libraries" id="b3"
+                                       inlineStyle="width:230px;margin:2px;padding:5px;font-size:15px;"
+                                       icon="/resources/images/library16.png" type="radio"
+                                       action="#{RegionsBean.libraryBTFFrag}"/>
+                            <af:button text="Projects" id="b4"
+                                       inlineStyle="width:230px;margin:2px;padding:5px;font-size:15px;"
+                                       icon="/resources/images/cmyk-08-16.png" type="radio"
+                                       action="#{RegionsBean.projectsBTFFrag}"/>
+                            <af:button text="Courses" id="b6"
+                                       inlineStyle="width:230px;margin:2px;padding:5px;font-size:15px;"
+                                       type="radio" icon="/resources/images/Courses16.png"
+                                       action="#{RegionsBean.coursesBTFFrag}"/>
+                            <af:button text="Settings" id="b5"
+                                       inlineStyle="width:230px;margin:2px;padding:5px;font-size:15px;"
+                                       icon="/resources/images/Service-Manager16.png" type="radio"
+                                       action="#{RegionsBean.settingsBTFFrag}"/>
+                            <af:button text="Approvals" id="b7"
+                                       inlineStyle="width:230px;margin:2px;padding:5px;font-size:15px;"
+                                       icon="/resources/images/shop-24-16.png"
+                                       action="#{RegionsBean.approvalsBTFFrag}"
+                                       rendered='#{LoginBean.user.roleName eq "Admin" ? true : false}'/>
+                        </af:showDetailItem>
+                    </af:panelAccordion>
+                </f:facet>
+                <f:facet name="ToolbarFacet">
+                    <af:navigationPane id="np1" level="5">
+                        <af:commandNavigationItem id="Home" text="Home" icon="/resources/images/go-home-16.png" action="#{RegionsBean.welcomeBTFFrag}"/>
+                        <af:commandNavigationItem id="UserProfile" text="User Profile"
+                                                  icon="/resources/images/031.png"
+                                                  action="#{RegionsBean.userProfileBTFFrag}"/>
+                        <af:commandNavigationItem id="English" text="English"
+                                                  icon="/resources/images/009_002_language_world_internet-16.png"/>
+                        <af:commandNavigationItem id="Arabic" text="عربي" icon="/resources/images/alif-16.png"/>
+                        <af:commandNavigationItem id="Logout" text="Logout"
+                                                  icon="/resources/images/logout-16.png" immediate="true"
+                                                  accessKey="L" actionListener="#{LogoutBean.onLogout}"/>
+                    </af:navigationPane>
+                </f:facet>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Approvals-BTFFrag">
+    <default-activity>Professor-Approvals-BTFFrag</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="Approvals">
+      <page>/pages/fragments/approvals/Approvals.jsff</page>
+    </view>
+    <task-flow-call id="Professor-Approvals-BTFFrag">
+      <task-flow-reference>
+        <document>/WEB-INF/fragments/approvals/professor/Professor-Approvals-BTFFrag.xml</document>
+        <id>Professor-Approvals-BTFFrag</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <control-flow-rule id="__5">
+      <from-activity-id>Approvals</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>Professor-Approvals-BTFFrag</from-outcome>
+        <to-activity-id>Professor-Approvals-BTFFrag</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>Professor-Approvals-BTFFrag</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>Approvals</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

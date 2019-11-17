@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="SelectApprovalPageDef"
+                Package="pages.fragments.approvals.professor">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProfessorsApprovals" RangeSize="25" DataControl="ProfessorsAMDataControl"
+              id="ProfessorsApprovalsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ProfessorsApprovalsIterator" id="ProfessorsApprovals">
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.ProfessorsVO" Name="ProfessorsApprovals0">
+        <AttrNames>
+          <Item Value="UserId"/>
+          <Item Value="Email"/>
+          <Item Value="NationalId"/>
+          <Item Value="CityId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

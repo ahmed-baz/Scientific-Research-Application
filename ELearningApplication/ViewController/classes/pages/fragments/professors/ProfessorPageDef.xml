@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="ProfessorPageDef"
+                Package="pages.fragments.professors">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Users1" RangeSize="25" DataControl="ProfessorsAMDataControl" id="Users1Iterator"/>
+    <iterator Binds="MainProfessors" RangeSize="25" DataControl="ProfessorsAMDataControl" id="Professors1Iterator"/>
+    <iterator Binds="ContactData1" RangeSize="25" DataControl="ProfessorsAMDataControl" id="ContactData1Iterator"/>
+    <iterator Binds="Awards1" RangeSize="25" DataControl="ProfessorsAMDataControl" id="Awards1Iterator"/>
+    <searchRegion Binds="Awards1Iterator" Criteria="" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Awards1Query"/>
+    <iterator Binds="Qualifiactions1" RangeSize="25" DataControl="ProfessorsAMDataControl"
+              id="Qualifiactions1Iterator"/>
+    <searchRegion Binds="Qualifiactions1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="Qualifiactions1Query"/>
+    <iterator Binds="Cv1" RangeSize="10" DataControl="ProfessorsAMDataControl" id="Cv1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Users1Iterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="BirthDate">
+      <AttrNames>
+        <Item Value="BirthDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Professors1Iterator" id="NationalId">
+      <AttrNames>
+        <Item Value="NationalId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactData1Iterator" id="Mobile">
+      <AttrNames>
+        <Item Value="Mobile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactData1Iterator" id="PostOfficeCode">
+      <AttrNames>
+        <Item Value="PostOfficeCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactData1Iterator" id="Fax">
+      <AttrNames>
+        <Item Value="Fax"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Users1Iterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="Awards1Iterator" id="Awards1">
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.AwardsVO" Name="Awards10">
+        <AttrNames>
+          <Item Value="AwardText"/>
+          <Item Value="AwardDate"/>
+          <Item Value="Notes"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="Qualifiactions1Iterator" id="Qualifiactions1">
+      <nodeDefinition DefName="oracle.adf.research.model.bc.uiview.QualifiactionsVO" Name="Qualifiactions10">
+        <AttrNames>
+          <Item Value="QualTypeCode"/>
+          <Item Value="ScienceName"/>
+          <Item Value="QualDate"/>
+          <Item Value="UniversityName"/>
+          <Item Value="Notes"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="Cv1Iterator" id="CvFile">
+      <AttrNames>
+        <Item Value="CvFile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Cv1Iterator" id="FilePath">
+      <AttrNames>
+        <Item Value="FilePath"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Professors1Iterator" StaticList="false" Uses="LOV_StatusId" id="StatusId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="Users1Iterator" StaticList="false" Uses="LOV_Gender" id="Gender" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="Professors1Iterator" StaticList="false" Uses="LOV_CountryId" id="CountryId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="Professors1Iterator" StaticList="false" Uses="LOV_CityId" id="CityId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

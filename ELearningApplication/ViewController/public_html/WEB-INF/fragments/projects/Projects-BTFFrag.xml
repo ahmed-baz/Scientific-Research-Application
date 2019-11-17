@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Projects-BTFFrag">
+    <default-activity>SelectProject</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>ProjectsBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.projects.ProjectsBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__2">
+      <managed-bean-name>DownloadProject</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.projects.DownloadProject</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__12">
+      <managed-bean-name>UploadProjectBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.projects.UploadProjectBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__15">
+      <managed-bean-name>ControlCompnentsUploadBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.projects.ControlCompnentsUploadBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__16">
+      <managed-bean-name>ProjectsBean</managed-bean-name>
+      <managed-bean-class>oracle.adf.research.beans.projects.ProjectsBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <view id="SelectProject">
+      <page>/pages/fragments/projects/Projects.jsff</page>
+    </view>
+    <view id="ProjectInf">
+      <page>/pages/fragments/projects/ProjectInf.jsff</page>
+    </view>
+    <view id="PrivateProjectInf.">
+      <page>/pages/fragments/projects/PrivateProjectInf..jsff</page>
+    </view>
+    <view id="UploadProject">
+      <page>/pages/fragments/projects/UploadProject.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__3">
+      <from-activity-id>ProjectInf</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>SelectProject</from-outcome>
+        <to-activity-id>SelectProject</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>SelectProject</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>PrivateProjectInf.</from-outcome>
+        <to-activity-id>PrivateProjectInf.</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>UploadProject</from-outcome>
+        <to-activity-id>CreateInsert</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>PrivateProjectInf.</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>SelectProject</from-outcome>
+        <to-activity-id>SelectProject</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>UploadProject</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>SelectProject</from-outcome>
+        <to-activity-id>SelectProject</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>UploadProject</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

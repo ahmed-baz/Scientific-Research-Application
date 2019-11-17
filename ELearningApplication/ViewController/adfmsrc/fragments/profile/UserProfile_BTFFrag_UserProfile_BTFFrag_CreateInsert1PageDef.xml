@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1"
+                id="UserProfile_BTFFrag_UserProfile_BTFFrag_CreateInsert1PageDef" Package="fragments.profile"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="ContactData2" RangeSize="25" DataControl="ProfessorsAMDataControl" id="ContactData2Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="ContactData2Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

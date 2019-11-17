@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.2.1" id="DataBindings"
+             SeparateXMLFiles="false" Package="oracle.adf.research.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/Home.jsf" usageId="oracle_adf_research_view_HomePageDef"/>
+    <page path="/pages/fragments/professors/SelectProfessor.jsff"
+          usageId="oracle_adf_research_view_SelectProfessorPageDef"/>
+    <page path="/pages/fragments/professors/Professor.jsff" usageId="oracle_adf_research_view_ProfessorPageDef"/>
+    <page path="/pages/fragments/professors/PersonalData.jsff" usageId="oracle_adf_research_view_PersonalDataPageDef"/>
+    <page path="/Login.jsf" usageId="oracle_adf_research_view_LoginPageDef"/>
+    <page path="/Register.jsf" usageId="oracle_adf_research_view_RegisterPageDef"/>
+    <page path="PageFlow#CreateInsert" usageId="oracle_adf_research_view_adfc_config___CreateInsertPageDef"/>
+    <page path="/Code.jsf" usageId="oracle_adf_research_view_CodePageDef"/>
+    <page path="/pages/fragments/approvals/professor/SelectApproval.jsff"
+          usageId="oracle_adf_research_view_SelectApprovalPageDef"/>
+    <page path="/pages/fragments/approvals/professor/UserData.jsff" usageId="oracle_adf_research_view_UserDataPageDef"/>
+    <page path="/pages/fragments/settings/Settings.jsff" usageId="oracle_adf_research_view_SettingsPageDef"/>
+    <page path="/RestorePassword.jsf" usageId="oracle_adf_research_view_RestorePasswordPageDef"/>
+    <page path="/pages/fragments/settings/ProfessorSettings.jsff"
+          usageId="oracle_adf_research_view_ProfessorSettingsPageDef"/>
+    <page path="/pages/fragments/projects/Projects.jsff" usageId="oracle_adf_research_view_ProjectsPageDef"/>
+    <page path="/pages/fragments/projects/ProjectInf.jsff" usageId="oracle_adf_research_view_ProjectInfPageDef"/>
+    <page path="/pages/fragments/profile/Profile.jsff" usageId="oracle_adf_research_view_ProfilePageDef"/>
+    <page path="/WEB-INF/fragments/profile/UserProfile-BTFFrag.xml#UserProfile-BTFFrag@CreateInsert"
+          usageId="oracle_adf_research_view_UserProfile_BTFFrag_UserProfile_BTFFrag_CreateInsertPageDef"/>
+    <page path="/WEB-INF/fragments/profile/UserProfile-BTFFrag.xml#UserProfile-BTFFrag@CreateInsert1"
+          usageId="oracle_adf_research_view_UserProfile_BTFFrag_UserProfile_BTFFrag_CreateInsert1PageDef"/>
+    <page path="/pages/fragments/profile/ProfessorRegisteration.jsff"
+          usageId="oracle_adf_research_view_ProfessorRegisterationPageDef"/>
+    <page path="/WEB-INF/fragments/profile/UserProfile-BTFFrag.xml#UserProfile-BTFFrag@CreateInsert2"
+          usageId="oracle_adf_research_view_UserProfile_BTFFrag_UserProfile_BTFFrag_CreateInsert2PageDef"/>
+    <page path="/pages/fragments/projects/PrivateProjectInf..jsff" usageId="oracle_adf_research_view_PageDef"/>
+    <page path="/pages/fragments/projects/UploadProject.jsff" usageId="oracle_adf_research_view_UploadProjectPageDef"/>
+    <page path="/WEB-INF/fragments/projects/Projects-BTFFrag.xml#Projects-BTFFrag@CreateInsert"
+          usageId="oracle_adf_research_view_Projects_BTFFrag_Projects_BTFFrag_CreateInsertPageDef"/>
+    <page path="/pages/fragments/library/Library.jsff" usageId="oracle_adf_research_view_LibraryPageDef"/>
+    <page path="/pages/fragments/library/SelectedBook.jsff" usageId="oracle_adf_research_view_SelectedBookPageDef"/>
+    <page path="/pages/fragments/library/PrivateBook.jsff" usageId="oracle_adf_research_view_PrivateBookPageDef"/>
+    <page path="/WEB-INF/fragments/library/Library-BTFFrag.xml#Library-BTFFrag@CreateInsert"
+          usageId="oracle_adf_research_view_Library_BTFFrag_Library_BTFFrag_CreateInsertPageDef"/>
+    <page path="/pages/fragments/library/NewBook.jsff" usageId="oracle_adf_research_view_NewBookPageDef"/>
+    <page path="/pages/fragments/courses/Courses.jsff" usageId="oracle_adf_research_view_CoursesPageDef"/>
+    <page path="/pages/fragments/courses/SelectedCourse.jsff" usageId="oracle_adf_research_view_SelectedCoursePageDef"/>
+    <page path="/pages/fragments/courses/PrivateCourse.jsff" usageId="oracle_adf_research_view_PrivateCoursePageDef"/>
+    <page path="/WEB-INF/fragments/courses/Courses-BTFFrag.xml#Courses-BTFFrag@CreateInsert"
+          usageId="oracle_adf_research_view_Courses_BTFFrag_Courses_BTFFrag_CreateInsertPageDef"/>
+    <page path="/WEB-INF/fragments/courses/Courses-BTFFrag.xml#Courses-BTFFrag@CreateInsert1"
+          usageId="oracle_adf_research_view_Courses_BTFFrag_Courses_BTFFrag_CreateInsert1PageDef"/>
+    <page path="/pages/fragments/courses/NewCourse.jsff" usageId="oracle_adf_research_view_NewCoursePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="oracle_adf_research_view_HomePageDef" path="oracle.adf.research.view.pageDefs.HomePageDef"/>
+    <page id="oracle_adf_research_view_SelectProfessorPageDef"
+          path="pages.fragments.professors.SelectProfessorPageDef"/>
+    <page id="oracle_adf_research_view_ProfessorPageDef" path="pages.fragments.professors.ProfessorPageDef"/>
+    <page id="oracle_adf_research_view_PersonalDataPageDef" path="pages.fragments.professors.PersonalDataPageDef"/>
+    <page id="oracle_adf_research_view_LoginPageDef" path="oracle.adf.research.view.pageDefs.LoginPageDef"/>
+    <page id="oracle_adf_research_view_RegisterPageDef" path="oracle.adf.research.view.pageDefs.RegisterPageDef"/>
+    <page id="oracle_adf_research_view_adfc_config___CreateInsertPageDef"
+          path="oracle.adf.research.view.pageDefs.adfc_config___CreateInsertPageDef"/>
+    <page id="oracle_adf_research_view_CodePageDef" path="oracle.adf.research.view.pageDefs.CodePageDef"/>
+    <page id="oracle_adf_research_view_SelectApprovalPageDef"
+          path="pages.fragments.approvals.professor.SelectApprovalPageDef"/>
+    <page id="oracle_adf_research_view_UserDataPageDef" path="pages.fragments.approvals.professor.UserDataPageDef"/>
+    <page id="oracle_adf_research_view_SettingsPageDef" path="pages.fragments.settings.SettingsPageDef"/>
+    <page id="oracle_adf_research_view_RestorePasswordPageDef"
+          path="oracle.adf.research.view.pageDefs.RestorePasswordPageDef"/>
+    <page id="oracle_adf_research_view_ProfessorSettingsPageDef"
+          path="pages.fragments.settings.ProfessorSettingsPageDef"/>
+    <page id="oracle_adf_research_view_ProjectsPageDef" path="pages.fragments.projects.ProjectsPageDef"/>
+    <page id="oracle_adf_research_view_ProjectInfPageDef" path="pages.fragments.projects.ProjectInfPageDef"/>
+    <page id="oracle_adf_research_view_ProfilePageDef" path="pages.fragments.profile.ProfilePageDef"/>
+    <page id="oracle_adf_research_view_UserProfile_BTFFrag_UserProfile_BTFFrag_CreateInsertPageDef"
+          path="fragments.profile.UserProfile_BTFFrag_UserProfile_BTFFrag_CreateInsertPageDef"/>
+    <page id="oracle_adf_research_view_UserProfile_BTFFrag_UserProfile_BTFFrag_CreateInsert1PageDef"
+          path="fragments.profile.UserProfile_BTFFrag_UserProfile_BTFFrag_CreateInsert1PageDef"/>
+    <page id="oracle_adf_research_view_ProfessorRegisterationPageDef"
+          path="pages.fragments.profile.ProfessorRegisterationPageDef"/>
+    <page id="oracle_adf_research_view_UserProfile_BTFFrag_UserProfile_BTFFrag_CreateInsert2PageDef"
+          path="fragments.profile.UserProfile_BTFFrag_UserProfile_BTFFrag_CreateInsert2PageDef"/>
+    <page id="oracle_adf_research_view_PageDef" path="pages.fragments.projects.PrivateProjectInf.PageDef"/>
+    <page id="oracle_adf_research_view_UploadProjectPageDef" path="pages.fragments.projects.UploadProjectPageDef"/>
+    <page id="oracle_adf_research_view_Projects_BTFFrag_Projects_BTFFrag_CreateInsertPageDef"
+          path="fragments.projects.Projects_BTFFrag_Projects_BTFFrag_CreateInsertPageDef"/>
+    <page id="oracle_adf_research_view_LibraryPageDef" path="pages.fragments.library.LibraryPageDef"/>
+    <page id="oracle_adf_research_view_SelectedBookPageDef" path="pages.fragments.library.SelectedBookPageDef"/>
+    <page id="oracle_adf_research_view_PrivateBookPageDef" path="pages.fragments.library.PrivateBookPageDef"/>
+    <page id="oracle_adf_research_view_Library_BTFFrag_Library_BTFFrag_CreateInsertPageDef"
+          path="fragments.library.Library_BTFFrag_Library_BTFFrag_CreateInsertPageDef"/>
+    <page id="oracle_adf_research_view_NewBookPageDef" path="pages.fragments.library.NewBookPageDef"/>
+    <page id="oracle_adf_research_view_CoursesPageDef" path="pages.fragments.courses.CoursesPageDef"/>
+    <page id="oracle_adf_research_view_SelectedCoursePageDef" path="pages.fragments.courses.SelectedCoursePageDef"/>
+    <page id="oracle_adf_research_view_PrivateCoursePageDef" path="pages.fragments.courses.PrivateCoursePageDef"/>
+    <page id="oracle_adf_research_view_Courses_BTFFrag_Courses_BTFFrag_CreateInsertPageDef"
+          path="fragments.courses.Courses_BTFFrag_Courses_BTFFrag_CreateInsertPageDef"/>
+    <page id="oracle_adf_research_view_Courses_BTFFrag_Courses_BTFFrag_CreateInsert1PageDef"
+          path="fragments.courses.Courses_BTFFrag_Courses_BTFFrag_CreateInsert1PageDef"/>
+    <page id="oracle_adf_research_view_NewCoursePageDef" path="pages.fragments.courses.NewCoursePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="ProfessorsAMDataControl" Package="oracle.adf.research.model.bc.module"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="ProfessorsAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="SecurityAMDataControl" Package="oracle.adf.research.model.bc.module"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="SecurityAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="ProjectsAMDataControl" Package="oracle.adf.research.model.bc.module"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="ProjectsAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="LibraryAMDataControl" Package="oracle.adf.research.model.bc.module"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="LibraryAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="CoursesAMDataControl" Package="oracle.adf.research.model.bc.module"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="CoursesAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

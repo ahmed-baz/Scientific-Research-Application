@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl2" layout="scroll">
+    <af:panelGridLayout id="pgl1">
+      <af:gridRow marginTop="5px" height="100%" id="gr1">
+        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc1" halign="stretch" valign="stretch">
+          <af:panelGroupLayout id="pgl22" layout="scroll" styleClass="AFStretchWidth">
+            <af:panelBox text="Project Info." id="pb2" showHeader="always" showDisclosure="false"
+                         styleClass="AFStretchWidth">
+              <f:facet name="toolbar">
+                <af:toolbar id="t1">
+                  <af:button text="Edit" id="b3" icon="/resources/images/edit.gif"
+                             rendered="#{LoginBean.user.userId eq bindings.UserId.inputValue ? 'true' : 'false'}">
+                    <af:showPopupBehavior popupId="p3"/>
+                  </af:button>
+                  <af:button text="Delete" id="b4" icon="/resources/images/remove_from_shortlist.gif"
+                             rendered="#{LoginBean.user.userId eq bindings.UserId.inputValue ? 'true' : 'false'}">
+                    <af:showPopupBehavior popupId="p2"/>
+                  </af:button>
+                  <af:button text="Rollback" id="b5" icon="/resources/images/undo_arrow_left_edit_back-16.png"
+                             actionListener="#{bindings.Rollback.execute}"
+                             rendered="false"/>
+                  <af:button text="Save" id="b6" icon="/resources/images/save-16.png"
+                             rendered="false">
+                    <af:showPopupBehavior popupId="p1"/>
+                  </af:button>
+                  <af:button text="back" id="b2" iconPosition="trailing" icon="/resources/images/srch_go.gif"
+                             action="#{viewScope.ProjectsBean.backFromPrivatePage}"/>
+                </af:toolbar>
+              </f:facet>
+              <af:panelGroupLayout id="pgl23" layout="horizontal">
+                <af:image source="/projectsimage?id=#{bindings.ProjectId.inputValue}" id="i1"
+                          inlineStyle="width:200px;height:250px;margin-top:20px;" partialTriggers="b7 b8 b9"/>
+                <af:panelFormLayout id="pfl1">
+                  <af:inputText value="#{bindings.ProjectName.inputValue}" label="#{bindings.ProjectName.hints.label}"
+                                required="#{bindings.ProjectName.hints.mandatory}"
+                                columns="#{bindings.ProjectName.hints.displayWidth}"
+                                maximumLength="#{bindings.ProjectName.hints.precision}"
+                                shortDesc="#{bindings.ProjectName.hints.tooltip}" id="it1"
+                                contentStyle="padding:3px;color:teal;font-size:15px;width:500px;"
+                                labelStyle="color:black;font-size:15px;" readOnly="true" partialTriggers="b7 b8 b9">
+                    <f:validator binding="#{bindings.ProjectName.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.Description.inputValue}" label="#{bindings.Description.hints.label}"
+                                required="#{bindings.Description.hints.mandatory}"
+                                columns="#{bindings.Description.hints.displayWidth}"
+                                maximumLength="#{bindings.Description.hints.precision}"
+                                shortDesc="#{bindings.Description.hints.tooltip}" id="it2"
+                                contentStyle="padding:3px;color:teal;font-size:15px;width:500px;"
+                                labelStyle="color:black;font-size:15px;" rows="3" partialTriggers="b7 b8 b9">
+                    <f:validator binding="#{bindings.Description.validator}"/>
+                  </af:inputText>
+                  <af:link shortDesc="#{bindings.Link.hints.tooltip}" id="it3" partialTriggers="b7 b8 b9"
+                           text="#{bindings.ProjectName.inputValue} link" destination="#{bindings.Link.inputValue}"
+                           inlineStyle="font-size:15px;"/>
+                  <af:inputDate value="#{bindings.ProjectDate.inputValue}" label="#{bindings.ProjectDate.hints.label}"
+                                required="#{bindings.ProjectDate.hints.mandatory}"
+                                columns="#{bindings.ProjectDate.hints.displayWidth}"
+                                shortDesc="#{bindings.ProjectDate.hints.tooltip}" id="id1"
+                                contentStyle="padding:3px;color:teal;font-size:15px;width:500px;"
+                                labelStyle="color:black;font-size:15px;" readOnly="true" partialTriggers="b7 b8 b9">
+                    <f:validator binding="#{bindings.ProjectDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.ProjectDate.format}"/>
+                  </af:inputDate>
+                  <af:selectOneChoice value="#{bindings.UserId.inputValue}" label="Uploaded By"
+                                      required="#{bindings.UserId.hints.mandatory}"
+                                      shortDesc="#{bindings.UserId.hints.tooltip}" id="soc1"
+                                      labelStyle="color:black;font-size:15px;"
+                                      contentStyle="padding:3px;color:teal;font-size:15px;width:500px;" readOnly="true"
+                                      partialTriggers="b7 b8 b9">
+                    <f:selectItems value="#{bindings.UserId.items}" id="si1"/>
+                    <f:validator binding="#{bindings.UserId.validator}"/>
+                  </af:selectOneChoice>
+                  <af:button text="Download Project" id="b1"
+                             inlineStyle="margin-top:10px;font-size:15px;padding-bottom:3px;"
+                             icon="/resources/images/download_1-20.png" iconPosition="trailing">
+                    <af:fileDownloadActionListener filename="#{bindings.ProjectName}"
+                                                   method="#{viewScope.DownloadProject.downloadProject}"/>
+                  </af:button>
+                </af:panelFormLayout>
+              </af:panelGroupLayout>
+            </af:panelBox>
+            <af:panelBox text="Screen Shots" id="pb1" showDisclosure="false" styleClass="AFStretchWidth">
+              <f:facet name="toolbar"/>
+              <af:panelGroupLayout id="pgl3" layout="horizontal">
+                <af:image source="/projectsecreenshot1?id=#{bindings.ProjectId.inputValue}" id="i2"
+                          inlineStyle="width:200px;height:250px;margin-right:40px;" partialTriggers="b7 b8 b9"/>
+                <af:image source="/projectscreenshotnd?id=#{bindings.ProjectId.inputValue}" id="i3"
+                          inlineStyle="width:200px;height:250px;margin-right:40px;" partialTriggers="b7 b8 b9"/>
+              </af:panelGroupLayout>
+            </af:panelBox>
+          </af:panelGroupLayout>
+        </af:gridCell>
+      </af:gridRow>
+    </af:panelGridLayout>
+  </af:panelGroupLayout>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+            binding="#{viewScope.ProjectsBean.privateProjectSave}" contentDelivery="lazyUncached">
+    <af:dialog id="d1" type="none" contentWidth="400" contentHeight="200">
+      <af:panelGroupLayout id="pgl4" layout="horizontal" halign="center">
+        <af:outputText value="Save New Changes ?" id="ot1" inlineStyle="margin-right:5px;color:black;font-size:20px;"/>
+        <af:image source="/resources/images/confirmation.png" id="i4"/>
+      </af:panelGroupLayout>
+      <f:facet name="buttonBar">
+        <af:button actionListener="#{bindings.Commit.execute}" text="Save"
+                   id="b7" icon="/resources/images/save-16.png" iconPosition="trailing"/>
+      </f:facet>
+    </af:dialog>
+  </af:popup>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p2"
+            binding="#{viewScope.ProjectsBean.deletePrivateCourse}" contentDelivery="lazyUncached">
+    <af:dialog id="d2" type="none" contentWidth="500" contentHeight="200">
+      <af:panelGroupLayout id="pgl5" halign="center" layout="horizontal">
+        <af:outputText value="Delete Project ? " id="ot2" inlineStyle="margin-right:5px;font-size:20px;color:black;"/>
+        <af:image source="/resources/images/confirmation.png" id="i5"/>
+      </af:panelGroupLayout>
+      <f:facet name="buttonBar">
+        <af:button text="Delete" id="b8" icon="/resources/images/remove_from_shortlist.gif" iconPosition="trailing"
+                   actionListener="#{bindings.Delete.execute}" action="#{viewScope.ProjectsBean.DeletePrivateCourse}"/>
+      </f:facet>
+    </af:dialog>
+  </af:popup>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p3" contentDelivery="lazyUncached"
+            binding="#{viewScope.ProjectsBean.editPrivateProject}">
+    <af:dialog id="d3" type="none" contentWidth="400" contentHeight="200">
+      <af:panelFormLayout id="pfl2">
+        <af:inputText value="#{bindings.ProjectName.inputValue}" label="#{bindings.ProjectName.hints.label}"
+                      required="#{bindings.ProjectName.hints.mandatory}"
+                      columns="#{bindings.ProjectName.hints.displayWidth}"
+                      maximumLength="#{bindings.ProjectName.hints.precision}"
+                      shortDesc="#{bindings.ProjectName.hints.tooltip}" id="it4"
+                      contentStyle="padding:3px;width:300px;font-size:15px;color:teal;"
+                      labelStyle="font-size:15px;coloR:black;">
+          <f:validator binding="#{bindings.ProjectName.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Description.inputValue}" label="#{bindings.Description.hints.label}"
+                      required="#{bindings.Description.hints.mandatory}"
+                      columns="#{bindings.Description.hints.displayWidth}"
+                      maximumLength="#{bindings.Description.hints.precision}"
+                      shortDesc="#{bindings.Description.hints.tooltip}" id="it5"
+                      contentStyle="padding:3px;width:300px;font-size:15px;color:teal;"
+                      labelStyle="font-size:15px;coloR:black;">
+          <f:validator binding="#{bindings.Description.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Link.inputValue}" label="#{bindings.Link.hints.label}"
+                      required="#{bindings.Link.hints.mandatory}" columns="#{bindings.Link.hints.displayWidth}"
+                      maximumLength="#{bindings.Link.hints.precision}" shortDesc="#{bindings.Link.hints.tooltip}"
+                      id="it6" contentStyle="padding:3px;width:300px;font-size:15px;color:teal;"
+                      labelStyle="font-size:15px;coloR:black;">
+          <f:validator binding="#{bindings.Link.validator}"/>
+        </af:inputText>
+        <af:inputDate value="#{bindings.ProjectDate.inputValue}" label="#{bindings.ProjectDate.hints.label}"
+                      required="#{bindings.ProjectDate.hints.mandatory}"
+                      columns="#{bindings.ProjectDate.hints.displayWidth}"
+                      shortDesc="#{bindings.ProjectDate.hints.tooltip}" id="id2"
+                      contentStyle="padding:3px;width:300px;font-size:15px;color:teal;"
+                      labelStyle="font-size:15px;coloR:black;">
+          <f:validator binding="#{bindings.ProjectDate.validator}"/>
+          <af:convertDateTime pattern="#{bindings.ProjectDate.format}"/>
+        </af:inputDate>
+        <af:selectOneRadio value="#{bindings.Type1.inputValue}" label="#{bindings.Type1.label}"
+                           required="#{bindings.Type1.hints.mandatory}" shortDesc="#{bindings.Type1.hints.tooltip}"
+                           id="sor1" contentStyle="padding:3px;width:300px;font-size:15px;color:teal;"
+                           labelStyle="font-size:15px;coloR:black;" autoSubmit="true"
+                           valueChangeListener="#{viewScope.UploadProjectBean.typeChangeEditPrivate}">
+          <f:selectItems value="#{bindings.Type1.items}" id="si2"/>
+          <f:validator binding="#{bindings.Type1.validator}"/>
+        </af:selectOneRadio>
+        <af:inputText label="Code" id="it7" contentStyle="padding:3px;color:blue;font-size:15px;"
+                      labelStyle="color:black;font-size:15px;" readOnly="true" partialTriggers="sor1"
+                      binding="#{viewScope.UploadProjectBean.codeEditPrivate}"/>
+        <af:inputFile label="Project Image" id="if4" contentStyle="padding:3px;width:300px;font-size:15px;color:teal;"
+                      labelStyle="font-size:15px;coloR:black;"
+                      valueChangeListener="#{viewScope.UploadProjectBean.uploadProjectImage}"/>
+        <af:inputFile label="Screen Shot 1" id="if3" contentStyle="padding:3px;width:300px;font-size:15px;color:teal;"
+                      labelStyle="font-size:15px;coloR:black;"
+                      valueChangeListener="#{viewScope.UploadProjectBean.uploadProjectScreenshot1}"/>
+        <af:inputFile label="Screen Shot 2" id="if2" contentStyle="padding:3px;width:300px;font-size:15px;color:teal;"
+                      labelStyle="font-size:15px;coloR:black;"
+                      valueChangeListener="#{viewScope.UploadProjectBean.uploadProjectScreenshot2}"/>
+        <af:inputFile label="Project Fille" id="if1" contentStyle="padding:3px;width:300px;font-size:15px;color:teal;"
+                      labelStyle="font-size:15px;coloR:black;"
+                      valueChangeListener="#{viewScope.UploadProjectBean.uploadProjectFile}"/>
+      </af:panelFormLayout>
+      <f:facet name="buttonBar">
+        <af:button text="Save" id="b9" icon="/resources/images/save-16.png" iconPosition="trailing"
+                   actionListener="#{viewScope.ProjectsBean.EditPrivateProject}"/>
+      </f:facet>
+    </af:dialog>
+  </af:popup>
+</ui:composition>

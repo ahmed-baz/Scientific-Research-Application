@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component" xmlns:f="http://java.sun.com/jsf/core">
+    <af:xmlContent>
+        <afc:component>
+            <afc:description/>
+            <afc:display-name>MainTemplate</afc:display-name>
+            <afc:facet>
+                <afc:facet-name>MainContentFacet</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:facet-name>NavigationContentFacet</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:facet-name>ToolbarFacet</afc:facet-name>
+            </afc:facet>
+        </afc:component>
+    </af:xmlContent>
+    <af:panelSplitter id="pt_ps1" orientation="vertical" splitterPosition="80">
+        <f:facet name="first">
+            <af:panelGroupLayout id="pgl1" layout="scroll" halign="center" valign="middle">
+                <af:panelGridLayout id="pgl2">
+                    <af:gridRow marginTop="5px" height="auto" id="gr3">
+                        <af:gridCell marginStart="5px" rowSpan="2" width="20%" id="gc3" valign="stretch"
+                                     halign="stretch">
+                            <af:image id="i2"
+                                      inlineStyle="width:350px;height:50px;"
+                                      source="/resources/images/152556394590792170.png"/>
+                        </af:gridCell>
+                        <af:gridCell width="60%" id="gc4" halign="stretch">
+                            <af:panelGridLayout id="pgl3">
+                                <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr6">
+                                    <af:gridCell width="90%" id="gc8" valign="stretch" halign="stretch">
+                                        <af:panelGridLayout id="pgl5">
+                                            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr7">
+                                                <af:gridCell marginStart="5px" width="34%" id="gc10"/>
+                                                <af:gridCell marginStart="5px" width="33%" id="gc11" halign="stretch"/>
+                                                <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc12"/>
+                                            </af:gridRow>
+                                        </af:panelGridLayout>
+                                    </af:gridCell>
+                                    <af:gridCell width="10%" id="gc9" halign="end" valign="bottom">
+                                        <af:menuBar id="mb1">
+                                            <af:menu text="#{LoginBean.user.userFirstName}" id="m2">
+                                                <af:commandMenuItem text="AR" id="cmi2"/>
+                                                <af:commandMenuItem text="EN" id="cmi1"/>
+                                                <af:commandMenuItem text="Logout" id="cmi8" action="Logout"/>
+                                            </af:menu>
+                                        </af:menuBar>
+                                    </af:gridCell>
+                                </af:gridRow>
+                            </af:panelGridLayout>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" rowSpan="2" width="5%" marginEnd="5px" id="gc5" halign="center">
+                            <af:image id="i1"
+                                      inlineStyle="width:60px;height:50px;"
+                                      source="/professorsimages?id=#{LoginBean.userEmail.value}"/>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="5px" height="auto" id="gr4">
+                        <af:gridCell marginStart="5px" width="80%" id="gc6" halign="end">
+                            <af:activeOutputText value="#{LoginBean.user.roleName}" id="aot1" inlineStyle="margin-right:20px;"/>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="second">
+            <af:panelBox text="Welcome #{LoginBean.user.userFirstName} #{LoginBean.user.userLastName}" id="pb1" background="light" showDisclosure="false">
+                <f:facet name="toolbar">
+                    <af:facetRef facetName="ToolbarFacet"/>
+                </f:facet>
+                <af:panelGridLayout id="pgl33" inlineStyle="margin-top:20px;">
+                    <af:gridRow marginTop="5px" height="100%" marginBottom="5px" id="pt_gr1">
+                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc33" valign="stretch"
+                                     halign="stretch">
+                            <af:panelSplitter splitterPosition="50" orientation="vertical" positionedFromEnd="true"
+                                              id="ps2">
+                                <f:facet name="first">
+                                    <af:decorativeBox theme="dark" id="db1" topHeight="50px">
+                                        <f:facet name="center">
+                                            <af:panelSplitter splitterPosition="250" id="ps1" orientation="horizontal">
+                                                <f:facet name="first">
+                                                    <af:facetRef facetName="NavigationContentFacet"/>
+                                                </f:facet>
+                                                <f:facet name="second">
+                                                    <af:decorativeBox theme="medium" id="db2">
+                                                        <f:facet name="center">
+                                                            <af:facetRef facetName="MainContentFacet"/>
+                                                        </f:facet>
+                                                    </af:decorativeBox>
+                                                </f:facet>
+                                            </af:panelSplitter>
+                                        </f:facet>
+                                    </af:decorativeBox>
+                                </f:facet>
+                            </af:panelSplitter>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+            </af:panelBox>
+        </f:facet>
+    </af:panelSplitter>
+</af:pageTemplateDef>

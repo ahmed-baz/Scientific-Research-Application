@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="VideosEO"
+  Version="12.1.3.2.1"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="VIDEOS"
+  AliasName="VideosEO"
+  BindingStyle="OracleName"
+  RowClass="oracle.adf.research.model.bc.entity.VideosEOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="VideoId"
+    Precision="10"
+    Scale="0"
+    ColumnName="VIDEO_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="VIDEOS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="VideoContent"
+    IsQueriable="false"
+    ColumnName="VIDEO_CONTENT"
+    SQLType="BLOB"
+    Type="oracle.jbo.domain.BlobDomain"
+    ColumnType="BLOB"
+    TableName="VIDEOS"/>
+  <Attribute
+    Name="VideoName"
+    Precision="100"
+    ColumnName="VIDEO_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VIDEOS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Discription"
+    Precision="255"
+    ColumnName="DISCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VIDEOS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CourseId"
+    Precision="10"
+    Scale="0"
+    ColumnName="COURSE_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="VIDEOS"/>
+  <Attribute
+    Name="VideoPath"
+    Precision="250"
+    ColumnName="VIDEO_PATH"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VIDEOS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="VideoUpload"
+    Precision="250"
+    ColumnName="VIDEO_UPLOAD"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="VIDEOS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="250"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Courses"
+    Association="oracle.adf.research.model.bc.assoc.CourseVideosAssoc"
+    AssociationEnd="oracle.adf.research.model.bc.assoc.CourseVideosAssoc.Courses"
+    AssociationOtherEnd="oracle.adf.research.model.bc.assoc.CourseVideosAssoc.Videos"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC007636"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C007636"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.entity.VideosEO.VideoId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CourseVideos">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C007580"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="COURSE_VIDEOS"/>
+      <Attr Name="_isCascadeDelete" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.entity.VideosEO.CourseId"/>
+    </AttrArray>
+  </Key>
+</Entity>

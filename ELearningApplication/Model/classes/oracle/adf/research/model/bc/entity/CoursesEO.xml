@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CoursesEO"
+  Version="12.1.3.2.1"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="COURSES"
+  AliasName="CoursesEO"
+  BindingStyle="OracleName"
+  RowClass="oracle.adf.research.model.bc.entity.CoursesEOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="CourseId"
+    Precision="10"
+    Scale="0"
+    ColumnName="COURSE_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="COURSES"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="CourseName"
+    Precision="150"
+    ColumnName="COURSE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="COURSES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProfessorName"
+    Precision="40"
+    ColumnName="PROFESSOR_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="COURSES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="40"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserId"
+    Precision="5"
+    Scale="0"
+    ColumnName="USER_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="COURSES"/>
+  <Attribute
+    Name="CourseDate"
+    ColumnName="COURSE_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="COURSES"/>
+  <Attribute
+    Name="CategoryId"
+    Precision="10"
+    Scale="0"
+    ColumnName="CATEGORY_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="COURSES"/>
+  <Attribute
+    Name="Type"
+    Precision="20"
+    ColumnName="TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="COURSES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Code"
+    Precision="20"
+    ColumnName="CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="COURSES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Videos"
+    Association="oracle.adf.research.model.bc.assoc.CourseVideosAssoc"
+    AssociationEnd="oracle.adf.research.model.bc.assoc.CourseVideosAssoc.Videos"
+    AssociationOtherEnd="oracle.adf.research.model.bc.assoc.CourseVideosAssoc.Courses"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Category"
+    Association="oracle.adf.research.model.bc.assoc.CategoryCourseAssoc"
+    AssociationEnd="oracle.adf.research.model.bc.assoc.CategoryCourseAssoc.Category"
+    AssociationOtherEnd="oracle.adf.research.model.bc.assoc.CategoryCourseAssoc.Courses"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC007580"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C007580"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.entity.CoursesEO.CourseId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CourseCategory">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C007568"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="COURSE_CATEGORY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.entity.CoursesEO.CategoryId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UserCourse">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C007630"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="USER_COURSE"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.entity.CoursesEO.UserId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_CoursesEO">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CATEGORY_CATEGORY_ID_CHECK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_COURSES_EO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracle.adf.research.model.bc.entity.CoursesEO.CategoryId"/>
+    </AttrArray>
+  </Key>
+</Entity>

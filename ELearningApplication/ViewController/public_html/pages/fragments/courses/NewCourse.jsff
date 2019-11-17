@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="Add New Course" id="ph1">
+    <f:facet name="context"/>
+    <f:facet name="menuBar"/>
+    <f:facet name="toolbar">
+      <af:toolbar id="t3">
+        <af:button actionListener="#{bindings.Commit.execute}" id="b3" icon="/resources/images/save-16.png"
+                   action="Courses" text="Save" iconPosition="trailing"/>
+        <af:button text="back" id="b4" icon="/resources/images/srch_go.gif" iconPosition="trailing" action="Courses"/>
+      </af:toolbar>
+    </f:facet>
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:panelFormLayout id="pfl1">
+      <af:inputText value="#{bindings.CourseName.inputValue}" label="#{bindings.CourseName.hints.label}"
+                    required="#{bindings.CourseName.hints.mandatory}"
+                    columns="40"
+                    maximumLength="#{bindings.CourseName.hints.precision}"
+                    shortDesc="#{bindings.CourseName.hints.tooltip}" id="it2"
+                    contentStyle="font-size:15px;color:teal;padding:3px;width:300px;"
+                    labelStyle="color:black;font-size:15px;">
+        <f:validator binding="#{bindings.CourseName.validator}"/>
+      </af:inputText>
+      <af:inputDate value="#{bindings.CourseDate.inputValue}" label="#{bindings.CourseDate.hints.label}"
+                    required="#{bindings.CourseDate.hints.mandatory}"
+                    columns="#{bindings.CourseDate.hints.displayWidth}" shortDesc="#{bindings.CourseDate.hints.tooltip}"
+                    id="id1" contentStyle="font-size:15px;color:teal;padding:3px;width:300px;"
+                    labelStyle="color:black;font-size:15px;">
+        <f:validator binding="#{bindings.CourseDate.validator}"/>
+        <af:convertDateTime pattern="#{bindings.CourseDate.format}"/>
+      </af:inputDate>
+      <af:selectOneChoice value="#{bindings.CategoryId.inputValue}" label="#{bindings.CategoryId.label}"
+                          required="#{bindings.CategoryId.hints.mandatory}"
+                          shortDesc="#{bindings.CategoryId.hints.tooltip}" id="soc1"
+                          contentStyle="font-size:15px;color:teal;padding:3px;width:300px;"
+                          labelStyle="color:black;font-size:15px;">
+        <f:selectItems value="#{bindings.CategoryId.items}" id="si1"/>
+        <f:validator binding="#{bindings.CategoryId.validator}"/>
+      </af:selectOneChoice>
+      <af:selectOneRadio value="#{bindings.Type.inputValue}" label="#{bindings.Type.label}"
+                         required="#{bindings.Type.hints.mandatory}" shortDesc="#{bindings.Type.hints.tooltip}"
+                         id="sor1" layout="horizontal" autoSubmit="true"
+                         valueChangeListener="#{CourseStatusTypeBean.statusType}"
+                         contentStyle="font-size:15px;color:teal;padding:3px;width:300px;"
+                         labelStyle="color:black;font-size:15px;">
+        <f:selectItems value="#{bindings.Type.items}" id="si2"/>
+        <f:validator binding="#{bindings.Type.validator}"/>
+      </af:selectOneRadio>
+      <af:panelGroupLayout id="pgl1" layout="horizontal">
+        <af:button text="Get New Code" id="b1" action="#{CourseCodeBean.getCourseCode}"
+                   binding="#{CourseStatusTypeBean.getCodeButton}" disabled="true" partialTriggers="sor1"
+                   inlineStyle="font-size:15px;"/>
+        <af:panelLabelAndMessage id="plam1">
+          <af:outputText value="#{bindings.Code.inputValue}" shortDesc="#{bindings.Code.hints.tooltip}" id="ot1"
+                         inlineStyle="font-size:15px;color:blue;" partialTriggers="b1"/>
+        </af:panelLabelAndMessage>
+      </af:panelGroupLayout>
+    </af:panelFormLayout>
+    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+      <f:facet name="menus"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t2">
+          <af:button actionListener="#{bindings.CreateInsert.execute}" disabled="#{!bindings.CreateInsert.enabled}"
+                     id="b2" icon="/resources/images/Add.gif"/>
+          <af:button actionListener="#{bindings.Delete.execute}" disabled="#{!bindings.Delete.enabled}"
+                     id="b6" icon="/resources/images/remove_from_shortlist.gif"/>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="statusbar"/>
+      <af:table value="#{bindings.Videos.collectionModel}" var="row" rows="#{bindings.Videos.rangeSize}"
+                emptyText="#{bindings.Videos.viewable ? 'No data to display.' : 'Access Denied.'}"
+                rowBandingInterval="0" selectedRowKeys="#{bindings.Videos.collectionModel.selectedRow}"
+                selectionListener="#{bindings.Videos.collectionModel.makeCurrent}" rowSelection="single"
+                fetchSize="#{bindings.Videos.rangeSize}" id="t1" width="100%" scrollPolicy="page"
+                partialTriggers="::b2 ::b6" styleClass="AFStretchWidth" columnStretching="last">
+        <af:column id="c5" width="20">
+          <af:button id="b5"/>
+        </af:column>
+        <af:column headerText="#{bindings.Videos.hints.VideoName.label}" id="c2">
+          <af:inputText value="#{row.bindings.VideoName.inputValue}" label="#{bindings.Videos.hints.VideoName.label}"
+                        required="#{bindings.Videos.hints.VideoName.mandatory}"
+                        columns="#{bindings.Videos.hints.VideoName.displayWidth}"
+                        maximumLength="#{bindings.Videos.hints.VideoName.precision}"
+                        shortDesc="#{bindings.Videos.hints.VideoName.tooltip}" id="it6">
+            <f:validator binding="#{row.bindings.VideoName.validator}"/>
+          </af:inputText>
+        </af:column>
+        <af:column headerText="#{bindings.Videos.hints.Discription.label}" id="c3" width="200">
+          <af:inputText value="#{row.bindings.Discription.inputValue}"
+                        label="#{bindings.Videos.hints.Discription.label}"
+                        required="#{bindings.Videos.hints.Discription.mandatory}"
+                        columns="#{bindings.Videos.hints.Discription.displayWidth}"
+                        maximumLength="#{bindings.Videos.hints.Discription.precision}"
+                        shortDesc="#{bindings.Videos.hints.Discription.tooltip}" id="it7">
+            <f:validator binding="#{row.bindings.Discription.validator}"/>
+          </af:inputText>
+        </af:column>
+        <af:column id="c7" width="160" headerText="Upload Video">
+          <af:inputFile label="Upload Video" id="if1" valueChangeListener="#{UploadVideoBean.uploadVideos}"
+                        autoSubmit="true"/>
+        </af:column>
+      </af:table>
+    </af:panelCollection>
+  </af:panelHeader>
+  <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached"
+            binding="#{UploadVideoBean.error1}">
+    <af:dialog id="d1" type="ok">
+      <f:facet name="buttonBar"/>
+      <af:panelGroupLayout id="pgl2" layout="horizontal" halign="center">
+        <af:outputText value="Error : Select MP4 File only" id="ot2" inlineStyle="font-size:20px;color:black;"/>
+        <af:image source="/resources/images/stop_wrong_cross-128.png" id="i1"/>
+      </af:panelGroupLayout>
+    </af:dialog>
+  </af:popup>
+</ui:composition>
