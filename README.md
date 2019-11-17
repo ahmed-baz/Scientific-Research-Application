@@ -11,8 +11,14 @@
 
 ### Technologies Used :
 Application Development Framework (ADF) <br/>
-Java SE, Java EE, Oracle Database, HTML, CSS, ADF BCs, JDBC and ADF Faces  . <br/>
-
+Java SE<br/>
+Java EE<br/>
+Oracle Database<br/>
+ADF BCs<br/>
+ADF Faces <br/>
+JDBC <br/>
+HTML<br/>
+CSS<br/>
 ### Tools Used :
 JDeveloper . <br/>
 SQl Developer . <br/>
