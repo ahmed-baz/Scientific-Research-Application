@@ -19,10 +19,12 @@ ADF Faces <br/>
 JDBC <br/>
 HTML<br/>
 CSS<br/>
-### Tools Used :
-JDeveloper . <br/>
-SQl Developer . <br/>
-Visual Paradigm . <br/>
+### Tools :
+Oracle JDeveloper 12c <br/>
+Weblogic Server <br/>
+Oracle 10g Database <br/>
+Toad <br/>
+Visual Paradigm <br/>
 
 ### The Work Team : 
 Usama Wagdy . <br/>
